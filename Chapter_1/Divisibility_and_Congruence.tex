@@ -1,0 +1,428 @@
+% !TEX root = ../main.tex
+
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\begin{thm} \label{1.1}
+Let $a$, $b$, and $c$ be integers. If $a \mid b$ and $a \mid c$, then $a \mid (b + c)$.
+\end{thm}
+
+\begin{proof}
+\begin{align}
+    \label{1.1.1} % Horrible labels I know
+    &\exists \; d_b \in \mathbb{Z} \ni b = a \cdot d_b && \mbox{because } a \mid b \\
+    \label{1.1.2}
+    &\exists \; d_c \in \mathbb{Z} \ni c = a \cdot d_c && \mbox{because } a \mid c \\
+    &b + c = a \cdot d_b + a \cdot d_c && \mbox{by \eqref{1.1.1} and \eqref{1.1.2}} \\
+    &b + c = a \cdot (d_b + d_c) && \mbox{by distributive property} \\
+    &d_b + d_c \in \mathbb{Z} && \mbox{because } d_b \in \mathbb{Z} \mbox{ and } d_c \in \mathbb{Z} \\
+    &a \mid (b + c) && \mbox{by def'n of divides} \qedhere
+\end{align}
+\end{proof}
+
+
+
+\begin{thm} \label{1.2}
+Let $a$, $b$, and $c$ be integers. If $a \mid b$ and $a \mid c$, then $a \mid (b - c)$.
+\end{thm}
+
+\begin{proof}
+\begin{align}
+    \label{1.2.1}
+    &\exists \; d_b \in \mathbb{Z} \ni b = a \cdot d_b && \mbox{because } a \mid b \\
+    \label{1.2.2}
+    &\exists \; d_c \in \mathbb{Z} \ni c = a \cdot d_c && \mbox{because } a \mid c \\
+    &b - c = a \cdot d_b - a \cdot d_c && \mbox{by \eqref{1.2.1} and \eqref{1.2.2}} \\
+    &b - c = a \cdot (d_b - d_c) && \mbox{by distributive property} \\
+    &d_b - d_c \in \mathbb{Z} && \mbox{because } d_b \in \mathbb{Z} \mbox{ and } d_c \in \mathbb{Z} \\
+    &a \mid (b - c) && \mbox{by def'n of divides} \qedhere
+\end{align}
+\end{proof}
+
+
+
+\begin{thm} \label{1.3}
+Let $a$, $b$, and $c$ be integers. If $a \mid b$ and $a \mid c$, then $a \mid bc$.
+\end{thm}
+
+\begin{proof}
+\begin{align}
+    \label{1.3.1}
+    &\exists \; d_b \in \mathbb{Z} \ni b = a \cdot d_b && \mbox{because } a \mid b \\
+    \label{1.3.2}
+    &\exists \; d_c \in \mathbb{Z} \ni c = a \cdot d_c && \mbox{because } a \mid c \\
+    &bc = (a \cdot d_b) \cdot (a \cdot d_c) && \mbox{by \eqref{1.3.1} and \eqref{1.3.2}} \\
+    \label{1.3.4}
+    &bc = a \cdot (a \cdot d_b \cdot d_c) && \mbox{by associativity and commutativity} \\
+    &a \cdot d_b \cdot d_c \in \mathbb{Z} && \mbox{because } d_b \in \mathbb{Z} \mbox{ and } d_c \in \mathbb{Z} \\
+    &a \mid bc && \mbox{by def'n of divides} \qedhere
+\end{align}
+\end{proof}
+
+
+
+\begin{ques} \label{1.4}
+    Can you weaken the hypothesis of the previous theorem and still prove the conclusion? Can you keep the same hypothesis, but replace the conclusion by the stronger conclusion that $a^2 | bc$ and still prove the theorem?
+\end{ques}
+
+Yes. You can remove the $a | c$ condition to weaken the hypothesis, or with both $a | b$ and $a | c$ you can show $a^2 | bc$.
+
+
+
+\pagebreak
+
+
+
+\begin{ques} \label{1.5}
+Can you formulate your own conjecture along the lines of the above theorems and then prove it to make it your theorem?
+\end{ques}
+
+Yes.
+\newtheorem*{PC}{Paul's Conjecture}
+\begin{PC}
+Let $a$, $b$, and $c$ be integers. If $a|b$ and $a|c$, then $a^2|bc$.
+\end{PC}
+
+\begin{proof}
+First, take lines \eqref{1.3.1} through \eqref{1.3.4} of the proof of Theorem 1.3. Then,
+\begin{align*}
+    &d_b \cdot d_c \in \mathbb{Z} && \mbox{because } d_b \in \mathbb{Z} \mbox{ and } d_c \in \mathbb{Z} \\
+    &a^2|bc && \mbox{by def'n of divides} \qedhere
+\end{align*}
+\end{proof}
+
+
+
+\begin{thm} \label{1.6}
+Let $a$, $b$, and $c$ be integers. If $a|b$, then $a|bc$.
+\end{thm}
+
+\begin{proof}
+\begin{align}
+    \label{1.6.1}
+    &\exists d \in \mathbb{Z} \ni ad = b && \mbox{because } a|b \\
+    &bc = adc && \mbox{by \eqref{1.6.1}} \\
+    &dc \in \mathbb{Z} && \mbox{because } d \in \mathbb{Z} \mbox{ and } c \in \mathbb{Z} \\
+    &a|bc && \mbox{by def'n of divides} \qedhere
+\end{align}
+\end{proof}
+
+
+
+\begin{ex} \label{1.7}
+Answer each of the following questions, and prove that your answer is correct.
+\end{ex}
+
+\hspace*{0.1mm} \emph{1. Is $45 \equiv 9 \gmod{4}$?} \\
+\hspace*{15mm} Yes. $4 \cdot 9 = 36 = 45 - 9$.
+\\\\
+\hspace*{5mm} \emph{2. Is $37 \equiv 2 \gmod{5}$?} \\
+\hspace*{15mm} Yes. $5 \cdot 7 = 35 = 37 - 2$.
+\\\\
+\hspace*{5mm} \emph{3. Is $37 \equiv 3 \gmod{5}$?} \\
+\hspace*{15mm} No. $37 - 3 = 34$ which is not a multiple of $5$.
+\\\\
+\hspace*{5mm} \emph{4. Is $37 \equiv -3 \gmod{5}$?} \\
+\hspace*{15mm} Yes. $5 \cdot 8 = 40 = 37 - (-3)$. \\
+
+
+
+\begin{ex} \label{1.8}
+For each of the following congruences, characterize all the integers $m$ that satisfy that congruence.
+\end{ex}
+
+\hspace*{0.1mm} \emph{1. $m \equiv 0 \gmod 3$} \\
+\hspace*{15mm} $m \in \left\{ 3z \mid z \in \mathbb{Z} \right\}$
+\\\\
+\hspace*{5mm} \emph{2. $m \equiv 1 \gmod 3$} \\
+\hspace*{15mm} $m \in \left\{ 3z+1 \mid z \in \mathbb{Z} \right\}$
+\\\\
+\hspace*{5mm} \emph{3. $m \equiv 2 \gmod 3$} \\
+\hspace*{15mm} $m \in \left\{ 3z+2 \mid z \in \mathbb{Z} \right\}$
+\\\\
+\hspace*{5mm} \emph{4. $m \equiv 3 \gmod 3$} \\
+\hspace*{15mm} $m \in \left\{ 3z \mid z \in \mathbb{Z} \right\}$
+\\\\
+\hspace*{5mm} \emph{5. $m \equiv 4 \gmod 3$} \\
+\hspace*{15mm} $m \in \left\{ 3z+1 \mid z \in \mathbb{Z} \right\}$
+
+
+
+\pagebreak
+
+
+
+\begin{thm} \label{1.9}
+Let $a$ and $n$ be integers with $n > 0$. Then $a \equiv a \gmod n$.
+\end{thm}
+
+\begin{proof}
+\begin{align}
+    &0 \in \mathbb{Z} \\
+    &n \cdot 0 = 0 \\
+    \label{1.9 n|0}
+    &n|0 && \mbox{By def'n of divides} \\
+    \label{1.9 a-a}
+    &a-a = 0 \\
+    &n|(a-a) && \mbox{By \eqref{1.9 n|0} and \eqref{1.9 a-a}} \\
+    &a \equiv a \gmod n && \mbox{By def'n of modular congruence} \qedhere
+\end{align}
+\end{proof}
+
+
+
+\begin{thm} \label{1.10}
+Let $a$, $b$, and $n$ be integers with $n > 0$. If $a \equiv b \gmod n$, then $b \equiv a \gmod n$.
+\end{thm}
+
+\begin{proof}
+\begin{align}
+    &a \equiv b \gmod n && \mbox{Given} \\
+    &\exists d \in \mathbb{Z} \ni nd = a - b && \mbox{By def'n of modular congruence} \\
+    &-1nd = -1 \cdot (a-b) && \mbox{By multiplicative property of equality} \\
+    \label{1.10 various}
+    &n \cdot (-d) = b - a && \mbox{By various algebra} \\
+    \label{1.10 -d Z}
+    &-d \in \mathbb{Z} && \mbox{By multiplicative closure of $\mathbb{Z}$} \\
+    &n|(b-a) && \mbox{By \eqref{1.10 various}, \eqref{1.10 -d Z}} \\
+    &b \equiv a \gmod n && \mbox{By def'n of modular congruence} \qedhere
+\end{align}
+\end{proof}
+
+
+
+\begin{thm} \label{1.11}
+Let $a$, $b$, and $n$ be integers with $n > 0$. If $a \equiv b \gmod n$ and $ b \equiv c \gmod n$, then $a \equiv c \gmod n$.
+\end{thm}
+
+\begin{proof}
+\begin{align}
+    \label{1.11 n|a-b}
+    &n|a-b && \mbox{By $a \equiv b \gmod n$} \\
+    \label{1.11 n|b-c}
+    &n|b-c && \mbox{By $b \equiv c \gmod n$} \\
+    &\exists d_1 \in \mathbb{Z} \ni nd_1 = a-b && \mbox{By \eqref{1.11 n|a-b}} \\
+    &\exists d_2 \in \mathbb{Z} \ni nd_2 = b-c && \mbox{By \eqref{1.11 n|b-c}} \\
+    &nd_1 + nd_2 = (a-b) + (b-c) && \mbox{By additive property of equality} \\
+    &n(d_1 + d_2) = a - c && \mbox{By various algebra} \\
+    &d_1 + d_2 \in \mathbb{Z} && \mbox{By closure of integers under addition} \\
+    &n|(a-c) && \mbox{By def'n of divides} \\
+    &a \equiv c \gmod n && \mbox{By def'n of modular congruence} \qedhere
+\end{align}
+\end{proof}
+
+
+
+\begin{thm} \label{1.12}
+Let $a$, $b$, $c$, $d$, and $n$ be integers with $n > 0$. If $a \equiv b \gmod n$ and $c \equiv d \gmod n$, then $a + c \equiv b + d \gmod n$.
+\end{thm}
+
+\begin{proof}
+\begin{align}
+    &n|(a-b) && \mbox{By $a \equiv b \gmod n$} \\
+    &\exists d_1 \in \mathbb{Z} \ni nd_1 = a-b && \mbox{By def'n divides} \\
+    &n|(c-d) && \mbox{By $c \equiv d \gmod n$} \\
+    &\exists d_2 \in \mathbb{Z} \ni nd_2 = c-d && \mbox{By def'n divides} \\
+    &nd_1 + nd_2 = (a - b) + (c - d) && \mbox{By additive property of equality} \\
+    &n \cdot (d_1 + d_2) = (a + c) - (b + d) && \mbox{By various algebra} \\
+    &d_1 + d_2 \in \mathbb{Z} && \mbox{By additive closure of $\mathbb{Z}$} \\
+    &n|\left((a+c)-(b+d)\right) && \mbox{By def'n of divides} \\
+    &a+c \equiv b+d \gmod n && \mbox{By def'n of modular congruence} \qedhere
+\end{align}
+\end{proof}
+
+
+
+\pagebreak
+
+
+
+\begin{thm} \label{1.13}
+Let $a$, $b$, $c$, $d$, and $n$ be integers with $n > 0$. If $a \equiv b \gmod n$ and $c \equiv d \gmod n$, then $a - c \equiv b - d \gmod n$.
+\end{thm}
+
+\begin{proof}
+Notice $-c$ and $-d$ are integers, and $-c \equiv -d \gmod n$ (glossing over the proof of that for now). Then simply cite \ref{1.12} and we're done.
+\end{proof}
+
+
+
+\begin{thm} \label{1.14}
+Let $a$, $b$, $c$, $d$, and $n$ be integers with $n > 0$. If $a \equiv b \gmod n$ and $c \equiv d \gmod n$, then $ac \equiv bd \gmod n$.
+\end{thm}
+
+\begin{proof}
+\begin{align}
+    &n|(a-b) && \mbox{By $a \equiv b \gmod n$} \\
+    &\exists k_1 \in \mathbb{Z} \ni a - b = nk_1 \\
+    \label{1.14 a=}
+    &a = nk_1 + b \\
+    &n|(c-d) && \mbox{By $c \equiv d \gmod n$} \\
+    &\exists k_2 \in \mathbb{Z} \ni c - d = nk_2 \\
+    \label{1.14 c=}
+    &c = nk_2 + d \\
+    &ac = (nk_1 + b)(nk_2 + d) && \mbox{By \eqref{1.14 a=} and \eqref{1.14 c=}}\\
+    &ac = n^2k_1k_2 + nk_1d + nk_2b + bd \\
+    &ac - bd = n \cdot (nk_1k_2 + k_1d + k_2b) \\
+    &n|(ac - bd) && \mbox{Since $nk_1k_2 + k_1d + k_2b \in \mathbb{Z}$}\\
+    &ac \equiv bd \gmod n && \qedhere
+\end{align}
+\end{proof}
+
+
+
+\begin{ex} \label{1.15}
+Let $a$, $b$, and $n$ be integers with $n > 0$. Show that if $a \equiv b \gmod n$, then $a^2 \equiv b^2 \gmod n$.
+\end{ex}
+
+\begin{proof}
+\begin{align}
+    &a \equiv b \gmod n && \mbox{Given} \\
+    &a \cdot a \equiv b \cdot b \gmod n && \mbox{\ref{1.14}} \\
+    &a^2 \equiv b^2 \gmod n && \qedhere
+\end{align}
+\end{proof}
+
+
+
+\begin{ex} \label{1.16}
+Let $a$, $b$, and $n$ be integers with $n > 0$. Show that if $a \equiv b \gmod n$, then $a^3 \equiv b^3 \gmod n$.
+\end{ex}
+
+\begin{proof}
+\begin{align}
+    \label{1.16 a=b}
+    &a \equiv b \gmod n && \mbox{Given} \\
+    \label{1.16 squares}
+    &a^2 \equiv b^2 \gmod n && \mbox{\ref{1.15}} \\
+    &a \cdot a^2 \equiv b \cdot b^2 \gmod n && \mbox{By \ref{1.14} on \eqref{1.16 a=b} and \eqref{1.16 squares}} \\
+    &a^3 \equiv b^3 \gmod n && \qedhere
+\end{align}
+\end{proof}
+
+
+
+\begin{ex} \label{1.17}
+Let $a$, $b$, $k$, and $n$ be integers with $n > 0$ and $k > 1$. Show that if $a \equiv b \gmod n$ and $a^{k-1} \equiv b^{k-1} \gmod n$, then $a^k \equiv b^k \gmod n$.
+\end{ex}
+
+\begin{proof}
+\begin{align}
+    \label{1.17 a=b}
+    &a \equiv b \gmod n && \mbox{Given} \\
+    \label{1.17 powers}
+    &a^{k-1} \equiv b^{k-1} \gmod n && \mbox{\ref{1.15}} \\
+    &a \cdot a^{k-1} \equiv b \cdot b^{k-1} \gmod n && \mbox{By \ref{1.14} on \eqref{1.17 a=b} and \eqref{1.17 powers}} \\
+    &a^k \equiv b^k \gmod n && \qedhere
+\end{align}
+\end{proof}
+
+
+
+\begin{thm} \label{1.18}
+Let $a$, $b$, $k$, and $n$ be integers with $n > 0$ and $k > 0$. If $a \equiv b \gmod n$, then $a^k \equiv b^k \gmod n$
+\end{thm}
+
+\begin{proof} Our base case is \ref{1.9}. Our induction hypothesis is "$a$, $b$, $k$, and $n$ are integers with $n >0$ and $k > 1$ such that $\forall j \ni 0 < j < k$, we find $a^j \equiv b^j \gmod n$. Notice our induction hypothesis fulfills the criteria for \ref{1.17}, and in fact \ref{1.17} covers our induction step.
+\end{proof}
+
+
+
+\pagebreak
+
+
+
+\begin{ex} \label{1.19}
+Illustrate each of Theorems \ref{1.12} - \ref{1.18} with an example using actual numbers
+\end{ex}
+
+\hspace*{5mm} \ref{1.12} \\
+\hspace*{15mm} $2 \equiv 12 \gmod 10$ and $5 \equiv 15 \gmod 10$ imply $7 \equiv 27 \gmod 10$. \\
+
+\hspace*{5mm} \ref{1.13} \\
+\hspace*{15mm} $7 \equiv 27 \gmod 10$ and $12 \equiv 2 \gmod 10$ imply that $-5 \equiv 25 \gmod 10$. \\
+
+\hspace*{5mm} \ref{1.14} \\
+\hspace*{15mm} $2 \equiv 7 \gmod 5$ and $3 \equiv 8 \gmod 5$ imply that $6 \equiv 56 \gmod 5$. \\
+
+\hspace*{5mm} \ref{1.15} \\
+\hspace*{15mm} $2 \equiv 7 \gmod 5$ implies that $4 \equiv 49 \gmod 5$. \\
+
+\hspace*{5mm} \ref{1.16} \\
+\hspace*{15mm} $1 \equiv 3 \gmod 2$ implies that $1 \equiv 27 \gmod 2$. \\
+
+\hspace*{5mm} \ref{1.17} \\
+\hspace*{15mm} $1 \equiv 3 \gmod 2$ and $1 \equiv 27 \gmod 2$ imply that $1 \equiv 81 \gmod 2$. \\
+
+\hspace*{5mm} \ref {1.18} \\
+\hspace*{15mm} $1 \equiv 3 \gmod 2$ implies that $1 \equiv 81 \gmod 2$.
+
+
+
+\begin{ques} \label{1.20}
+Let $a$, $b$, $c$, and $n$ be integers for which $ac \equiv bc \gmod n$. Can we conclude that $a \equiv b \gmod n$? If you answer "yes", try to give a proof. If you answer "no", try to give a counterexample.
+\end{ques}
+
+No. Notice $1 \cdot 0 \equiv 2 \cdot 0 \gmod 5$ and yet $1 \not \equiv 2 \gmod 5$.
+
+
+
+\begin{thm} \label{1.21}
+Let a natural number $n$ be expressed in base $10$ as
+$$n=a_k a_{k-1} \ldots a_1 a_0$$
+If $m = a_k + a_{k-1} + \cdots + a_1 + a_0$ then $n \equiv m \gmod 3$.
+\end{thm}
+
+First, a Lemma that will help us later.
+
+\begin{lem} \label{1.21 Lemma}
+Let $a$ be an integer and $j$ a natural number. Then $a \equiv a \cdot 10^j \gmod 3$.
+\end{lem}
+
+\begin{proof}
+Notice that $1 \equiv 10 \gmod 3$. Then, by \ref{1.18}, we find $1^j \equiv 10^j \gmod 3$ and thus that $1 \equiv 10^j \gmod 3$. Then, since $a \equiv a \gmod 3$ (by \ref{1.9}), we invoke \ref{1.14} to find $a \cdot 1 \equiv a \cdot 10^j \gmod 3$, implying that $a \equiv a \cdot 10^j \gmod 3$.
+\end{proof}
+
+Now we begin our proof of the theorem in full.
+
+\begin{proof}
+Notice that $n$ can be written as $a_k \cdot 10^k + a_{k-1} \cdot 10^{k-1} + \cdots + a_1 \cdot 10 + a_0$, or more easily as $$n = \sum_{i=0}^k \  a_i \cdot 10^i$$
+Now notice that $$m = \sum_{i=0}^k \  a_i$$
+By \ref{1.21 Lemma}, we notice that $\forall i \  a_i \equiv a_i \cdot 10^i \gmod 3$. Thus, $n$ and $m$ are sums of terms that are congruent modulo $3$. By repeatedly invoking \ref{1.12}, we eventually find that the two strings of congruent sums are themselves are congruent, i.e. that $n \equiv m \gmod 3$.
+\end{proof}
+
+
+
+\begin{thm} \label{1.22}
+If a natural number is divisible by $3$, then, when expressed in base $10$, the sum of its digits is divisible by $3$.
+\end{thm}
+
+\begin{proof}
+Let the natural number be $n$, and the sum of its digits $m$. We're given by the theorem $n \equiv 0 \gmod 3$, and by \ref{1.21} we know $n \equiv m \gmod 3$, so we can cite \ref{1.11} and conclude $m \equiv 0 \gmod 3$, i.e. $m$ is divisible by $3$.
+\end{proof}
+
+
+
+\pagebreak
+
+
+
+\begin{thm} \label{1.23}
+If the sum of the digits of a natural number expressed in base $10$ is divisible by $3$, then the number is divisible by $3$ as well.
+\end{thm}
+
+\begin{proof}
+Let the natural number be $n$, and the sum of its digits $m$. We're given by the theorem $m \equiv 0 \gmod 3$, and by \ref{1.21} we know $n \equiv m \gmod 3$, so we can cite \ref{1.11} and conclude $n \equiv 0 \gmod 3$, i.e. $n$ is divisible by $3$.
+\end{proof}
+
+
+
+\begin{ex} \label{1.24}
+Devise and prove other divisibility criteria similar to the preceding one.
+\end{ex}
+
+A number is divisible by $2$ if and only if its last digit is divisible by $2$, because any (base $10$) number $n=a_{k}a_{k-1}\ldots a_1 a_0 = a_{k}a_{k-1}\ldots a_1 \cdot 10 + a_0$, and $2 | 10$ so $2 | \ldots \cdot 10$. Thus, $2 | \ldots \cdot 10 + a_0$ iff $2 | a_0$.
+
+Similar proofs can be done for $5$ and the last digit, $4$ and the last $2$ digits, $8$ and the last $3$ digits, $16$ and the last $4$ digits, $32$ and the last $5$ digits, etc.
+\end{document}

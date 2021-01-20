@@ -1,0 +1,62 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[leqno]{mathtools}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage[margin=0.75in]{geometry}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{ques}[thm]{Question}
+\newtheorem{ex}[thm]{Exercise}
+\newtheorem{lem}{Lemma}[thm]
+
+\numberwithin{equation}{thm}
+
+\providecommand{\gmod}[1]{\; (\bmod \; #1)}
+
+\usepackage{subfiles}
+
+\title{Number Theory Notebook}
+\author{Paul Schulze}
+\date{January 22, 2021}
+
+\begin{document}
+
+\maketitle
+
+
+
+\section{Chapter 1}
+
+
+\subsection*{Divisibility and congruence}
+
+\subfile{Chapter_1/Divisibility_and_Congruence}
+
+
+\subsection*{The Division Algorithm}
+
+\subfile{Chapter_1/The_Division_Algorithm}
+
+
+\subsection*{Greatest common divisors and linear Diophantine equations}
+
+
+
+\begin{ques}
+  Do every two integers have at least one common divisor?
+\end{ques}
+
+Yes. For any two integers $a$ and $b$, $1 \cdot a = a$ and $1 \cdot b = b$ so $1 | a$ and $1 | b$, making $1$ a common divsor of $a$ and $b$.
+
+
+
+\begin{ques}
+  Can two integers have infinitely many common divisors?
+\end{ques}
+
+No, if the two integers are distinct. Any nonzero integer $n$ can only have finitely many divisors, as any integer $d$ such that $d < -|n|$ or $d > |n|$ cannot be a divisor (since $1d$ and $-1d$ have a greater absolute value than $n$, and $0d = 0 \neq n$). In other words, only the numbers $f$ such that $-n \leq f \leq n$ are ``eligibile'' to be divisors of $n$, so there can only be finitely many divisors of $n$.
+
+
+
+\end{document}

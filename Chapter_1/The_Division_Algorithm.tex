@@ -1,0 +1,88 @@
+% !TEX root = ../main.tex
+
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\begin{ex} \label{1.25}
+Illustrate the division algorithm for:
+\end{ex}
+
+\hspace*{0.1mm} 1. $m = 25$, $n = 7$. \\
+\hspace*{15mm} $25 = 7 \cdot 3 + 4$. \\
+
+\hspace*{5mm} 2. $m = 277$, $n = 4$. \\
+\hspace*{15mm} $277 = 4 \cdot 69 + 1$. \\
+
+\hspace*{5mm} 3. $m = 33$, $n = 11$. \\
+\hspace*{15mm} $33 = 11 \cdot 3 + 0$. \\
+
+\hspace*{5mm} 4. $m = 33$, $n = 45$. \\
+\hspace*{15mm} $33 = 44 \cdot 0 + 33$.
+
+
+
+\begin{thm} \label{1.26}
+Prove the existence part of the Division Algorithm. In other words, given natural numbers $n$ and $m$, show their exist integers $q$ and $r$ such that $m = nq + r$ and $0 \leq r \leq n-1$.
+\end{thm}
+
+\begin{proof}
+Let $S = \left\{x \in \mathbb{Z} \mid nx > m\right\}$. By the Well-Ordering Axiom, $S$ has a smallest element: call it $s$. Let $q = s-1$. This definition gives us two important properties:
+
+\begin{enumerate}
+\item $nq \leq m$, for if $nq > m$ then $q \in S$ with $q < s$, which is impossible since $s$ is the smallest element of $S$.
+
+\item $m < n(q+1) = nq + n$, for $q+1 = s$ and $sx > m$ because $s \in S$.
+\end{enumerate}
+
+Now, we define $r = m - nq$, so that by definition $m = nq + r$.
+Since $nq \leq m$, we know $r \geq 0$.
+Since $m < nq + n$, and yet $m = nq + r$, implying $nq + r < nq + n \implies r < n \implies r \leq n - 1$.
+
+Thus, we have found $q$, $r$ such that $m = nq + r$ and $0 \leq r \leq n - 1$.
+\end{proof}
+
+
+
+\begin{thm} \label{1.27}
+Prove the uniqueness part of the Division Algorithm. In other words, given natual numbers $n$ and $m$, if there are 4 integers $q$, $q'$, $r$, and $r'$, such that $m = nq + r = nq' + r'$ with $0 \leq r, r' \leq n-1$ then $q = q'$ and $r = r'$.
+\end{thm}
+
+\begin{proof}
+  Notice that $nq + r = nq' + r'$ implies that $nq - nq' = r' - r \implies n(q-q') = r' - r$.
+
+  Since $0 \leq r, r' \leq n-1$, we conclude that $-n+1 \leq r' - r \leq n-1$. By our previous equality, then, $-n+1 \leq n(q-q') \leq n-1 \implies -n < n(q-q') < n$. Since $n$ is a natural number, we can divide by $n$ to get $-1 < q-q' < 1$. Since $q$ and $q'$ are integers, $q-q'$ must also be an integer. The only integer between $-1$ and $1$ is $0$, so we conclude $q-q' = 0 \implies q = q'$.
+
+  Once we have $q=q'$, we see that $nq + r = nq' + r' \implies nq + r = nq + r' \implies r = r'$.
+\end{proof}
+
+
+
+\pagebreak
+
+
+
+\begin{thm} \label{1.28}
+  Let $a$, $b$, and $n$ be integers with $n > 0$. Then $a \equiv b \gmod n$ if and only if $a$ and $b$ have the same remainder when divided by $n$. Equivalently, $a \equiv b \gmod n$ if and only if when $a = nq_1 + r_1$ ($0 \leq r_1 \leq n-1$) and $b = nq_2 + r_2$ ($0 \leq r_2 \leq n-1$) then $r_1 = r_2$.
+\end{thm}
+
+First, we will show that $a \equiv b \gmod n \implies r_1 = r_2$.
+\begin{proof}
+  Notice by the definition of modular congruence that $a \equiv b \gmod n$ implies that $n | (b-a)$, or $\exists d \in \mathbb{Z} \ni nd = b-a$. Using $a = nq_1 + r_1$ and $b = nq_2 + r_2$ we get $nd = nq_1 + r_1 - nq_2 - r_2 = n(q_1 - q_2) + r_1 - r_2$. Then we get $nd - n(q_1 - q_2) = r_1 - r_2$ or $n(d - q_1 + q_2) = r_1 - r_2$.
+
+  Since $0 \leq r_1,r_2 \leq n-1$ we find that $-n+1 \leq r_1 - r_2 \leq n-1 \implies -n < r_1 - r_2 < n$. Using our previous equation with $r_1 - r_2$ we get that $-n < n(d - q_1 + q_2) < n$, and dividing by $n$ (which we can do because $n > 0$) we get $-1 < d - q_1 + q_2 < 1$.
+  Since $d$, $q_1$, and $q_2$ are all integers, $d - q_1 + q_2$ is also an integer, and the only integer between $-1$ and $1$ is $0$ so we find $d - q_1 + q_2 = 0$.
+
+  Plugging this back in to $n(d - q_1 + q_2) = r_1 - r_2$, we find $n \cdot 0 = r_1 - r_2$, which implies $0 = r_1 - r_2$, or $r_1 = r_2$.
+\end{proof}
+
+Second, we will show that $r_1 = r_2 \implies a \equiv b \gmod n$.
+\begin{proof}
+  Notice $a - b = nq_1 + r_1 - (nq_2 + r_2)$. With some simple rearranging, we obtain $a - b = n(q_1 - q_2) + r_1 - r_2$. Since we know $r_1 = r_2$, we know $r_1 - r_2 = 0$, and plugging this in we obtain $a - b = n(q_1 - q_2)$.
+
+  Since $q_1$ and $q_2$ are integers, $q_1 - q_2$ is also an integer. Thus, $n$ times some integer is $a - b$: in other words, $n | (a-b)$.
+
+  Then, by the definition of modular congruence, we obtain $a \equiv b \gmod n$.
+\end{proof}
+
+\end{document}
