@@ -43,7 +43,7 @@
 
 
 
-\begin{ques}
+\begin{ques} \label{1.29}
   Do every two integers have at least one common divisor?
 \end{ques}
 
@@ -51,12 +51,59 @@ Yes. For any two integers $a$ and $b$, $1 \cdot a = a$ and $1 \cdot b = b$ so $1
 
 
 
-\begin{ques}
+\begin{ques} \label{1.30}
   Can two integers have infinitely many common divisors?
 \end{ques}
 
 No, if the two integers are distinct. Any nonzero integer $n$ can only have finitely many divisors, as any integer $d$ such that $d < -|n|$ or $d > |n|$ cannot be a divisor (since $1d$ and $-1d$ have a greater absolute value than $n$, and $0d = 0 \neq n$). In other words, only the numbers $f$ such that $-n \leq f \leq n$ are ``eligibile'' to be divisors of $n$, so there can only be finitely many divisors of $n$.
 
 
+
+\begin{ex} \label{1.32}
+  Find the following greatest common divisors. Which pairs are relatively prime?
+\end{ex}
+
+\hspace*{5mm} \emph{1. $(36, 22)$} \\
+\hspace*{15mm} $2$ \\
+
+\hspace*{5mm} \emph{2. $(45, -15)$} \\
+\hspace*{15mm} $15$ \\
+
+\hspace*{5mm} \emph{3. $(-296, -88)$} \\
+\hspace*{15mm} $8$ \\
+
+\hspace*{5mm} \emph{4. $(0, 256)$} \\
+\hspace*{15mm} $256$ \\
+
+\hspace*{5mm} \emph{5. $(15, 28)$} \\
+\hspace*{15mm} $1$ (relatively prime) \\
+
+\hspace*{5mm} \emph{6. $(1, -2436)$} \\
+\hspace*{15mm} $1$ (relatively prime) \\
+
+
+
+\begin{thm} \label{1.32}
+  Let $a$, $n$, $b$, $r$, and $k$ be integers. If $a = nb + r$ and $k|a$ and $k|b$, then $k|r$.
+\end{thm}
+
+\begin{proof}
+  Let $a = d_ak$ and $b=d_bk$, where $d_a$ and $d_b$ are the integers guaranteed by the facts that $k|a$ and $k|b$.
+  Then, we have $d_ak = nd_bk + r$. Isolating $r$, we get $r = d_ak - nd_bk = k(d_a - nd_b)$. Since $n$, $d_a$, and $d_b$ are all integers, we know $d_a - nd_b$ is an integer. Thus, we've found $r$ is equal to $k$ times some integer, so $k|r$.
+\end{proof}
+
+
+
+\pagebreak
+
+
+
+\begin{thm} \label{1.33}
+  Let $a$, $b$, $n_1$, and $r_1$ be integers with $a$ and $b$ not both $0$. If $a = n_1b + r_1$, then $(a,b) = (b,r_1)$.
+\end{thm}
+
+\begin{proof}
+  
+\end{proof}
 
 \end{document}
