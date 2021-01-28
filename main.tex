@@ -59,7 +59,7 @@ No, if the two integers are distinct. Any nonzero integer $n$ can only have fini
 
 
 
-\begin{ex} \label{1.32}
+\begin{ex} \label{1.31}
   Find the following greatest common divisors. Which pairs are relatively prime?
 \end{ex}
 
@@ -103,7 +103,83 @@ No, if the two integers are distinct. Any nonzero integer $n$ can only have fini
 \end{thm}
 
 \begin{proof}
-  TODO
+  We will show that the common divisors of $a$ and $b$ are the same as the common divisors of $b$ and $r_1$, and thus conclude that the greatest element of $S$ is also the greatest element of $T$.
+
+  Let $S$ be the set of common divisors of $a$ and $b$, and let $T$ be the set of common divisors of $b$ and $r_1$. We will show $S = T$ by double inclusion.
+
+  First, let's show $S \subset T$. Take an arbitrary $s \in S$. Since $s|a$ and $s|b$, we conclude $\exists d_a, d_b \in \mathbb{Z} \ni a = sd_a, b=sd_b$. We can then rearrange $a = n_1b + r_1$ to read $r_1 = a - n_1b$, and then plug in our previous two equations to get $r_1 = sd_a - n_1 sd_b \implies r_1 = s(d_a - n_1 d_b)$.
+  Since $d_a$, $d_b$, and $n_1$ are all integers, we know $d_a - n_1 d_b$ is an integer, thus implying that $s | r_1$. Since we know $s|b$ since $s \in S$, we conclude $s \in T$. Thus, any arbitrary $s \in S$ is an element of $T$, so $S \subset T$.
+
+  Showing that $T \subset S$ proceeds in much the same way. Take $t \in T$, conclude since $t|b$ and $t|r_1$ we find $\exists d_b d_r \in \mathbb{Z} \ni b = td_b, r_1 = td_r$, and then plug those in to $a = n_1b + r_1$ to get $a = n_1 td_b + td_r \implies a = t(n_1 d_b + d_r)$. Since $n_1$, $d_b$, and $d_r$ are integers, we find $t | a$, and since $t | b$ because $t \in T$, we thus conclude $t \in S$.
+  Thus any arbitrary $t \in T$ is an element of $S$, so $T \subset S$.
+
+  Thus, by double inclusion, $S = T$. This implies that the greates element of $S$, i.e. $(a, b)$, is equal to the greatest element of $T$, i.e. $(b, r_1)$.
 \end{proof}
+
+
+
+\begin{ex} \label{1.34}
+  Use the preceding theorem to show that if $a = 51$ and $b = 15$, then $(51, 15) = (6, 3) = 3$.
+\end{ex}
+
+\begin{proof}
+  Since $51 = 3 \cdot 15 + 6$, we find $(51, 15)$, we cite \ref{1.33} to see $(51, 15) = (15, 6)$. Then, since $15 = 2 \cdot 6 + 3$, we again cite \ref{1.33} to find $(15, 6) = (6, 3)$. We see that $(6, 3) = 3$ by inspection. Then, since equality is transitive, we conclude $(51, 15) = (6, 3) = 3$.
+\end{proof}
+
+
+
+\begin{ex} \label{1.35}
+  Using the previous theorem and the Division Algorithm successively, devise a procedure for finding the greatest common divisor of two integers.
+\end{ex}
+
+Well you kind of gave the game away when you said to use \ref{1.33} and the divsion algorithm successively huh. If you're trying to find $(a, b)$, you simply invoke the division algorithm to get $a = nb + r$ (assuming WLOG that $a \geq b$), and then rewrite $(a, b)$ as $(b, r)$. Then, you use the divion algorithm to get $b = nr + r'$, simplifying to $(r, r')$, etc. etc., until at some point you have $(x, 0)$, which by inspection is equal to $x$.
+
+You will always reach $(x, 0)$ because the divison algorithm produces a remainder $r$ that is strictly less than the smaller input $b$, so (informally) the smaller of the two numbers you're working with always gets smaller while never going negative.
+
+
+
+\begin{ex} \label{1.36}
+  Use the Euclidean Algorithm to find the following.
+\end{ex}
+
+\hspace*{5mm} \emph{1. $(96, 112)$} \\
+\hspace*{15mm} $112 = 1 \cdot 96 + 16$, simplifying the problem to $(96, 16)$. Then $96 = 5 \cdot 16 + 0$, so we get $(16, 0) = 16$ \\
+
+\hspace*{5mm} \emph{2. $(162, 31)$} \\
+\hspace*{15mm} $162 = 5 \cdot 31 + 7 \implies (31, 7) \implies 31 = 4 \cdot 7 + 3 \implies (7, 3) \implies 7 = 2 \cdot 3 + 1 \implies (3, 1) = 1$. \\
+
+\hspace*{5mm} \emph{3. $(0, 256)$} \\
+\hspace*{15mm} Since everything divides $0$, this is trivially $256$. \\
+
+\hspace*{5mm} \emph{4. $(-288,-166)$} \\
+\hspace*{15mm} $-166 = 1 \cdot -288 + 122 \implies (-288, 122) \implies -288 = -3 \cdot 122 + 78 \implies (122, 78) \implies 122 = 1 \cdot 78 + 44 \implies (78, 44) \implies 78 = 1 \cdot 44 + 34 \implies (44, 34)
+\implies 44 = 1 \cdot 34 + 10 \implies (34, 10) = 2$ by inspection.  \\
+
+\hspace*{5mm} \emph{5. $(1, -2436)$} \\
+\hspace*{15mm} Since the only integers that divide $1$ are $-1$, $0$, and $1$, we trivially find $1$. \\
+
+
+
+\begin{ex} \label{1.37}
+  Find integers $x$ and $y$ such that $162x + 31y = 1$.
+\end{ex}
+
+By division algorithm, $162 = 5 \cdot 31 + 7 \implies 7 = 1 \cdot 162 + (-5) \cdot 31$.
+
+By division algorithm, $31 = 4 \cdot 7 + 3 \implies 3 = 1 \cdot 31 + (-4) \cdot 7 = 1 \cdot 31 + (-4) \cdot (1 \cdot 162 + (-5) \cdot 31) = (-4) \cdot 162 + 21 \cdot 31$.
+
+By division algorithm, $7 = 2 \cdot 3 + 1 \implies 1 = 1 \cdot 7 + (-2) \cdot 3 = 1 \cdot (1 \cdot 162 + (-5) \cdot 31) + (-2) \cdot ((-4) \cdot 162 + 21 \cdot 31) = 9 \cdot 162 + (-47) \cdot 31$.
+
+Thus, we've found our solution $x = 9$ and $y = -47$.
+
+
+
+\pagebreak
+
+
+
+\begin{thm} \label{1.38}
+  Let $a$ and $b$ be integers. If $(a, b) = 1$, then there exist integers $x$ and $y$ such that $ax + by = 1$.
+\end{thm}
 
 \end{document}
