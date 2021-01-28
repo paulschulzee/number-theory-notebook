@@ -206,8 +206,18 @@ Thus, we've found our solution $x = 9$ and $y = -47$.
   Notice, though, that not all $r$'s satisfy this property: namely, $r_1$ and $r_2$ simplify down to $a$ and $b$, which then don't have equations of their own. So, we apply the equations for $r_k$ through $r_1$ in ``reverse'' order, pairing down the maximum index of $k$ each time, until we're left with only $r_1$'s and $r_2$'s on the left hand side and can apply those equations to get a linear expression in $a$ and $b$ on the right hand side.
 
   We've been talking a lot about the right hand side, but remember, the left hand side is $r_k$, and we've shown $r_k = 1$, so we've just found a linear expression in $a$ and $b$ that is equal to $1$. In other words, $1 = ax + by$ for some $x, y \in \mathbb{Z}$.
+\end{proof}
 
 
+
+\begin{thm} \label{1.39}
+  Let $a$ and $b$ be integers. If there exist integers $x$ and $y$ with $ax + by = 1$, then $(a, b) = 1$.
+\end{thm}
+
+\begin{proof}
+  Readers of the last proof will be glad to hear this one is much simpler.
+
+  By definition, $(a, b) | a$ and $(a, b) | b$. Then, $(a, b) | ax$ and $(a, b) | by$ by \ref{1.6}. Then, $(a, b) | ax + by$ by \ref{1.1}. Then, since $ax + by = 1$, we find $(a, b) | 1$. We know $1 | a$ and $1 | b$, so $(a, b) \geq 1$. The only number $\geq 1$ that divides $1$ is $1$, so since $(a, b) \geq 1$ and $(a, b) | 1$ we conclude $(a, b) = 1$.
 \end{proof}
 
 \end{document}
