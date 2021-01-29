@@ -220,4 +220,18 @@ Thus, we've found our solution $x = 9$ and $y = -47$.
   By definition, $(a, b) | a$ and $(a, b) | b$. Then, $(a, b) | ax$ and $(a, b) | by$ by \ref{1.6}. Then, $(a, b) | ax + by$ by \ref{1.1}. Then, since $ax + by = 1$, we find $(a, b) | 1$. We know $1 | a$ and $1 | b$, so $(a, b) \geq 1$. The only number $\geq 1$ that divides $1$ is $1$, so since $(a, b) \geq 1$ and $(a, b) | 1$ we conclude $(a, b) = 1$.
 \end{proof}
 
+
+
+\begin{thm} \label{1.40}
+  For any integers $a$ and $b$ not both $0$, there are integers $x$ and $y$ such that $ax + by = (a, b)$.
+\end{thm}
+
+\begin{proof}
+  Let $c = a / (a, b)$ and $d = b / (a, b)$. Notice that since $(c, d) | c$ and $a = c \cdot (a, b)$ we find $\left( (c, d) \cdot (a, b) \right) | a$, and similarly since $(c, d) | d$ and $b = d \cdot (a, b)$ we find $\left( (c, d) \cdot (a, b) \right) | b$.
+
+  Since $c$ and $d$ are integers not both $0$, $(c, d)$ must be a positive integer. Since $(c, d) \cdot (a, b)$ is a common factor of $a$ and $b$, and $(a, b)$ is the \emph{greatest} common factor of $a$ and $b$, we find $(c, d) \cdot (a, b) \leq (a, b) \implies (c, d) = 1$.
+
+  Thus, we invoke \ref{1.38} to find integers $x$ and $y$ such that $cx + dy = 1$. Then, we multiply both sides by $(a, b)$ to find that $(a, b) \cdot cx + (a, b) \cdot dy = (a, b)$. Since $a = (a, b) \cdot c$ and $b = (a, b) \cdot d$ we conclude $ax + by = (a, b)$.
+\end{proof}
+
 \end{document}
