@@ -236,4 +236,45 @@ Thus, we've found our solution $x = 9$ and $y = -47$.
   Thus, we invoke \ref{1.38} to find integers $x$ and $y$ such that $cx + dy = 1$. Then, we multiply both sides by $(a, b)$ to find that $(a, b) \cdot cx + (a, b) \cdot dy = (a, b)$. Since $a = (a, b) \cdot c$ and $b = (a, b) \cdot d$ we conclude $ax + by = (a, b)$.
 \end{proof}
 
+
+
+\pagebreak
+
+
+
+\begin{thm} \label{1.41}
+  Let $a$, $b$, and $c$ be integers. If $a|bc$ and $(a, b) = 1$, then $a|c$.
+\end{thm}
+
+\begin{proof}
+  Since $(a, b) = 1$, we can invoke \ref{1.38} to find $x, y \in \mathbb{Z} \ni ax + by = 1$.
+
+  Now, since $a | bc$, we can cite \ref{1.6} to obtain $a | bcy$.
+
+  Since $a \cdot 1 = a$ we find $a | a$, and then by \ref{1.6} we get $a | acx$.
+
+  Then, by \ref{1.1} we get $a | (acx + bcy)$. We can then do some simple algebraic rearrangement to get $a | \left( c \cdot (ax + by) \right) \implies a | (c \cdot 1) \implies a | c$.
+\end{proof}
+
+
+
+\begin{thm} \label{1.42}
+  Let $a$, $b$, and $n$ be integers. If $a|n$, $b|n$, and $(a, b) = 1$, then $ab | n$
+\end{thm}
+
+\begin{proof}
+  Since $a | n$ and $b | n$ we find integers $k, j$ such that $ak = n$ and $bj = n$. By the transitive property of equality, $ak = bj$. Since $j$ is an integer, we conclude $b | ak$. Since $(a, b) = 1$, we invoke \ref{1.41} to find $b | k$. Thus, we invoke an integer $d$ such that $bd = k$. Substiuting this into $ak = n$, we find $abd = n$, and since $d$ is an integer we conclude $ab | n$.
+\end{proof}
+
+
+
+\begin{thm} \label{1.43}
+  Let $a$, $b$, and $n$ be integers. If $(a,n) = 1$ and $(b, n) = 1$, then $(ab, n) = 1$.
+\end{thm}
+
+\begin{proof}
+  Invoking \ref{1.38} twice, we find two pairs of integers, $x_a, y_a, x_b,$ and $y_b$ such that $ax_a + ny_a = 1$ and $bx_b + ny_b = 1$. We notice then that $(ax_a + ny_a) \cdot (bx_b + ny_b) = 1 \cdot 1 = 1$, and we simplify the left-hand side to $ax_abx_b + ax_any_b + ny_abx_b + ny_any_b = ab(x_a x_b) + n(ax_a y_b + y_a b x_b + ny_a y_b) = 1$, and then by closure of the integers and \ref{1.39} we find that $(ab, n) = 1$.
+\end{proof}
+
+
 \end{document}
