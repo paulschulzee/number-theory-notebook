@@ -9,6 +9,7 @@
 \newtheorem{ques}[thm]{Question}
 \newtheorem{ex}[thm]{Exercise}
 \newtheorem{lem}{Lemma}[thm]
+\newtheorem{PC}{Paul's Conjecture}
 
 \numberwithin{equation}{thm}
 
@@ -275,6 +276,123 @@ Thus, we've found our solution $x = 9$ and $y = -47$.
 \begin{proof}
   Invoking \ref{1.38} twice, we find two pairs of integers, $x_a, y_a, x_b,$ and $y_b$ such that $ax_a + ny_a = 1$ and $bx_b + ny_b = 1$. We notice then that $(ax_a + ny_a) \cdot (bx_b + ny_b) = 1 \cdot 1 = 1$, and we simplify the left-hand side to $ax_abx_b + ax_any_b + ny_abx_b + ny_any_b = ab(x_a x_b) + n(ax_a y_b + y_a b x_b + ny_a y_b) = 1$, and then by closure of the integers and \ref{1.39} we find that $(ab, n) = 1$.
 \end{proof}
+
+
+
+\begin{ques} \label{1.44}
+  What hypotheses about $a$, $b$, $c$, and $n$ could be added so that $ac \equiv bc \gmod n$? State an appropriate theorem and prove it before reading on.
+\end{ques}
+
+\newtheorem*{IKFMS}{I know this from Math Seminar}
+\begin{IKFMS}
+  $ac \equiv bc \gmod n$ implies $a \equiv b \gmod n$ if and only if $(c, n) = 1$.
+\end{IKFMS}
+
+\begin{proof}
+  First, we will show that $ac \equiv bc \gmod n$ and $(c, n) = 1$ imply that $a \equiv b \gmod n$.
+
+  Notice that $ac \equiv bc \gmod n$ implies $n | (bc - ac)$. By distribution, we obtain $n | \left( c (b - a) \right)$. Then, since $(c, n) = 1$, we cite \ref{1.41} to obtain $n | (b - a)$, which by definition means $a \equiv b \gmod n$.
+
+  Now, we will show that if $(c, n) > 1$, then $ac \equiv bc \gmod n$ does \emph{not} imply $a \equiv b \gmod n$.
+
+  We will do this by example. Notice that $n | \left( c \cdot (n / (c, n)) \right)$: the right-hand side can be rearranged to read $n \cdot (c / (c, n))$ and $c / (c, n)$ is an integer because $(c, n)$ is a factor of $c$. Then, since $n|n$, we cite \ref{1.6} to find $n | \left( n \cdot (c / (c, n)) \right)$.
+  We then cite the facts that $n | 0$ and \ref{1.2} to find $n | \big( (c \cdot (n / (c, n))) - 0 \big)$, and we can substitue in $c \cdot 0$ for $0$ to find $n | \big( (c \cdot (n / (c, n))) - c \cdot 0 \big)$. We then, by definition, obtain $c \cdot (n / (c, n)) \equiv c \cdot 0 \gmod n$.
+
+  \emph{However}, since $n > 0$ (because congruence ``modulo $n$'' is defined) and $(c, n) > 1$, we find that $0 < n / (c, n) < n$. This implies that $n / (c, n) \not\equiv 0 \gmod n$, despite teh fact that $c \cdot (n / (c, n)) \equiv c \cdot 0 \gmod n$, giving us our counterexample.
+\end{proof}
+
+
+
+\begin{thm} \label{1.45}
+  Let $a$, $b$, $c$, and $n$ be integers with $n > 0$. If $ac \equiv bc \gmod n$ and $(c, n) = 1$, then $a \equiv b \gmod n$.
+\end{thm}
+
+See \ref{1.44}.
+
+
+
+\begin{ques} \label{1.46}
+  Suppose $a$, $b$, and $c$ are integers and that there is a solution to the linear Diophantine equation $ax + by = c$. That is, suppose there are integer $x$ and $y$ that satisfy the equation $ax + by = c$. What condition must $c$ satisfy in terms of $a$ and $b$?
+\end{ques}
+
+Since $(a, b) | (ax + by)$, we conclude $(a, b) | c$.
+
+
+
+\begin{ques} \label{1.47}
+  Can you make a conjecture by completing the following statement?
+\end{ques}
+
+\begin{PC} \label{PC 1.47}
+  Given integers $a$, $b$, and $c$, there exist integers $x$ and $y$ that satisfy the equation $ax + by = c$ if and only if $(a, b) | c$.
+\end{PC}
+
+\begin{proof}
+  Notice that an integer solution to $ax + by = c$ implies that, since $(a, b) | a$ and $(a, b) | b \implies (a, b) | (ax + by)$ (\ref{1.6} and \ref{1.1}), we conclude $(a, b) | c$.
+
+  Now, notice $(a, b) | c \implies \exists d \in \mathbb{Z} \ni d(a, b) = c$. We invoke \ref{1.40} to find integers $w$ and $z$ such that $aw + bz = (a, b)$. Then, we can multiply both sides by $d$ to obtain $d (aw + bz) = d (a,b)$, which simplifies to $awd + bzd = c$, giving us the solution $x = wd$ and $y = zd$.
+\end{proof}
+
+
+
+\begin{thm} \label{1.48}
+  Given integers $a$, $b$, and $c$ with $a$ and $b$ not both $0$, there exist integers $x$ and $y$ that satisfy the equation $ax + by = c$ if and only if $(a, b) | c$.
+\end{thm}
+
+See Paul's Conjecture \ref{PC 1.47}.
+
+
+
+\pagebreak
+
+
+
+\begin{ques} \label{1.49}
+  For integers $a$, $b$, and $c$, consider teh linear Diophantine equation $ax + by = c$. Suppose integers $x_0$ and $y_0$ satisfy the equation: that is, $ax_0 + by_0 = c$. What other values
+  $$x = x_0 + h \mbox{ and } y = y_0 + k$$
+  also satisfy $ax + by = c?$ Formulate a conjecture that answers this question. Devise some numerical examples to ground your exploration. For example, $6(-3) + 15 \cdot 2 = 12$. Can you find other integers $x$ and $y$ such that $6x + 15y = 12$? How many other pairs of integers $x$ and $y$ can you find? Can you find infintely many other solutions?
+\end{ques}
+
+\begin{PC} \label{PC 1.49}
+  The integers $x_1 = x_0 + h$ and $y_1 = y_0 + k$ satisfy the equation $ax_1 + by_1 = c$ if and only if $\frac{b}{(a, b)} | h$ and $k = - \frac{ah}{b})$.
+\end{PC}
+
+\begin{proof}
+  First, notice $ax_1 + by_1 = c$ if and only if $a(x_0 + h) + b(y_0 + k) = c$. Then with rearrangement, we find this is equivalent to $ax_0 + by_0 + ah + bk = c \iff c + ah + bk = c \iff ah + bk = 0$. Then, we find $bk = -ah \iff k = -(ah/b)$.
+
+  Notice that this ``if-and-only-if chain'' doesn't show that $k$ is an \emph{integer}. Thus, we will show that $k$ is an integer if and only if $(b / (a, b)) | h$, the other condition, to complete our proof.
+
+  First, notice $\frac{b}{(a,b)} | h \implies \exists d \in \mathbb{Z} \ni \frac{b}{(a, b)} d = h$. Then, $\frac{b}{(a, b)} da = ah$. This can be rewritten as $b \cdot (d \frac{a}{(a,b)}) = ah$, and since $a / (a,b)$ is an integer we conclude $b | ah$. In other words, $k = - (ah / b)$ is an integer.
+
+  Going the opposite direction is much the same: $k = - (ah / b)$ being an integer implies $b | ah$, implying $bd = ah$, implying $bd / (a, b) = ah / (a, b)$, implying $\frac{b}{(a,b)} | \frac{ah}{(a,b)}$.
+  Then, we notice that since there exist integers $\gamma$ and $\delta$ such that $a\gamma + b\delta = (a,b)$ (\ref{1.40}), we find $\frac{a}{(a,b)} \gamma + \frac{b}{(a,b)} \delta = \frac{(a,b)}{(a,b)} = 1$, which by \ref{1.39} implies that $(\frac{a}{(a,b)}, \frac{b}{(a,b)}) = 1$.
+  Thus, we cite \ref{1.41} with $\frac{b}{(a,b)} | \frac{ah}{(a,b)}$ to find $\frac{b}{(a,b)} | h$.
+\end{proof}
+
+
+
+\begin{ex} \label{1.50}
+  A farmer lays out the sum of $1,770$ crowns in purchasing horses and oxen. He pays $31$ crowns for each horse and $21$ crowns for each ox. What are the possible numbers of horses and oxen that the farmer bought?
+\end{ex}
+
+$51$ horses and $9$ oxen is the first situation I found. Using Paul's Conjecture \ref{PC 1.49}, we can find that further solutions can be found by subtracting $21$ from the number of horses while adding $31$ to the number of oxen (trust me it makes sense).
+
+$30$ horses and $40$ oxen.
+
+$9$ horses and $71$ oxen.
+
+
+
+\begin{thm} \label{1.51}
+  Let $a$, $b$, $c$, $x_0$, and $y_0$ be integers with $a$ and $b$ not both $0$ such that $ax_0 + by_0 = c$. Then the integers
+  $$x = x_0 + \frac{b}{(a, b)} \mbox{ and } y = y_0 - \frac{a}{(a,b)}$$
+  also satisfy the linear Diophantine equation $ax + by = c$.
+\end{thm}
+
+\begin{proof}
+  Notice these integers satisfy the requirements for Paul's Conjecture \ref{PC 1.49} (I'm too lazy to show how but 1.53 will force me to).
+\end{proof}
+
 
 
 \end{document}
