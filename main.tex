@@ -395,4 +395,33 @@ $9$ horses and $71$ oxen.
 
 
 
+\begin{thm} \label{1.52}
+  If $a$, $b$, and $c$ are integers with $a$ and $b$ not both $0$, and the linear diophantine equation $ax + by = c$ has at least one integer solution, can you find a general expression for all the integer solutions to that equation? Prove your conjecture.
+\end{thm}
+
+\begin{PC} \label{PC 1.52}
+  The set of all pairs of integers $(x_1, y_1)$ such that $ax_1 + by_1 = c$ can be written as $$\left\{ \left(x_0 + \frac{bd}{(a,b)}, y_0 - \frac{ad}{(a,b)} \right) \mid d \in \mathbb{Z} \right\}$$
+\end{PC}
+
+\begin{proof}
+Paul's Conjecture \ref{PC 1.49} can easily be extended here: if we let the integer solution given be $x_0$ and $y_0$, such that $ax_0 + by_0 = c$, we want to find a general expression for all integers $x_1 = x_0 + h$ and $y_1 = y_0 + k$ where $\frac{b}{(a,b)} | h$ and $k = - \frac{ah}{b}$.
+
+The set of all integers $h$ such that $\frac{b}{(a,b)} | h$ can be expressed as $\{\frac{bd}{(a,b)} \mid d \in \mathbb{Z}\}$. The corresponding $k$ value for any $h$ is $- \frac{ah}{b} = - \frac{a (bd / (a,b)}{b} = - \frac{ad}{(a,b)}$.
+Thus, any pair of $x_1 = x_0 + \frac{bd}{(a, b)}$ and $y_1 = y_0 - \frac{ad}{(a,b)}$ satisfies the Diophantine equation $ax_1 + by_1 = c$.
+\end{proof}
+
+
+
+\begin{thm} \label{1.53}
+  Let $a$, $b$, and $c$ be integers with $a$ and $b$ not both $0$. If $x = x_0$, $y = y_0$ is an integer solution to the equation $ax + by = c$ (that is, $ax_0 + by_0 = c$) then for every integer $k$, the numbers
+  $$x = x_0 + \frac{kb}{(a,b)} \mbox{ and } y = y_0 - \frac{ka}{(a,b)}$$
+  are integers that also satisfy the linear Diophantine equation $ax + by = c$. Moreover, every solution to the linear Diophantine equation $ax + by = c$ is of this form.
+\end{thm}
+
+\begin{proof}
+  This is just a less pretentious way of saying Paul's Conjecture \ref{PC 1.52} that doesn't involve set notation.
+\end{proof}
+
+
+
 \end{document}
