@@ -5,9 +5,12 @@
 \usepackage{amsfonts}
 \usepackage[margin=0.75in]{geometry}
 
+\DeclareMathOperator{\lcm}{lcm}
+
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{ques}[thm]{Question}
 \newtheorem{ex}[thm]{Exercise}
+\newtheorem{cor}[thm]{Corollary}
 \newtheorem{lem}{Lemma}[thm]
 \newtheorem{PC}{Paul's Conjecture}
 
@@ -348,7 +351,7 @@ See Paul's Conjecture \ref{PC 1.47}.
 
 
 \begin{ques} \label{1.49}
-  For integers $a$, $b$, and $c$, consider teh linear Diophantine equation $ax + by = c$. Suppose integers $x_0$ and $y_0$ satisfy the equation: that is, $ax_0 + by_0 = c$. What other values
+  For integers $a$, $b$, and $c$, consider the linear Diophantine equation $ax + by = c$. Suppose integers $x_0$ and $y_0$ satisfy the equation: that is, $ax_0 + by_0 = c$. What other values
   $$x = x_0 + h \mbox{ and } y = y_0 + k$$
   also satisfy $ax + by = c?$ Formulate a conjecture that answers this question. Devise some numerical examples to ground your exploration. For example, $6(-3) + 15 \cdot 2 = 12$. Can you find other integers $x$ and $y$ such that $6x + 15y = 12$? How many other pairs of integers $x$ and $y$ can you find? Can you find infintely many other solutions?
 \end{ques}
@@ -422,6 +425,62 @@ Thus, any pair of $x_1 = x_0 + \frac{bd}{(a, b)}$ and $y_1 = y_0 - \frac{ad}{(a,
   This is just a less pretentious way of saying Paul's Conjecture \ref{PC 1.52} that doesn't involve set notation.
 \end{proof}
 
+
+
+\begin{ex} \label{1.54}
+  Find all integer solutions to the equation $24x + 9y = 33$.
+\end{ex}
+
+$(x, y) \in \left\{(1+3k, 1-8k) \mid k \in \mathbb{Z} \right\}$.
+
+
+
+\begin{thm} \label{1.55}
+  If $a$ and $b$ are integers, not both $0$, and $k$ is a natural number, then $\gcd (ka, kb) = k \cdot \gcd (a, b)$.
+\end{thm}
+
+\begin{proof}
+  First, we notice that $k \cdot (a, b)$ is indeed a common factor of $ka$ and $kb$, since $(a,b) | a$ we conclude $k(a, b) | ka$, and similarly for $k(a, b) | kb$.
+
+  Now, we invoke \ref{1.40} to find integers $x$ and $y$ such that $ax + by = (a,b)$. We can mulitply both sides by $k$ to find $k(ax+by) = kax + kby = k(a,b)$, and then from that invoke \ref{1.48} with $ka$ and $kb$ to find that $(ka, kb) | k(a,b)$. Since $(ka,kb)$ is the \emph{greatest} common factor of $ka$ and $kb$, and $k(a,b)$ is a common factor of $ka$ and $kb$, we conclude $k(a,b) \leq (ka, kb)$.
+  However, since $k(a,b)$ is positive and $(ka,kb) | k(a,b)$, we conclude $k(a,b) \geq (ka, kb)$. Thus, we conclude $k(a,b) = (ka, kb)$.
+\end{proof}
+
+
+
+\begin{ex} \label{1.56}
+  For natural numbers $a$ and $b$, give a suitable defintion for ``least common multiple of $a$ and $b$,'' denoted $\lcm (a,b)$. Construct and compute some examples.
+\end{ex}
+
+Define $\lcm (a, b)$ as the smallest positive number $x$ such that $a | x$ and $b | x$.
+
+Some examples include $\lcm (3, 6) = 6$, $\lcm (1, 50) = 50$, and $\lcm(2, 5) = 10$.
+
+
+
+\begin{thm} \label{1.57}
+  If $a$ and $b$ are natural numbers, then $\gcd (a, b) \cdot \lcm (a, b) = ab$.
+\end{thm}
+
+\begin{proof}
+  Notice by \ref{1.55} that $\gcd (a, b) \cdot \lcm (a, b) = \gcd (a \lcm (a, b), b \lcm (a, b))$.
+
+  Since $a | \lcm (a,b)$ we can write $\lcm (a, b) = ak$ for some integer $k$. Similarly, we can write $\lcm (a, b) = bj$ for an integer $j$. Then, we simplify our expression to $\gcd (a \lcm (a, b), b \lcm (a, b)) = \gcd( abj, bak)$. Then, citing \ref{1.55} again, we find this equal to $ab \gcd(j, k)$.
+
+  Notice that since $\gcd (j, k) | j$, we can write $j = x \gcd(j, k)$, and likewise we can write $k = y \gcd (j, k)$. Then, we notice $ak = bj \implies ay \gcd (j, k) = bx \gcd(j, k)$. Since $ay = bx$ is a common mulitple of $a$ and $b$, and $ay \gcd (j, k)$ is the \emph{least} common mulitple of $a$ and $b$, we find $ay \gcd (j, k) \leq ay$, which implies $\gcd (j, k) = 1$.
+
+  Putting this all together, we find $\gcd (a, b) \cdot \lcm (a, b) = ab \gcd (j, k) = ab$.
+\end{proof}
+
+
+
+\begin{cor} \label{1.58}
+  If $a$ and $b$ are natural numbers, then $\lcm (a, b) = ab$ if and only if $a$ and $b$ are relatively prime.
+\end{cor}
+
+\begin{proof}
+  By \ref{1.57}, we find $ab = \lcm (a, b)  \cdot \gcd (a, b) \implies \lcm (a, b) = \frac{ab}{\gcd(a, b)}$. Thus, $a$ and $b$ are relatively prime if and only if $\gcd (a, b) = 1 \iff \lcm (a, b) = \frac{ab}{\gcd (a, b)} = ab$.
+\end{proof}
 
 
 \end{document}
