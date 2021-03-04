@@ -32,7 +32,6 @@
 
 \section{Chapter 1}
 
-
 \subsection*{Divisibility and congruence}
 
 \subfile{Chapter_1/Divisibility_and_Congruence}
@@ -46,6 +45,167 @@
 \subsection*{Greatest common divisors and linear Diophantine equations}
 
 \subfile{Chapter_1/GCD_and_linear_Diophantine}
+
+
+
+\pagebreak
+
+
+
+\section{Chapter 2}
+
+\subsection*{Fundamental Theorem of Arithmetic}
+
+\begin{thm} \label{2.1}
+  If $n$ is a natural number greater than $1$, then there exists a prime $p$ such that $p | n$.
+\end{thm}
+
+\begin{proof}
+  Let $S = \{k \in \mathbb{Z} \mid k > 1, k | n\}$. By the Well-Ordering Principle, $S$ has a smallest element, call it $s$. Notice that if $s = a \cdot b$ (where $a$ and $b$ are natural numbers), then $a, b \leq s$, $a | n$, and $b | n$. Since $s$ is the smallest number besides $1$ that divides $n$, we conclude $a$ and $b$ cannot both be less than $s$ (since if either is $1$, the other must be $s$). Thus, $s$ is a prime number such that $s | n$.
+\end{proof}
+
+
+
+\begin{ex} \label{2.2}
+  Write down the primes less than $100$ without the aid of a calculator or a table of primes and think about how you decide whether each number you select is prime or not.
+\end{ex}
+
+$2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97$.
+
+
+
+\begin{thm} \label{2.3}
+  A natural number $n > 1$ is prime if and only if for all primes $p \leq \sqrt{n}$, $p$ does not divde $n$.
+\end{thm}
+
+\begin{proof}
+  We can easily see that if there is a prime $p$ such that $p \leq \sqrt{n}$ and $p | n$, then $n$ is not prime (since $p \leq \sqrt{n} < n$ and $pk = n$ for some natural $k$).
+
+  Thus, we must show that if for all primes $p \leq \sqrt{n}$, $p$ does not divide $n$, then $n$ is prime. To do this we will assume $n$ is composite and show that there must be a prime $p \leq \sqrt{n}$ that \emph{does} divide $n$.
+
+  Since $n$ is composite, we can write $n = ab$, where $a$ and $b$ are natural numbers both less than $n$. Since they are both less than $n$, neither can be $1$ (or else $ab < n$, a contradiction). We also know that one must be less than or equal to $\sqrt{n}$ (if both $a$ and $b$ are greater than $\sqrt{n}$, then $ab > \sqrt{n} \cdot \sqrt{n} = n$ which is a contradiction). Without loss of generality, assume that $a$ is one guaranteed such that $1 < a \leq \sqrt{n}$.
+
+  Since $a > 1$, by \ref{2.1} we find there exists a prime $p | a$, and since $p \leq a \leq \sqrt{n}$ and $p | a$ while $a | n$, that means we've found a prime $p \leq \sqrt{n}$ such that $p | n$.
+
+  Thus, if $n$ is composite there exists a prime $p \leq \sqrt{n}$ such that $p | n$, which lets us conclude the contrapositive that if there is no such $p \leq \sqrt{n}$ such that $p | n$, $n$ must be prime.
+\end{proof}
+
+
+
+\begin{ex} \label{2.4}
+  Use the preceding theorem to verify that $101$ is prime.
+\end{ex}
+
+The only primes less than or equal to $\sqrt{101}$ are $2$, $3$, $5$, and $7$, none of which divide $101$. Thus, $101$ is prime.
+
+
+
+\begin{ex} \label{2.5}
+  Do the sieve of eratosthenes. Why are the circled numbers all of the primes less than $100$?
+\end{ex}
+
+I did this for \ref{2.2}. In order for a number $n$ to be circled, it can't be a multiple of any other prime number $p$ such that $p < n$. By \ref{2.3}, this implies $n$ is prime. (Notice this only works because we start at $2$, the first prime, which means the second circle is prime, so the third circle is prime, etc.)
+
+
+
+\begin{ex} \label{2.6}
+  For each natural number $n$, define $\pi (n)$ to be the number of primes less than or equal to $n$. Make a guess about approximately how large $\pi (n)$ is relative to $n$. In particular, do you suspect that $\frac{\pi (n)}{n}$ is generally an increasing or decreasing function? Do you suspect that it approaches osme specific limit as $n \to \infty$? etc. etc.
+\end{ex}
+
+Man $\frac{\pi (n)}{n}$ sure seems to, uh, go down. Some python I wrote indicates that it (VERY slowly) works its way down, the lowest I've seen is about $0.12$. Maybe it converges to something nice like $.1$, although I doubt it and suspect it works down to $0$.
+
+
+
+ \begin{thm} \label{2.7}
+   Every natural number greater than $1$ is either a prime number or it can be expressed as a finite product of prime numbers. That is, for every natural number $n$ greater than $1$, there exist distinct primes $p_1, p_2, \ldots, p_m$ and natural numbers $r_1,r_2,\ldots,r_m$ such that
+   $$n = p_1^{r_1} p_2^{r_2} \cdots p_m^{r_m}.$$
+ \end{thm}
+
+ \begin{proof}
+   Since $n > 1$, it is either prime or composite. If $n$ is prime, we're done. If not, let $j$ and $k$ be the natural numbers greater than $1$ such that $n = jk$.
+
+   Since $j$ and $k$ are natural numbers greater than $1$, they are either prime or composite. If they're both prime, we're done. In the other case, let's assume without loss of generality that $j$ is composite and $k$ is prime. Then, we can split $j$ into natural numbers greater than $1$, call them $a$ and $b$ so that $j = ab$. Then, $n = abk$.
+
+   Now, $a$ and $b$ must either be prime or composite. If they are both prime, we're done. If not, ... etc. etc.
+
+   Notice that since $j, k < n$ and $a, b < j$, etc. etc., the numbers we're working with get smaller with every step. Since these numbesr must also be natural numbers, they can't get smaller \emph{forever}: in other words, this process must cease at some point (if it didn't, it would imply there are infintiely many natural numbers taht are less than $n$, which is absurd). When this process terminates, we'll find that $n$ is a product of primes.
+ \end{proof}
+
+
+
+\begin{thm} \label{2.8}
+  Let $p$ and $q_1, q_2, \ldots, q_n$ all be primes and let $k$ be a natural number such that $pk = q_1 q_2 \cdots q_n$. Then $p = q_i$ for some $i$.
+\end{thm}
+
+\begin{proof}
+  We will do a proof by contradiciton (!!). Assume that $p \neq q_i$ for any $i$.
+
+  Take any $q_i$. The divisors of $p$ are $1$ and $p$, and the divisors of $q_i$ are $1$ and $q_i$, since both are prime. Since we know $p \neq q_i$, we find that $(p, q_i) = 1$. Thus, by \ref{1.41}, since we know $p | (q_1 \cdots q_n$, we find $p | (q_1 \cdots q_{i-1} \cdot q_{i+1} \cdots q_n)$.
+
+  We can use this process to ``remove'' each $q_i$ term from the multiplaction, finding that $p | 1$. Since $p$ is a prime, we know $p > 1$, giving us a contradiciton. Thus, our assumption is false, and there exist a $q_i$ such that $p = q_i$.
+\end{proof}
+
+
+
+\begin{thm} \label{2.9}
+  Let $n$ be a natural number. Let $P = \{p_1, p_2, \ldots, p_m\}$ and $Q = \{q_1, q_2,\ldots, q_s\}$ be sets of primes with $p_1 \neq p_j$ if $i \neq j$ and $q_i \neq q_j$ if $i \neq j$. Let $\{r_1, r_2, \ldots, r_m\}$ and $\{r_1, r_2,\ldots,t_s\}$ be sets of natural numbers such that
+
+  \begin{align*}
+    n &= p_1^{r_1} p_2^{r_2} \cdots p_m^{r_m} \\
+      &= q_1^{t1} q_2^{t_2} \cdots q_s^{t_s}
+  \end{align*}
+
+  Then $m = s$ and $\{p_1, p_2, \ldots, p_m\} = \{q_1, q_2, \ldots q_s \}$. That is, the sets of primes are equal but their elements are not necessarily listed in the same order; that is, $p_i$ may or may not equal $q_i$. Moreover, if $p_i = q_j$ then $r_i = t_j$. In other words, if we express the same natural number as a product of powers of distinct primes, then the expressions are identical except for the ordering of the factors.
+\end{thm}
+
+\begin{proof}
+  We will start with the proof that $P = Q$, by double inclusion.
+
+  Take $p \in P$. It's clear $p | n$ (since $p$ is a part of a product that equals $n$), and thus that $p | (q_1^{t_1} \cdots q_s^{t_s})$. We can then use a similar logic that we used in the proof of \ref{2.8}: if $p \not \in Q$, then for all $q_i$ we find that $(p, q_i) = 1$, and using this by \ref{1.41} we can slowly remove terms from the product on the right until we eventually reach $p | 1$, which is absurd, implying that the assumption $p \not \in Q$ is false. Thus, $\forall p \in P, \; p \in Q$, or in other words $P \subset Q$.
+
+  Take the bit above and swap around the letters and you find $Q \subset P$, completing our double inclusion proof that $P = Q$. \\[0ex]
+
+   Our logic that $p_i = q_j$ implies $r_i = t_j$ will feel very similar.
+
+   Since $n=n$, we know that $p_1^{r_1} \cdots p_m^{r_m} = q_1^{t_1} \cdots q_m^{t_m}$ (since $P = Q$ we know $|P| = |Q|$ and thust $m = s$).
+
+   Notice this means $p_i^{r_i} | (q_1^{t_1} \cdots q_m^{t_m}$. As above, we continually cite \ref{1.41} to remove terms from the right hand side.
+
+   We can do this even when raising $p_i$ to a power because, as per the first half of this proof, any prime factorizaion of $p_i^{r_i}$ will contain only the same primes as the factorization ``$p_i^{r_i}$,'' and thus will only contain $p_i$. In other words, it's impossible to create a product that is equal to $p_i^{r_i}$ using any other primes, and thus no other prime divides $p_i^{r_i}$ so it cannot have any common factors with other prime numbers.
+
+   Notice, however, that $(p_i^{r_i}, q_j) = q_j = p_i$, so we cannot remove those terms, leaving us with $p_i^{r_i} | q_j^{t_j}$. This lets us conclude that (since both numbers are positive) $p_i^{r_i} \leq q_j^{t_j}$, which implies $r_i \leq t_j$.
+
+   Now, as above, we take the logic above and swap all of the letters to conclude that $q_j^{t_j} | p_i^{r_i}$, and thus that $q_j^{t_j} \leq p_i^{r_i}$ and finally that $t_j \leq r_i$.
+
+   Since $t_j \leq r_i \leq t_j$, we conclude $r_i = t_j$, completing our proof that $p_i = q_j$ implies $r_i = t_j$.
+\end{proof}
+
+
+
+\begin{ex} \label{2.10}
+  Express $n = 12!$ as a product of primes.
+\end{ex}
+
+\begin{align*}
+  12! &= 12 \cdot 11 \cdot 10 \cdot 9 \cdot 8 \cdot 7 \cdot 6 \cdot 5 \cdot 4 \cdot 3 \cdot 2 \cdot 1 \\
+      &= (2^2 \cdot 3) \cdot 11 \cdot (2 \cdot 5) \cdot (3^2) \cdot (2^3) \cdot 7 \cdot (2 \cdot 3) \cdot 5 \cdot (2^2) \cdot 3 \cdot 2 \\
+      &= 2^{10} \cdot 3^5 \cdot 5^2 \cdot 7 \cdot 11
+\end{align*}
+
+
+
+\begin{ex} \label{2.11}
+  Determine the number of zeroes at the end of $25!$
+\end{ex}
+
+In which base?
+
+In base $10$ what this is really asking is how many $2$s and $5$s divide $25!$. I promise you on my life that $2$s are not going to be the limiting factor here, so we can focus on how high of a power of $5$ divides $25!$.
+
+We get one $5$ from $5, 10, 15,$ and $20$. We get two from $25$. That gives us $5^6 | 25!$, so there are $6$ zeroes on the end of $25!$.
+
+(As promised, $2^{23} | 25!$, so $2$ is not even remotely close to limiting the number of $0$s).
+
 
 
 \end{document}
