@@ -59,5 +59,68 @@
 \subfile{Chapter_2/Fundamental_Theorem_of_Arithmetic}
 
 
+\subsection*{Applications of the Fundamental Theorem of Arithmetic}
+
+\begin{thm} \label{2.12}
+  Let $a$ and $b$ be natural numbers greater than $1$ and let $p_1^{r_1} p_2^{r_2} \cdots p_m^{r_m}$ be the unique prime factorization of $a$ and let $q_1^{t_1} q_2^{t_2} \cdots q_s^{t_s}$ be the unique prime factorization of $b$. Then $a | b$ if and only if for all $i \leq m$ there exists a $j \leq s$ such that $p_i = q_j$ and $r_i \leq t_j$.
+\end{thm}
+
+\begin{proof}
+  Woo boy. Let's start by showing $a | b$ implies... all of that.
+
+  We know that $a | b$ means $ak = b$. This means that $p_1^{r_1} \cdots p_m^{r_m} k = q_1^{t_1} \cdots q_s^{t_2}$. Since $k$ is an integer (and a natural number, given both $a$ and $b$ are natural) we know that it has its own unique prime factorization. Thus, the prime factorization of $a$ times the prime factorization of $k$ must be equal to the prime factorization of $b$ (since $ak = b$ and prime factorizations are unique).
+
+  When we multiply the prime factorization of $a$ by that $k$, we cannot remove any of the terms $p_1 \ldots p_m$, nor can we reduce any of the exponents $r_1 \ldots r_m$, since the prime factorization of $k$ will not contain the multiplicative inverse of any prime. Thus, in order for our product to be the prime factorization of $b$, all of the primes $p_1 \ldots p_m$ must also be included in the prime factorization of $b$, and all of the exponents $r_1 \ldots r_m$ must be less than or equal to the corresponding exponents in the prime factorization of $b$. \\[0ex]
+
+  Now the other direction. If we know that for all $i \leq m$ there exists a $j \leq s$ such that $p_1 = q_j$ and $r_1 \leq t_j$, then we can rewrite $b$ as $(p_1^{r_1} \cdots p_m^{r_m}) \cdot (q_1^{t_1'} \cdots q_s^{t_s'})$, where $t_1' \ldots t_s'$ are the exponents on the relative prime modified to accomodate ``moving'' $p_1^{r_1}$ through $p_m^{r_m}$ to the front of the product (these exponents notably may be $0$).
+  Since $q_1^{t_1'} \cdots q_s^{t_s'}$ is an integer (call it $k$) and $p_1^{r_1} \cdots p_m^{r_m}$, we've shown that $b = ak$, or in other words $a | b$.
+\end{proof}
+
+
+
+\begin{thm} \label{2.13}
+  If $a$ and $b$ are natural numbers and $a^2 | b^2$, then $a | b$.
+\end{thm}
+
+\begin{proof}
+  Let $a = p_1^{r_1} \cdots p_m^{r_m}$ and $b = q_1^{t_1} \cdots q_s^{t_s}$ be the unique prime factorizations of these numbers.
+
+  Notice that $a^2 = p_1^{2r_1} \cdots p_m^{2r_m}$ and $b^2 = q_1^{2t_1} \cdots q_s^{2t_s}$, and that these are the prime factorizations of these numbers.
+
+  By \ref{2.12}, we find $a^2 | b^2$ implies that for all $i \leq m$ there exists a $j \leq s$ such that $p_i = q_j$ and $2r_i \leq 2t_j$. This implies that $r_i \leq t_j$, so we conclude that for all $i \leq m$ there exists a $j \leq s$ such that $p_i = q_j$ and $r_i \leq t_j$. By \ref{2.12}, this means $a | b$.
+\end{proof}
+
+
+
+\begin{ex} \label{2.14}
+  Find $(3^14 \cdot 7^22 \cdot 11^5 \cdot 17^3, 5^2 \cdot 11^4 \cdot 13^8 \cdot 17)$
+\end{ex}
+
+$11^4 \cdot 17$
+
+
+
+\begin{ex} \label{2.15}
+  Find $\lcm (3^14 \cdot 7^22 \cdot 11^5 \cdot 17^3, 5^2 \cdot 11^4 \cdot 13^8 \cdot 17)$
+\end{ex}
+
+$3^14 \cdot 5^2 \cdot 7^22 \cdot 11^5 \cdot 13^8 \cdot 17^3$
+
+
+
+\begin{ex} \label{2.16}
+  Make a conjecture that generalizes the ideas you used to solve the two previous exercises.
+\end{ex}
+
+\begin{PC} \label{PC 2.16}
+  Let the set of primes be denoted $P$, where $p_1 = 2$, $p_2 = 3$, $p_3 = 5$, $p_4 = 7$, $p_5 = 11$, etc.
+
+  Let $a = p_1^{r_1} p_2^{r_2} \cdots$ and $b = p_1^{t_1} p_2^{t_2} \cdots$ be the prime factorizations of natural numbers $a$ and $b$, where $r_i$ and $t_j$ can be $0$ to indicate the absence of a prime. Then
+
+  $$\gcd (a, b) = p_1^{\min(r_1, t_1)} p_2^{\min(r_2, t_2)} \cdots = \prod_{i \in \mathbb{N}} p_i^{\min(r_i, t_i)} \mbox{ and}$$
+  $$\lcm (a, b) = p_1^{\max(r_1, t_1)} p_2^{\max(r_2, t_2)} \cdots = \prod_{i \in \mathbb{N}} p_i^{\max(r_i, t_i)}.$$
+\end{PC}
+
+
 
 \end{document}
