@@ -113,7 +113,7 @@ $3^14 \cdot 5^2 \cdot 7^22 \cdot 11^5 \cdot 13^8 \cdot 17^3$
 \end{ex}
 
 \begin{PC} \label{PC 2.16}
-  Let the set of primes be denoted $P$, where $p_1 = 2$, $p_2 = 3$, $p_3 = 5$, $p_4 = 7$, $p_5 = 11$, etc.
+  Let the primes be denoted $p_i$, where $p_1 = 2$, $p_2 = 3$, $p_3 = 5$, $p_4 = 7$, $p_5 = 11$, etc.
 
   Let $a = p_1^{r_1} p_2^{r_2} \cdots$ and $b = p_1^{t_1} p_2^{t_2} \cdots$ be the prime factorizations of natural numbers $a$ and $b$, where $r_i$ and $t_j$ can be $0$ to indicate the absence of a prime. Then
 
@@ -122,5 +122,75 @@ $3^14 \cdot 5^2 \cdot 7^22 \cdot 11^5 \cdot 13^8 \cdot 17^3$
 \end{PC}
 
 
+
+\begin{ques} \label{2.17}
+  Do you think this method is always better, always worse, or sometimes better and sometimes worse than using the Euclidean Algorithm to find $(a,b)$? Why?
+\end{ques}
+
+For large numbers, for humans, this method is probably better because you can use divisibility rules to easily start prime factorizing the number and make it smaller and easier to work with (although, for numbers that are the products of only large primes like $29 \cdot 31$ or something this might be painful).
+
+For computers the Euclidean Algorithm is almost certainly better, because you can easily find the quotient/remainder through repeated addition and it's very fast.
+
+
+
+\pagebreak
+
+
+
+\begin{thm} \label{2.18}
+  Given $n+1$ natural numbers, say $a_1, a_2, \ldots, a_{n+1}$, all less than or equal to $2n$, then there exists a pair, say $a_i$ and $a_j$ with $i \neq j$, such that $a_i | a_j$.
+\end{thm}
+
+\begin{proof}
+  Credit to Sam.
+
+  We'll use the pigeonhole principle. We'll form sets $S_1$ through $S_{2n-1}$ for all \emph{odd} indices, with each set $S_t = \{t \cdot 2^n \mid n \in \mathbb{N} \cup \{ 0\} \}$.
+
+  Notice that if any two of our numbers $a_i$ and $a_j$ fall into the same $S_t$, then $a_i = t \cdot 2^{n}$ and $a_j = t \cdot 2^{m}$. Assuming WLOG that $n \leq m$, we find $a_j = a_i \cdot 2^{m-n}$, which since $2^{m-n}$ is an integer (as $m - n \geq 0$) shows $a_i | a_j$. Thus, we only need show that two of our $a$'s fall into the same set.
+
+  Notice then that every $a_i$ will fall into at least (in fact, exactly) one $S_t$. Take $a_i$'s prime factorization, let it be $p_1^{r_1} \cdots p_m^{r_m}$.
+
+  Then if $2 \neq p_v$ for any $v \leq n$, since $a_i$ is odd we find $a_i = a_i \cdot 2^{0}$ and thus $a_i \in S_{a_i}$.
+
+  If $2 = p_v$ for some $v \leq n$, then we notive $a_i = 2^{r_v} \cdot (p_1^{r_1} \cdots p_{v-1}^{r_{v-1}} p_{v+1}^{r_{v+1}} \cdots p_m^{r_m})$. Let's define that second term as $k$. Since all of the $p$'s are unique, we know that $k$ is odd, and thus $a_i = S_{k}$.
+
+  Since there are only sets $S$ for each of the odd numbers between $1$ and $2n$, there are exactly $n$ sets. Since there are $n+1$ numbers in our set of $a$'s, by the pigeonhole principle, we know there must be $a_i, a_j$ such that $i \neq j$, $a_i \in S_t$, and $a_j \in S_t$ for some $t$. As we showed earlier, this implies that either $a_i | a_j$ or vice versa, completing our proof.
+\end{proof}
+
+
+
+\begin{thm} \label{2.19}
+  There do not exist natural numbers $m$ and $n$ such that $7m^2 = n^2$.
+\end{thm}
+
+\begin{proof}
+  In the prime factorization of $n^2$ the exponent on $7$ must be even, as it is double the exponent on $7$ in the prime factoization of $n$.
+
+  In the prime factorization of $7m^2$, the exponent on $7$ must be odd, as it is double the exponent on $7$ in the prime factorization of $m$ \emph{plus one} (for multiplying by 7).
+
+  Since prime factorizations are unique, $7m^2$ and $n^2$ having different exponents (for the same number cannot be both even \emph{and} odd) implies they are different numbers and thus not equal.
+\end{proof}
+
+
+
+\begin{thm} \label{2.20}
+  There do not exist natural numbers $m$ and $n$ such that $24m^3 = n^3$.
+\end{thm}
+
+\begin{proof}
+  Notice $24m^3 = 2^3 \cdot 3 \cdot m^3$.
+
+  Then, apply the logic above to the exponent on $3$ in the prime factorization of these two numbers; it must be a multiple of $3$ in $n^3$, and yet it must be one \emph{more} than a multiple of $3$ in $24m^3 = 2^3 \cdot 3 \cdot m^3$. Since the same number cannot be both (as $0 \not \equiv 1 \gmod 3$), the prime factorizations of $n^3$ and $24m^3$ are not the same and thus the numbers cannot be equal.
+\end{proof}
+
+
+
+\begin{ex} \label{2.21}
+  Show that $\sqrt{7}$ is irrational. That is, there do not exist natural numbers $n$ and $m$ such that $\sqrt{7} = \frac{n}{m}$.
+\end{ex}
+
+\begin{proof}
+  If there were such numbers $n$ and $m$, then we would find $\sqrt{7} \cdot m = n$, implying $7m^2 = n^2$, a contradiction with \ref{2.19}. Thus, no such numbers exist.
+\end{proof}
 
 \end{document}
