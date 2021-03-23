@@ -193,4 +193,109 @@ For computers the Euclidean Algorithm is almost certainly better, because you ca
   If there were such numbers $n$ and $m$, then we would find $\sqrt{7} \cdot m = n$, implying $7m^2 = n^2$, a contradiction with \ref{2.19}. Thus, no such numbers exist.
 \end{proof}
 
+
+
+\begin{ex} \label{2.22}
+  Show that $\sqrt{12}$ is irrational.
+\end{ex}
+
+If $\sqrt{12} = \frac{a}{b}$ for integers $a, b$, then $12b^2 = a^2$, which is impossible due to the smame logic we used in \ref{2.20}.
+
+
+
+\begin{ex} \label{2.23}
+  Show that $7^{\frac{1}{3}}$ is irrational.
+\end{ex}
+
+If $7^{\frac 1 3} = \frac{a}{b}$, then $7b^3 = a^3$. This is impossible for integers $a$ and $b$, as the prime factorization of $7b^3$ has an exponent on $7$ that is one \emph{greater} than a multiple of $3$, while the prime factoization of $a^3$ has an exponnet on $7$ that \emph{is} a multiple of $3$.
+
+
+
+\begin{ques} \label{2.24}
+  What other numbers can you show to be irrational? Make and prove the most general conjecture you can.
+\end{ques}
+
+\begin{PC} \label{PC 2.24}
+  Let $w$ be an integer, with $w = p_1^{r_1} \cdot p_2^{r_2} \cdots p_t^{r_t}$ its prime factorization. $w^{\frac n m}$ (where $n$ and $m$ are integers) is irrational if for any one prime $p_i$ with $1 \leq i \leq t$ it is the case that $m \not | \; (n \cdot r_i)$.
+\end{PC}
+
+\begin{proof}
+  Say it is the case there exists a $p_i$ such that $m \not | \; (n \cdot r_i)$. We then find $p_i^{r_i} | w_i$, so let's invoke $k$ such that $w = kp_i^{r_i}$. Notice $p_i \not | \; k$ due to the fact that $k = \frac{w}{p_i^{r_i}}$ which has no $p_i$'s in its prime factorization. We then find $w ^ {\frac n m} = k^{\frac n m} \cdot p_i ^ {\frac{nr_i}{m}}$.
+
+  Say $w^{\frac n m} = k^{\frac n m} \cdot p_i^{\frac{nr_i}{m}} = \frac{a}{b}$. To show $w^{\frac n m}$ is irrational, we will asssume $a$ and $b$ are both integers and . Rearranging the equation, we find $k^{\frac n m} \cdot p_i^{\frac{nr_i}{m}} \cdot b = a$, and then raising both sides to the $m$th powerwe find $k^n \cdot p_i^{nr_i} \cdot b^m = a^m$.
+  Now both sides of this equation are integers, which means we can compare their prime factorizations. Specifically, we are going to look at the exponent on $p_i$ in these prime factorizations. $k$ has no impact on this exponent (since $p_i \not | \; k$). $b^m$ provides some multiple of $m$ to this exponent, while $p_i$ provides $nr_i$; in other words, the exponent on $p_i$ on the left side is of the form $\alpha m + nr_i$ for some integer $\alpha$. On the left, since we only have $a^m$, we have an exponent of the form $\beta m$ for some integer $\beta$. Since these two are equal, we find $\alpha m + nr_i = \beta m$, which tells us $m | (\alpha m + nr_i)$, which then since $m | \alpha m$ we cite \ref{1.2} to find $m | nr_i$, a contradiction.
+
+  Thus, $a$ and $b$ cannnot both be integers, and thus $w^{\frac n m}$ is irrational.
+\end{proof}
+
+
+
+\begin{thm} \label{2.25}
+  Let $a$, $b$, and $n$ be integers. If $a|n$, $b|n$, and $(a, b) = 1$, then $ab | n$.
+\end{thm}
+
+\begin{proof}
+  Let $n = p_1^{r_1} \cdots p_m^{r_m}$ be the prime factorization of $n$. Then, by \ref{2.12}, we can write $a = p_1^{\alpha_1} \cdots p_m^{\alpha_m}$ and $b = p_1^{\beta_1} \cdots p_m^{\beta_m}$, where for all $i$ with $1 \leq i \leq m$ we know $0 \leq \alpha_i, \beta_i \leq r_i$.
+
+  Say $ab \not | \; n$. Since $ab = p_1^{\alpha_1 + \beta_1} \cdots p_m^{\alpha_m + \beta_m}$, we invoke \ref{2.12} to find there must be some $j$ such that $1 \leq j \leq m$ and $\alpha_j + \beta_j > r_j$ (since all of the primes in the prime factorization of $ab$ are represented in $p_1$ through $p_m$). However, since $\alpha_j \leq r_j$, this implies $\beta_j \geq 1$,
+  and similarly that $\alpha_j \geq 1$. This means that since $p_j^{\alpha_j} | a$, we know $p_j | a$, and similarly that $p_j | b$ making $p_j$ a common divisor of $a$ and $b$. Since $p_j$ is prime, $p_j > 1$, and since $(a,b) = 1$, we find that $p_j$ is a common divisor of $a$ and $b$ greater than their greatest common divisor, a contradction. Thus, our assumption that $ab \not | \; n$ is false, and we find $ab | n$.
+\end{proof}
+
+
+
+\begin{thm} \label{2.26}
+  Let $p$ be a prime and let $a$ be an integer. Then $p$ does not divide $a$ if and only if $(a, p) = 1$.
+\end{thm}
+
+\begin{proof}
+  That $p$ does not divide $a$ if $(a, p) = 1$ is trivial, since if it did it would be a common divisor (as $p | p$) that is greater than $1$ (since $p$ is prime) which is impossible since $(a, p) = 1$.
+
+  All that is left is to show that $p \not | \; a$ implies that $(a, p) = 1$. Since $p$ is prime, its only (natural) divisors are $1$ and $p$. Thus, these are the only candidates for $(a, p)$. Since $p \not | \; a$, though, $p$ is not a common divisor, and thus the only possiblity for $(a, p)$ is $1$.
+\end{proof}
+
+
+
+\begin{thm} \label{2.27}
+  Let $p$ be a prime and let $a$ and $b$ be integers. If $p | ab$, then $p | a$ or $p | b$.
+\end{thm}
+
+\begin{proof}
+  By \ref{2.12}, we know $p$ has to show up in the prime factorization of $ab$. Since the prime factorization of $ab$ only includes primes found in either the factorization of either $a$ or $b$ (as it can be obtained by replacing $a$ and $b$ with their prime factorizations and moving the terms around), this means $p$ must show up in the prime factorization of $a$ or $b$, and thus by \ref{2.12} either $p | a$ or $p | b$.
+\end{proof}
+
+
+
+\begin{thm} \label{2.28}
+  Let $a$, $b$, and $c$ be integers. If $(b, c) = 1$, then $(a, bc) = (a,b) \cdot (a,c)$.
+\end{thm}
+
+\begin{proof}
+  We invoke \ref{1.40} twice to find integers $x_1, x_2, y_1, y_2$ such that $ax_1 + bx_2 = (a,b)$ and $ay_1 + cy_2 = (a,c)$. Then, we multiply the two equations together to get $(ax_1 + bx_2) \cdot (ay_1 + cy_2) = (a,b) \cdot (a,c)$. With some rearrangement we find $a^2x_1y_1 + abx_2y_1 + acx_1y_2 + bcx_2y_2 = (a,b) \cdot (a,c)$, which with distributivity we find means $a(ax_1y_1 + bx_2y_1 + cx_1y_2) + bc(x_2y_2) = (a,b) \cdot (a,c)$.
+  Since $ax_1y_1 + bx_2y_1 + cx_1y_2$ and $x_2y_2$ are integers, we invoke \ref{1.48} to find $(a,bc) | \left( (a,b) \cdot (a,c) \right)$. Thus, $(a,bc) \leq (a,b) \cdot (a,c)$.
+
+  We know that $(a,b) | a$ and that $(a, c) | a$. We also know that $\big( (a, b) , (a, c) \big) = 1$ (if it didn't, it would be a common factor of $b$ and $c$ greater than $1$ which is impossible). Thus, we cite \ref{1.42} to find $\left( (a,b) \cdot (a, c) \right) | a$. Thus, since it is a common factor, it is less than the greatest common factor, so we conclude $(a,b) \cdot (a,c) \leq (a, bc)$.
+
+  Thus we have $(a,bc) \leq (a,b) \cdot (a,c) \leq (a, bc)$, so we conclude $(a,bc) = (a,b) \cdot (a,c)$.
+\end{proof}
+
+
+
+\begin{thm} \label{2.29}
+  Let $a$, $b$, and $c$ be integers. If $(a,b) = 1$ and $(a,c) = 1$, then $(a, bc) = 1$
+\end{thm}
+
+\begin{proof}
+  This is just \ref{1.43}.
+\end{proof}
+
+
+
+\begin{thm} \label{2.30}
+  Let $a$ and $b$ be integers. If $(a,b) = d$, then $(\frac a d , \frac b d) = 1$.
+\end{thm}
+
+\begin{proof}
+  
+\end{proof}
+
 \end{document}
