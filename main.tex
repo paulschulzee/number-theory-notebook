@@ -66,55 +66,9 @@
 
 \subsection*{The infinitude of primes}
 
-\begin{thm} \label{2.32}
-  For all natural numbers $n$, $(n, n+1) = 1$.
-\end{thm}
-
-\begin{proof}
-  Since $1$ is a common factor of $n$ and $n+1$, we know $(n, n+1) \geq 1$.
-
-  Since $(n,n+1) | n$ and $(n, n+1) | n+1$, we know by \ref{1.2} that $(n,n+1) | ((n+1) - n)$, or in other words $(n, n+1) | 1$. Since $(n, n+1)$ is natural, we know $(n, n+1) \leq 1$.
-
-  Thus, we know $1 \leq (n, n+1) \leq 1$, and thus we conclude $(n, n+1) = 1$.
-\end{proof}
+\subfile{Chapter_2/The_infinitude_of_primes}
 
 
 
-\begin{thm} \label{2.33}
-  Let $k$ be a natural number. Then there exists a natural number $n$ (which will be much larger than $k$) such that no natural number less than $k$ and greater than $1$ divides $n$.
-\end{thm}
-
-\begin{proof}
-  Let $n = \prod_{i=2}^{k-1} (i) + 1$. For any $a$ such that $1 < a < k$, we find $a | (n-1)$ (as $a$ is in the product that defines $n-1$). Since $(n-1, n) = 1$ by \ref{2.32} and $a > 1$, we know that $a$ cannot be a common factor of  of $n-1$ and $n$.
-  Since $a | (n-1)$, we then conclude $a \not | \; n$. Thus, no number $a$ between $1$ and $k$ divides $n$.
-\end{proof}
-
-
-
-\begin{thm} \label{2.34}
-  Let $k$ be a natural number. Then there exists a prime larger than $k$.
-\end{thm}
-
-\begin{proof}
-  Assume there exists a $k$ such that no prime is larger than $k$. By \ref{2.33}, there exists an $n$ such that no number between $1$ and $k+1$ divides $n$. Since all primes are in that range, that means no prime number divides $n$. This is a contradiction with \ref{2.7}, proving our assumption absurd. Thus, no $k$ exists such that no prime is larger than $k$: in other words, for every $k$ there exists a prime larger than $k$.
-\end{proof}
-
-
-
-\begin{thm} \label{2.35}
-  There are infinitely many prime numbers.
-\end{thm}
-
-\begin{proof}
-  Assume there are finitely many primes. Then by \ref{2.34} there is a prime larger than the largest prime. Absurd.
-\end{proof}
-
-
-
-\begin{ques} \label{3.36}
-  What were the most clever or most difficult parts in your proof of the Infintude of Primes Theorem?
-\end{ques}
-
-The most clever thing I did was take Algebra II BC, so that I had already seen this proof. If you would like to know more go back in time and ask 9th grade me, I don't remember this being that difficult but I was more heavily guided then.
 
 \end{document}

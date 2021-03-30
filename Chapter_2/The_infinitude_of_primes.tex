@@ -1,0 +1,115 @@
+% !TEX root = ../main.tex
+
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\begin{thm} \label{2.32}
+  For all natural numbers $n$, $(n, n+1) = 1$.
+\end{thm}
+
+\begin{proof}
+  Since $1$ is a common factor of $n$ and $n+1$, we know $(n, n+1) \geq 1$.
+
+  Since $(n,n+1) | n$ and $(n, n+1) | n+1$, we know by \ref{1.2} that $(n,n+1) | ((n+1) - n)$, or in other words $(n, n+1) | 1$. Since $(n, n+1)$ is natural, we know $(n, n+1) \leq 1$.
+
+  Thus, we know $1 \leq (n, n+1) \leq 1$, and thus we conclude $(n, n+1) = 1$.
+\end{proof}
+
+
+
+\begin{thm} \label{2.33}
+  Let $k$ be a natural number. Then there exists a natural number $n$ (which will be much larger than $k$) such that no natural number less than $k$ and greater than $1$ divides $n$.
+\end{thm}
+
+\begin{proof}
+  Let $n = \prod_{i=2}^{k-1} (i) + 1$. For any $a$ such that $1 < a < k$, we find $a | (n-1)$ (as $a$ is in the product that defines $n-1$). Since $(n-1, n) = 1$ by \ref{2.32} and $a > 1$, we know that $a$ cannot be a common factor of  of $n-1$ and $n$.
+  Since $a | (n-1)$, we then conclude $a \not | \; n$. Thus, no number $a$ between $1$ and $k$ divides $n$.
+\end{proof}
+
+
+
+\begin{thm} \label{2.34}
+  Let $k$ be a natural number. Then there exists a prime larger than $k$.
+\end{thm}
+
+\begin{proof}
+  Assume there exists a $k$ such that no prime is larger than $k$. By \ref{2.33}, there exists an $n$ such that no number between $1$ and $k+1$ divides $n$. Since all primes are in that range, that means no prime number divides $n$. This is a contradiction with \ref{2.7}, proving our assumption absurd. Thus, no $k$ exists such that no prime is larger than $k$: in other words, for every $k$ there exists a prime larger than $k$.
+\end{proof}
+
+
+
+\begin{thm} \label{2.35}
+  There are infinitely many prime numbers.
+\end{thm}
+
+\begin{proof}
+  Assume there are finitely many primes. Then by \ref{2.34} there is a prime larger than the largest prime. Absurd.
+\end{proof}
+
+
+
+\begin{ques} \label{3.36}
+  What were the most clever or most difficult parts in your proof of the Infintude of Primes Theorem?
+\end{ques}
+
+The most clever thing I did was take Algebra II BC, so that I had already seen this proof. If you would like to know more go back in time and ask 9th grade me, I don't remember this being that difficult but I was more heavily guided then.
+
+
+
+\begin{thm} \label{2.37}
+  If $r_1, r_2, \ldots, r_m$ are natural numbers and each one is congruent to $1$ modulo $4$, then the product $r_1r_2\cdots r_m$ is also congruent to $1$ modulo $4$.
+\end{thm}
+
+\begin{proof}
+  $r_1 r_2 \cdots r_m \equiv 1 \cdot 1 \cdots 1 \equiv 1 \gmod 4$.
+\end{proof}
+
+
+
+\begin{thm} \label{2.38}
+  There are infinitely many prime numbers that are congruent to $3$ modulo $4$.
+\end{thm}
+
+\begin{proof}
+  Let's say that $n$ is the biggest prime that is congruent to $3$ modulo $4$. Let $m = \prod_{p \in \mathbb{P}}^{n} p$.
+
+  Notice that $2 | m$ (as there is a factor of $2$ in the product) but $4 \not | \; m$ (since $2 \not | \; (m/2)$, as $(m/2)$'s prime factorization has no remaining $2$'s). Thus, $m \equiv 2 \gmod 4$.
+
+  Let us examine $m+1$. We know that $m + 1 \equiv 3 \gmod 4$. We also know that, since no prime less than or equal to $n$ divides $m+1$ and $n$ is the biggest prime such that $n \equiv 3 \gmod 4$, no prime that is equivalent to $3$ modulo $4$ divides $m+1$.
+
+  If we can conclude $m+1$ must be prime, we will arrive at our contradiction (as we've found a prime equivalent to $3$ modulo $4$ that is larger than $n$). To do this, we will notice that $m+1$ must have a prime factorization that includes at least 1 prime that is equivalent to $3$ modulo $4$ (as by \ref{2.37} the product solely of primes that are equivalent to $1$ will also be equivalent to $1$, which $m+1 is not$). The prime factors of $m+1$ cannot be equivalent to $0$ or $2$ (as there are no primes divisible by $4$ and thus none equivalent to $0$, and there is only one even prime that is equivalent to $2$ we already know $2 \not | \; (m+1)$). Thus, there has to be a prime that is equivalent to $m+1$ in the prime factorization.
+  Thus, either $m+1$ is prime (a contradiction) or there has to be another prime equivalent to $3$ modulo $4$ that divides $m+1$ but is greater than $n$ (also a contradiction).
+
+  Thus, our assumption that a biggest prime congruent to $3$ modulo $4$ is false. Thus, since at least one prime congruent to $3$ modulo $4$ exists ($3$, for example), there must be infinitely many such primes.
+\end{proof}
+
+
+
+\pagebreak
+
+
+
+\begin{ques} \label{2.39}
+  Are there other theorems like the previous one that you can prove?
+\end{ques}
+
+There should be, given I caught part of Nir's talk last year, but I have an awful memory.
+
+You can pretty directly use the above technique to show that there are infinitely many primes that \emph{aren't} equivalent to $1$ modulo basically-any-number.
+
+You could use this to show there are infinitely many primes congruent to $5$ modulo $6$, as said primes can't be congruent to $2$, $3$, $4$, or (as goes without saying) $0$ and have to be \emph{something} other than $1$. Highly composite numbers like $12$ are also probably good for this (in this case, we conclude there are infinitely many primes that are either $5$, $7$, or $11$ modulo $12$).
+
+
+
+\begin{ex} \label{2.40}
+  Find the current record for the longest arithmetic progression of primes.
+\end{ex}
+
+It seems to be $27$ primes, discovered in 2019 by Rob Gahan and... PrimeGrid? I assume that's some kind of distributed computing project.
+
+$224584605939537911 + 81292139 \cdot 23\# \cdot n$, for $0 \leq n < 27$.
+
+(For a prime $p$, the primorial $p\#$ is $2 \cdot 3 \cdot 5 \cdot 7 \cdot 11 \cdot \cdots \cdot p$.)
+
+\end{document}
