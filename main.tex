@@ -97,4 +97,15 @@
 \end{proof}
 
 
+\begin{ques} \label{2.47}
+  Are there infinitely many pairs of primes that differ from one another by two?
+\end{ques}
+
+My gut says no, for the same reason the result above is intuitive: as you go higher and higher and the list of primes gets longer and longer, they seem to ``cover more ground'' so to speak and the propostion of numbers that are composite goes up.
+
+Apparently it's been proven that for some integer $N$ less than $246$ there are infinitely many primes that differ by $N$, though, so that intuition goes out the window. Hrm.
+
+The main problem with the product-building we've been doing so far is that if you made some product $m$ you'd have to show that, for example, both $m+1$ AND $m+3$ are prime, and the $m+3$ case complicates things (obviously $m$ cannot include $3$, for example, but then how do you know $m+1$ isn't divisible by $3$?). Plus, what would your product even be? I suppose you could show there's a pair of twin primes higher than any $k$ by forming $m = \prod_{p \in \mathbb{P}}^k$, although then you'd have to divide that by $3$ as mentioned before and THEN show $m + 3$ is prime. In fact, I'm not entirely sure you could then show $m+1$ is prime, because you have to show it's not divisible by $3$ which seems... hard, especially since there are infinitely primes that are either $1$ or $2$ modulo $3$.
+
+
 \end{document}
