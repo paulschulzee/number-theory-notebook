@@ -1,0 +1,63 @@
+% !TEX root = ../main.tex
+
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\begin{ex} \label{2.41}
+  Use polynomial long division to compute $(x^m-1) \div (x-1)$.
+\end{ex}
+
+$$x^{m-1} + x^{m-2} + \cdots + x + 1 = \sum_{i=0}^{m-1} x^i$$
+
+
+
+\begin{thm} \label{2.42}
+  If $n$ is a natural number and $2^n - 1$ is prime, then $n$ must be prime.
+\end{thm}
+
+\begin{proof}
+  Assume $n = ab$. To show $n$ is prime, we will show that $a$ and $b$ can only be $1$ and $n$: to do this, we will show that $a$ must either be $1$ or $n$, and then $b$ must be the opposite choice to satisfy $n = ab$.
+
+  $2^n - 1 = 2^{ab} - 1 = (2^a)^b - 1 = \frac{(2^a)^b - 1}{2^a - 1} (2^a - 1)$. By \ref{2.41} (with $x = 2^a$ and $m = b$) we find this is equal to $((2^a)^{b-1} + (2^a)^{b-2} + \cdots + 1) \cdot (2^a - 1)$. Since this product of integers is equal to $2^n-1$, which is prime, we conclude that the integers are $1$ and $2^n - 1$.
+
+  This leaves us with two possibilities for what $2^a - 1$ could be: $1$ or $2^n - 1$. In the case $2^a - 1 = 1$, we find $2^a = 2 \implies a = 1$. In the case $2^a - 1 = 2^n - 1$, we find $2^a = 2^n \implies a = n$. Thus, for any integers $a$ and $b$ such that $n = ab$, we've found that $a$ and $b$ must be $1$ and $n$: in other words, $n$ is prime.
+\end{proof}
+
+
+
+\begin{thm} \label{2.43}
+  If $n$ is a natural number and $2^n + 1$ is prime, then $n$ must be a power of $2$.
+\end{thm}
+
+\begin{proof}
+  Notice that $n$ is a power of $2$ if and only if it has no odd divisors other than $1$ (if $n$ isn't a power of $2$, its prime factorization contains an odd number or it is $1$; if $n$ is a power of $2$, it has no odd divisors other than $1$ by \ref{2.12}.
+
+  Let $n = ab$, where $b$ is an odd number. Such a factorization will always exist because we can always take $b = 1$ and $a = n$.
+
+  $2^n + 1 = 2^{ab} + 1 = (2^a)^b + 1 = \frac{(2^a)^b + 1}{2^a + 1} (2^a + 1)$. By polynomial long division (do it yourself), we find this is equal to $((2^a)^{b-1} - (2^a)^{b-2} + \cdots + 1) \cdot (2^a + 1)$ (the final $1$ in the first term is positive because $b$ is odd, not that it matters). As before, since this product of integers is equal to $2^n + 1$, a prime, we conclude the integers are $1$ and $2^n + 1$.
+
+  We know $2^a + 1 \neq 1$ because that would imply $2^a = 0$, which is impossible. Thus, we conclude $2^a + 1 = 2^n + 1 = 2^{ab} + 1$, implying $a = ab \implies b = 1$. Thus, the only odd number that divides $n$ is $1$. In other words, $n$ is a power of $2$.
+\end{proof}
+
+
+
+\begin{ex} \label{2.44}
+  Find the first few Mersenne primes and Fermat primes.
+\end{ex}
+
+Mersenne: $3, 7, 31, 127$.
+
+Fermat: $3, 17, 257$.
+
+
+
+\begin{ex} \label{2.45}
+  For an A in the class and a Ph.D. in mathematics, prove that there are infintely many Mersenne primes (or Fermat primes) or prove that there aren't (your choice).
+\end{ex}
+
+Our traditional approach of assuming there are finitely many Mersenne primes and then constructing a new one is flawed because there doesn't seem to be a way to create a product of said Mersenne primes that we can then modify to get a new Mersenne prime (or mulitple of a new Mersenne prime).
+
+I think what would really help us would be some way to tell if $2^n-1$ is prime in terms of $n$, so that we could more easily prove the infinitude or finitude of the set of exponents. We know that $n$ must be prime, but that isn't sufficient (e.g. $2^11 - 1 = 2047 = 23 \cdot 89$).
+
+\end{document}

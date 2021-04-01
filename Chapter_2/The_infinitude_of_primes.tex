@@ -78,8 +78,10 @@ The most clever thing I did was take Algebra II BC, so that I had already seen t
 
   Let us examine $m+1$. We know that $m + 1 \equiv 3 \gmod 4$. We also know that, since no prime less than or equal to $n$ divides $m+1$ and $n$ is the biggest prime such that $n \equiv 3 \gmod 4$, no prime that is equivalent to $3$ modulo $4$ divides $m+1$.
 
-  If we can conclude $m+1$ must be prime, we will arrive at our contradiction (as we've found a prime equivalent to $3$ modulo $4$ that is larger than $n$). To do this, we will notice that $m+1$ must have a prime factorization that includes at least 1 prime that is equivalent to $3$ modulo $4$ (as by \ref{2.37} the product solely of primes that are equivalent to $1$ will also be equivalent to $1$, which $m+1 is not$). The prime factors of $m+1$ cannot be equivalent to $0$ or $2$ (as there are no primes divisible by $4$ and thus none equivalent to $0$, and there is only one even prime that is equivalent to $2$ we already know $2 \not | \; (m+1)$). Thus, there has to be a prime that is equivalent to $m+1$ in the prime factorization.
-  Thus, either $m+1$ is prime (a contradiction) or there has to be another prime equivalent to $3$ modulo $4$ that divides $m+1$ but is greater than $n$ (also a contradiction).
+  Notice that $m+1$ must have a prime factorization that includes at least 1 prime that is equivalent to $3$ modulo $4$ (as by \ref{2.37} the product solely of primes that are equivalent to $1$ will also be equivalent to $1$, which $m+1$ is not). The prime factors of $m+1$ cannot be equivalent to $0$ or $2$ (as there are no primes divisible by $4$ and thus none equivalent to $0$, and there is only one even prime that is equivalent to $2$ we already know $2 \not | \; (m+1)$). Thus, there has to be a prime that is equivalent to $3$ modulo $4$ in the prime factorization.
+
+
+  Since this number cannot be any prime between $0$ and $n$, we've found a prime greater than $n$ that is equivalent to $3$ modulo $4$.
 
   Thus, our assumption that a biggest prime congruent to $3$ modulo $4$ is false. Thus, since at least one prime congruent to $3$ modulo $4$ exists ($3$, for example), there must be infinitely many such primes.
 \end{proof}

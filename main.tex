@@ -69,59 +69,32 @@
 \subfile{Chapter_2/The_infinitude_of_primes}
 
 
-\begin{ex} \label{2.41}
-  Use polynomial long division to compute $(x^m-1) \div (x-1)$.
-\end{ex}
+\subsection*{Primes of special form}
 
-$$x^{m-1} + x^{m-2} + \cdots + x + 1 = \sum_{i=0}^{m-1} x^i$$
+\subfile{Chapter_2/Primes_of_special_form}
 
 
+\subsection*{The distribution of primes}
 
-\begin{thm} \label{2.42}
-  If $n$ is a natural number adn $2^n - 1$ is prime, then $n$ must be prime.
+\begin{thm} \label{2.46}
+  There exist arbitraily long strings of consecutive composite numbers. That is, for any natural number $n$ there is a string of more than $n$ consecutive composite numbers.
 \end{thm}
 
 \begin{proof}
-  Assume $n = ab$. To show $n$ is prime, we will show that $a$ and $b$ can only be $1$ and $n$: to do this, we will show that $a$ must either be $1$ or $n$, and then $b$ must be the opposite choice to satisfy $n = ab$.
+  For any $n$, define $k$ as follows.
 
-  $2^n - 1 = 2^{ab} - 1 = (2^a)^b - 1 = \frac{(2^a)^b - 1}{2^a - 1} (2^a - 1)$. By \ref{2.41} (with $x = 2^a$ and $m = b$) we find this is equal to $((2^a)^{b-1} + (2^a)^{b-2} + \cdots + 1) \cdot (2^a - 1)$. Since this product of integers is equal to $2^n-1$, which is prime, we conclude that the integers are $1$ and $2^n - 1$.
+  $$k = \prod_{p \in \mathbb{P}}^{n+1} p^{\lceil \log_{p}(n+1) \rceil}$$
 
-  This leaves us with two possibilities for what $2^a - 1$ could be: $1$ or $2^n - 1$. In the case $2^a - 1 = 1$, we find $2^a = 2 \implies a = 1$. In the case $2^a - 1 = 2^n - 1$, we find $2^a = 2^n \implies a = n$. Thus, for any integers $a$ and $b$ such that $n = ab$, we've found that $a$ and $b$ must be $1$ and $n$: in other words, $n$ is prime.
+  We will show that the string $k+2 \ldots k+n+1$ is a string of $n$ consecutive composite numbers. In other words, for all $i$ with $2 \leq i \leq (n+1)$, there exists some $p \neq k+i$ such that $p | (k+i)$.
+
+  In fact, we will show that such a $p$ is less than or equal to $n$ (this obviously implies $p \neq k+i$ given that $k+i > n$).
+
+  Let us examine the prime factorization of $i$. Since it is less than or equal to $n+1$, we know that its prime factors are also less than or equal to $n+1$. In fact, for any term $p_i ^ {r_i}$ in the prime factorization, we know $p_i ^ {r_i} \leq i \leq n+1 = p_i ^ {\log_{p_i}(n+1)}$, implying that $r_i \leq \log_{p_i}(n+1) \leq \lceil \log_{p_i}(n+1) \rceil$.
+  By \ref{2.12}, we then notice that $i | k$ (as $k$'s prime factorization is equal to its definition above).
+  Thus, we can write $k+i$ as $i \cdot (\frac{k}{i} + 1)$, where $\frac{k}{i} + 1$ is an integer. Thus we conclude $i | (k + i)$, and since $i \neq 1$ as $2 \leq 1$ and $i \neq k+1$ because $k \neq 0$ (something something irrelevant edge case where $n$ is small) we conclude that $k+i$ is composite, as it has a factor that is neither $1$ nor itself.
+
+  Thus, the sequence $k+2 \ldots k+n+1$ is a string of $n$ consecutive composite numbers for any $n$.
 \end{proof}
-
-
-
-\begin{thm} \label{2.43}
-  If $n$ is a natural number and $2^n + 1$ is prime, then $n$ must be a power of $2$.
-\end{thm}
-
-\begin{proof}
-  Notice that $n$ is a power of $2$ if and only if it has no odd divisors other than $1$ (if $n$ isn't a power of $2$, its prime factorization contains an odd number or it is $1$; if $n$ is a power of $2$, it has no odd divisors other than $1$ by \ref{2.12}.
-
-  Let $n = ab$, where $b$ is an odd number. Such a factorization will always exist because we can always take $b = 1$ and $a = n$.
-
-  $2^n + 1 = 2^{ab} + 1 = (2^a)^b + 1 = \frac{(2^a)^b + 1}{2^a + 1} (2^a + 1)$. By polynomial long division (do it yourself), we find this is equal to $((2^a)^{b-1} - (2^a)^{b-2} + \cdots + 1) \cdot (2^a + 1)$ (the final $1$ in the first term is positive because $b$ is odd, not that it matters). As before, since this product of integers is equal to $2^n + 1$, a prime, we conclude the integers are $1$ and $2^n + 1$.
-
-  We know $2^a + 1 \neq 1$ because that would imply $2^a = 0$, which is impossible. Thus, we conclude $2^a + 1 = 2^n + 1 = 2^{ab} + 1$, implying $a = ab \implies b = 1$. Thus, the only odd number that divides $n$ is $1$. In other words, $n$ is a power of $2$.
-\end{proof}
-
-
-
-\begin{ex} \label{2.44}
-  Find the first few Mersenne primes and Fermat primes.
-\end{ex}
-
-Mersenne: $3, 7, 31, 127$.
-
-Fermat: $3, 17, 257$.
-
-
-
-\begin{ex} \label{2.45}
-  For an A in the class and a Ph.D. in mathematics, prove that there are infintely many Mersenne primes (or Fermat primes) or prove that there aren't (your choice).
-\end{ex}
-
-
 
 
 \end{document}
