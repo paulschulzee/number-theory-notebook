@@ -1,0 +1,71 @@
+% !TEX root = ../main.tex
+
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\begin{thm} \label{2.46}
+  There exist arbitraily long strings of consecutive composite numbers. That is, for any natural number $n$ there is a string of more than $n$ consecutive composite numbers.
+\end{thm}
+
+\begin{proof}
+  For any $n$, define $k$ as follows.
+
+  $$k = \prod_{p \in \mathbb{P}}^{n+1} p^{\lceil \log_{p}(n+1) \rceil}$$
+
+  We will show that the string $k+2 \ldots k+n+1$ is a string of $n$ consecutive composite numbers. In other words, for all $i$ with $2 \leq i \leq (n+1)$, there exists some $p \neq k+i$ such that $p | (k+i)$.
+
+  In fact, we will show that such a $p$ is less than or equal to $n$ (this obviously implies $p \neq k+i$ given that $k+i > n$).
+
+  Let us examine the prime factorization of $i$. Since it is less than or equal to $n+1$, we know that its prime factors are also less than or equal to $n+1$. In fact, for any term $p_i ^ {r_i}$ in the prime factorization, we know $p_i ^ {r_i} \leq i \leq n+1 = p_i ^ {\log_{p_i}(n+1)}$, implying that $r_i \leq \log_{p_i}(n+1) \leq \lceil \log_{p_i}(n+1) \rceil$.
+  By \ref{2.12}, we then notice that $i | k$ (as $k$'s prime factorization is equal to its definition above).
+  Thus, we can write $k+i$ as $i \cdot (\frac{k}{i} + 1)$, where $\frac{k}{i} + 1$ is an integer. Thus we conclude $i | (k + i)$, and since $i \neq 1$ as $2 \leq 1$ and $i \neq k+1$ because $k \neq 0$ (something something irrelevant edge case where $n$ is small) we conclude that $k+i$ is composite, as it has a factor that is neither $1$ nor itself.
+
+  Thus, the sequence $k+2 \ldots k+n+1$ is a string of $n$ consecutive composite numbers for any $n$.
+\end{proof}
+
+
+\begin{ques} \label{2.47}
+  Are there infinitely many pairs of primes that differ from one another by two?
+\end{ques}
+
+My gut says no, for the same reason the result above is intuitive: as you go higher  the list of primes gets longer , they seem to ``cover more ground'' and the propostion of numbers that are composite goes up.
+
+Apparently it's been proven that for some integer $N$ less than $246$ there are infinitely many primes that differ by $N$, though, so that intuition goes out the window. Hrm.
+
+The main problem with the product-building we've been doing so far is that if you made some product $m$ you'd have to show that, for example, both $m+1$ AND $m+3$ are prime, and the $m+3$ case complicates things (obviously $m$ cannot include $3$, for example, but then how do you know $m+1$ isn't divisible by $3$?). Plus, what would your product even be? I suppose you could show there's a pair of twin primes higher than any $k$ by forming $m = \prod_{p \in \mathbb{P}}^k$, although then you'd have to divide that by $3$ as mentioned before and THEN show $m + 3$ is prime. In fact, I'm not entirely sure you could then show $m+1$ is prime, because you have to show it's not divisible by $3$ which seems... hard, especially since there are infinitely primes that are either $1$ or $2$ modulo $3$.
+
+
+\begin{ex} \label{2.48}
+  Express each of the first $20$ even numbers greater than $2$ as a sum of two primes.
+\end{ex}
+
+$4 = 2 + 2$, $6 = 3 + 3$
+
+$8 = 5 + 3$, $10 = 5 + 5$
+
+$12 = 7 + 5$, $14 = 7 + 7$
+
+$16 = 11 + 5$, $18 = 11 + 7$
+
+$20 = 13 + 7$, $22 = 17 + 5$
+
+$24 = 17 + 7$, $26 = 19 + 5$
+
+$28 = 19 + 7$, $30 = 17 + 13$
+
+$32 = 19 + 13$, $34 = 17 + 17$
+
+$36 = 19 + 17$, $38 = 19 + 19$
+
+$40 = 23 + 17$, $42 = 23 + 19$
+
+
+
+\begin{ex} \label{2.50}
+  Find the current record for the loargest known Mersenne prime.
+\end{ex}
+
+$2^{82589933}-1$
+
+\end{document}
