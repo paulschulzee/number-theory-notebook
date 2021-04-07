@@ -80,5 +80,73 @@
 
 
 
+\pagebreak
+
+
+
+\section{Chapter 3}
+
+\subsection*{Powers and Polynomials modulo $n$}
+
+
+\begin{ex} \label{3.1}
+  Show that $41$ divides $2^{20} - 1$ by following these steps. Explain why each step is true.
+\end{ex}
+
+1. $2^5 \equiv -9 \gmod{41}$ because $41 | 41 = 32 - (-9)$
+
+2. $(2^5)^4 \equiv (-9)^4 \gmod{41}$ because \ref{1.14}
+
+3. $2^{20} \equiv 81^2 \gmod{41}$ because $(2^5)^4 = 2^{5 \cdot 4} = 2^{20}$ and $(-9)^4 = ((-9)^2)^2 = 81^2$
+
+4. $2^{20} - 1 \equiv 0 \gmod{41}$ because $81 \equiv -1 \gmod{41}$ so $81^2 \equiv 1 \gmod{41}$ so $2^{20} \equiv 1 \gmod{41}$
+
+
+
+\begin{ques} \label{3.2}
+  In your head, can you find the natural number $k$, $0 \leq k \leq 11$, such that $k \equiv 37^{453} \gmod{12}$?
+\end{ques}
+
+$1$
+
+
+
+\begin{ques} \label{3.3}
+  In your head or using paper and pencil, but no calculator, can you find the natural number $k$, $0 \leq k \leq 6$, such that $2^{50} \equiv k \gmod{7}$?
+\end{ques}
+
+$4$
+
+
+
+\begin{ques} \label{3.4}
+  Using paper and pencil, but no calculator, can you find the natural number $k$, $0 \leq k \leq 11$, such that $39^{453} \equiv k \gmod{12}$?
+\end{ques}
+
+$3$
+
+
+
+\begin{ex} \label{3.5}
+  Show that $39$ divides $17^{48} - 5^{24}$
+\end{ex}
+
+So open up python and... no? Fine.
+
+Notice (via calculator) that $17^2 \equiv 16 \gmod{39}$. Then, $17^3 \equiv 16 \cdot 17 \equiv -1 \gmod{39}$. From there we obtain $17^4 \equiv -17$ and $17^5 \equiv -16$ before arriving at $17^6 \equiv 1$. This cycle then repeats: we notice that $48$ is a multiple of $6$, so $17^{48} \equiv 1 \gmod{39}$.
+
+Similarly, $5^4 \equiv 1 \gmod{39}$ so we find $5^{24} \equiv 1$. Then we know $17^{48} \equiv 5^{24} \gmod{39}$, so definitionally $39 | (17^{48} - 5^{24})$.
+
+
+
+\begin{ques} \label{3.6}
+  Let $a$, $n$, and $r$ be natural numbers. Describe how to find the number $k$ ($0 \leq k \leq n-1$) such that $k \equiv a^{r} \mod n$ subject to the restraint that you never multiply numbers larger than $n$ and that you only have to do about $\log_2 (r)$ such multiplications.
+\end{ques}
+
+Get a computer to do it.
+
+
+
+
 
 \end{document}
