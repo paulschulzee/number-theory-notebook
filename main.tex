@@ -145,7 +145,7 @@ Similarly, $5^4 \equiv 1 \gmod{39}$ so we find $5^{24} \equiv 1$. Then we know $
 
 Get a computer to do it.
 
-
+Failing that, or if you're the poor soul who has to program the computer, you start off by essentially making a library of powers of $a$ in their ``simplest form'' modulo $n$. So you start with $a \equiv x_0 \gmod n$ (where in most cases if $a < n$ we find $x_0 = a$, but then you square $a$ and then pair down the result to something between $0$ and $n$ (probably using the division algorithm) to get $a^2 \equiv x_1$, then square that to get $a^4 \equiv x_2$, $a^8 \equiv x_3$, etc. etc. until you've build up to $x_{\lfloor \log_2 (r) \rfloor}$. Then add together the relevant terms from largest to smallest (e.g. $a^{39} \equiv a^{32} + a^4 + a^2 + a \equiv x_5 + x_2 + x_1 + x_0$).
 
 
 
