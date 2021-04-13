@@ -149,4 +149,59 @@ Failing that, or if you're the poor soul who has to program the computer, you st
 
 
 
+\setcounter{thm}{13}
+
+\begin{thm} \label{3.14}
+  Given any integer $a$ and any natural number $n$, there exists a unique integer $t$ in the set $\{0, 1, 2, \ldots, n-1\}$ such that $a \equiv t \gmod n$.
+\end{thm}
+
+\begin{proof}
+  By division algorithm, we find $a = qn + r$ with $0 \leq r \leq n-1$. Notice $qn = a-r$ implies $n | (a-r)$ implies $a \equiv r \gmod n$ with $0 \leq r \leq n-1$, so the existence of such a $t$ is shown.
+
+  Say there exist $t_1,t_2$ in the set $\{0,\ldots,n-1\}$ such that $a \equiv t_1 \gmod n$ and $a \equiv t_2 \gmod n$. Then $t_1 \equiv t_2 \gmod n$ by \ref{1.11}. Then $n | (t_1 - t_2)$.
+  However, since $0 \leq t_1, t_2 \leq n-1$, we find $-n+1 \leq t_1 - t_2 \leq n-1$. The only number that $n$ divides in that range is $0$, so we conclude $t_1 - t_2 = 0$ or $t_1 = t_2$, proving that such a $t$ is unique.
+\end{proof}
+
+
+
+\begin{ex} \label{3.15}
+  Find three complete residue systems modulo $4$: the canoncial complete residue system, one containing negative numbers, and one containing no two consecutive numbers.
+\end{ex}
+
+CCRS (canonical complete residue system): $\{0, 1, 2, 3\}$.
+
+CRSCNN (complete residue system containing negative numbers): $\{-4, -3, -2, -1\}$.
+
+CRSCNTCN (complete residue system containing no two consecutive numbers): $\{0, 5, 2, 7\}$.
+
+
+
+\pagebreak
+
+
+
+\begin{thm} \label{3.16}
+  Let $n$ be natural number. Every complete residue system modulo $n$ contains $n$ elements.
+\end{thm}
+
+\begin{proof}
+  Well we know that the quotient group $\mathbb{Z} / n\mathbb{Z}$ has... no? Fine.
+
+  If a CRS has more than $n$ elements, by invoking \ref{3.14} repeatedly we find by pigeonhole principle there have to be two elements of the CRS (call them $a$ and $b$) that are equivalent to the same member of the set $\{0, \ldots, n-1\}$. By \ref{1.11}, we then find $a \equiv b \gmod n$. Then it's impossible for every integer to be congruent to exactly one member of the set, because we find $a \equiv a \gmod n$ and $a \equiv b \gmod n$, so our CRS is not a CRS at all. Thus, all CRS's will have $n$ or fewer elements.
+
+  If a CRS has fewer than $n$ elements, if we invoke \ref{3.14} on all of its elements it won't ``fully cover'' the set $\{0, \ldots, n-1\}$. Let $x$ be the uncovered element. It's impossible for $x$ to be congruent to any of the elements of the CRS, since by \ref{3.14} all of the elements of the CRS are congruent to \emph{exactly} one element of $\{0, \ldots, n-1\}$ and so they can't be congruent to both the element we ``covered'' earlier and to $x$. Thus, our CRS is not a CRS at all, and we conclude all CRS's will have $n$ or more elements.
+
+  Since the size of any CRS is greater than $n-1$ and less than $n+1$, we conclude that all CRS's are of size $n$.
+\end{proof}
+
+
+
+\begin{thm} \label{3.17}
+  Let $n$ be a natural number. Any set, $A = \{a_1, a_2, \ldots, a_n\}$ of $n$ integers for which no two are congruent modulo $n$ is a complete residue set.
+\end{thm}
+
+\begin{proof}
+  If we invoke \ref{3.14} on all of the members of $A$ we will get exactly the elements of $S = \{0, \ldots, n-1\}$ (we cannot hit any element twice because then we would have two members of $A$ that are congruent by \ref{1.11}, and we cannot hit any element outside of $S$ because of \ref{3.14}). Then by \ref{3.14} and \ref{1.11}, we notice that every integer is congruent to exactly one element in $S$, and thus it must be congruent to its corresponding element in $A$ and only that element of $A$ (or else it would be congruent to two elements of $S$, too). 
+\end{proof}
+
 \end{document}
