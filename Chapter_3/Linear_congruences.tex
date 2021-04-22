@@ -1,0 +1,96 @@
+% !TEX root = ../main.tex
+
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\begin{ex} \label{3.18}
+  Find all solutions in the appropriate canonical complete residue system modulo $n$ that satisfy the following linear congruences.
+\end{ex}
+
+1. $26x \equiv 14 \gmod 3$ solution is $1$
+
+2. $2x \equiv 3 \gmod 5$ solution is $4$
+
+3. $4x \equiv 7 \gmod 8$ no solution
+
+4. $24x \equiv 123 \gmod{213}$ Work deferred
+
+
+
+\begin{thm} \label{3.19}
+  Let $a$, $b$, and $n$ be integers with $n > 0$. Show that $ax \equiv b \gmod n$ has a solution if and only if there exist integers $x$ and $y$ such that $ax + ny = b$.
+\end{thm}
+
+\begin{proof}
+  $ax \equiv b \gmod n$ if and only if there exists some integer (call it $-y$) such that $n(-y) = ax - b$ (by definition). Rearranging this, we find this statement is equivalent to saying that $ax + ny = b$.
+\end{proof}
+
+
+
+\begin{thm} \label{3.20}
+  Let $a$, $b$, and $n$ be integers with $n > 0$. The equation $ax \equiv b \gmod n$ has a solution if and only if $(a, n) | b$.
+\end{thm}
+
+\begin{proof}
+  The equation has a solution if and only if there exist integers such that $ax + ny = b$ (\ref{3.19}), which occurs if and only if $(a, n) | b$ (\ref{1.48}).
+\end{proof}
+
+
+
+\begin{ques} \label{3.21}
+  What does the preceding theorem tell us about the congruence $(4)$ in Exercise 3.18 above?
+\end{ques}
+
+Since $(24, 213) = 3$ and $3 | 123$, it tells us that such a congruence exists.
+
+
+
+\begin{ex} \label{3.22}
+  Use the Euclidean Algorithm to find a member $x$ of the canonical complete residue system modulo $213$ that satisifes $24x \equiv 123 \gmod 213$. Find all members $x$ of the canonical complete residue system modulo $213$ that satisfy $24x \equiv 123 \gmod{213}$.
+\end{ex}
+
+This problem is equivalent to finding integers $x, y$ such that $24x + 213y = 123$, with the limitation that $0 \leq x < 213$.
+
+$213 = 8 \cdot 24 + 21$, giving $21 = 213 + (-8) \cdot 24$
+
+$24 = 21 + 3$, giving $3 = 24 + (-1) \cdot 21$.
+
+Combinging these two, we get $3 = 9 \cdot 24 - 213$.
+
+Then, we multiply both sides by $41$ to get $123 = 369 \cdot 24 - 41 \cdot 213$.
+
+By \ref{1.53}, we've found that the number multiplying $24$ in the equation $24x + 213y = 123$ (and thus every solution to $24x \equiv 123 \gmod{213}$) is of the form $369 - 71k$ for some integer $k$. The possible values this gives us in the range from $0$ to $212$ are $14$, $85$, and $156$.
+
+
+
+\begin{ques} \label{3.23}
+  Let $a$, $b$, and $n$ be integers with $n > 0$. How many solutions are there to the linear congruence $ax \equiv b \gmod n$ in the canonical complete residue system modulo $n$? Can you describe a technique to find them?
+\end{ques}
+
+I played around with it a bit but just got \ref{3.24} so I'll tex my proof there instead.
+
+
+
+\begin{thm} \label{3.24}
+  Let $a$, $b$, and $n$ be integers with $n > 0$. Then
+
+  \begin{enumerate}
+    \item The congruence $ax \equiv b \gmod n$ is solvable in integers if and only if $(a, n) | b$;
+    \item If $x_0$ is a solution to the congruence $ax \equiv b \gmod n$, then all solutions are given by $$x_0 + \left( \frac{n}{(a,n)} \cdot m \right) \gmod n$$ for $m = 0, 1, 2, \ldots, (a,n) - 1$; and
+    \item If $ax \equiv b \gmod n$ has a solution, then there are xactly $(a, n)$ solutions in the canonical complete residue system modulo $n$.
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}
+  Notice that, as shown in the proof of \ref{3.19}, asking for $x$'s in the CCRS mod $n$ satisfying $ax \equiv b \gmod n$ is equivalent to asking for $x$'s such that $0 \leq x \leq n-1$ and $ax + ny = b$ for some integer $y$. From here we basically copy-paste all the hard work our previous selves did in chapter $1$ (what suckers).
+
+  First of all, part $1$ here is just \ref{3.20}, so that's done.
+
+  Second, part $2$ is basically just \ref{1.53}, since we know all solutions will be of the form $x_0 + \left( \frac{n}{(a,n)} \cdot m \right)$ for \emph{some} $m$ in the integers. That all solutions are covered by $m = 0, \ldots, (a,n) - 1$ is proven by part $3$ (which we haven't shown yet, but we will, and we won't use this fact to prove part $3$ so don't worry about circularity): if there have to be $(a,n)$ values, they must be covered by the first $(a,n)$ possibilities of $m$ because if they weren't that would imply that two different values had to lead to the ``same'' product modulo $n$ to only use $(a,n) - 1$ solutions with $(a, n)$ values, and that would cause the future products to keep going around in a cycle.
+  For example, if $m = 1$ and $m = 4$ lead to the same solution, then so would $m = 2$ and $m = 5$, aand so would $m = 3$ and $m = 6$, etc., and there would be no $(a, n)$-th solution.
+
+  Finally, part $3$ comes from the fact that there are $n$ possibilities for $x$, and we get all the possibilities by ``moving'' in increments of $n / (a,n)$. In this way, we can basically imagine that each possibility of $x$ is ``occupying'' $n / (a,n)$ possible numbers. To get the total number of real possibilities, then, we take $n$ and divide by $n / (a, n)$ to get $(a, n)$, the number of real values of $x$ needed to ``cover'' every possibility between $0$ and $n-1$. Does that make sense? I hope so.
+\end{proof}
+
+\end{document}

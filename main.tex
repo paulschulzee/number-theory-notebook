@@ -32,6 +32,7 @@
 
 \section{Chapter 1}
 
+
 \subsection*{Divisibility and congruence}
 
 \subfile{Chapter_1/Divisibility_and_Congruence}
@@ -53,6 +54,7 @@
 
 
 \section{Chapter 2}
+
 
 \subsection*{Fundamental Theorem of Arithmetic}
 
@@ -86,192 +88,99 @@
 
 \section{Chapter 3}
 
-\subsection*{Powers and Polynomials modulo $n$}
 
+\subsection*{Powers and polynomials modulo $n$}
 
-\begin{ex} \label{3.1}
-  Show that $41$ divides $2^{20} - 1$ by following these steps. Explain why each step is true.
-\end{ex}
-
-1. $2^5 \equiv -9 \gmod{41}$ because $41 | 41 = 32 - (-9)$
-
-2. $(2^5)^4 \equiv (-9)^4 \gmod{41}$ because \ref{1.14}
-
-3. $2^{20} \equiv 81^2 \gmod{41}$ because $(2^5)^4 = 2^{5 \cdot 4} = 2^{20}$ and $(-9)^4 = ((-9)^2)^2 = 81^2$
-
-4. $2^{20} - 1 \equiv 0 \gmod{41}$ because $81 \equiv -1 \gmod{41}$ so $81^2 \equiv 1 \gmod{41}$ so $2^{20} \equiv 1 \gmod{41}$
-
-
-
-\begin{ques} \label{3.2}
-  In your head, can you find the natural number $k$, $0 \leq k \leq 11$, such that $k \equiv 37^{453} \gmod{12}$?
-\end{ques}
-
-$1$
-
-
-
-\begin{ques} \label{3.3}
-  In your head or using paper and pencil, but no calculator, can you find the natural number $k$, $0 \leq k \leq 6$, such that $2^{50} \equiv k \gmod{7}$?
-\end{ques}
-
-$4$
-
-
-
-\begin{ques} \label{3.4}
-  Using paper and pencil, but no calculator, can you find the natural number $k$, $0 \leq k \leq 11$, such that $39^{453} \equiv k \gmod{12}$?
-\end{ques}
-
-$3$
-
-
-
-\begin{ex} \label{3.5}
-  Show that $39$ divides $17^{48} - 5^{24}$
-\end{ex}
-
-So open up python and... no? Fine.
-
-Notice (via calculator) that $17^2 \equiv 16 \gmod{39}$. Then, $17^3 \equiv 16 \cdot 17 \equiv -1 \gmod{39}$. From there we obtain $17^4 \equiv -17$ and $17^5 \equiv -16$ before arriving at $17^6 \equiv 1$. This cycle then repeats: we notice that $48$ is a multiple of $6$, so $17^{48} \equiv 1 \gmod{39}$.
-
-Similarly, $5^4 \equiv 1 \gmod{39}$ so we find $5^{24} \equiv 1$. Then we know $17^{48} \equiv 5^{24} \gmod{39}$, so definitionally $39 | (17^{48} - 5^{24})$.
-
-
-
-\begin{ques} \label{3.6}
-  Let $a$, $n$, and $r$ be natural numbers. Describe how to find the number $k$ ($0 \leq k \leq n-1$) such that $k \equiv a^{r} \mod n$ subject to the restraint that you never multiply numbers larger than $n$ and that you only have to do about $\log_2 (r)$ such multiplications.
-\end{ques}
-
-Get a computer to do it.
-
-Failing that, or if you're the poor soul who has to program the computer, you start off by essentially making a library of powers of $a$ in their ``simplest form'' modulo $n$. So you start with $a \equiv x_0 \gmod n$ (where in most cases if $a < n$ we find $x_0 = a$, but then you square $a$ and then pair down the result to something between $0$ and $n$ (probably using the division algorithm) to get $a^2 \equiv x_1$, then square that to get $a^4 \equiv x_2$, $a^8 \equiv x_3$, etc. etc. until you've build up to $x_{\lfloor \log_2 (r) \rfloor}$. Then add together the relevant terms from largest to smallest (e.g. $a^{39} \equiv a^{32} + a^4 + a^2 + a \equiv x_5 + x_2 + x_1 + x_0$).
-
-
-
-\setcounter{thm}{13}
-
-\begin{thm} \label{3.14}
-  Given any integer $a$ and any natural number $n$, there exists a unique integer $t$ in the set $\{0, 1, 2, \ldots, n-1\}$ such that $a \equiv t \gmod n$.
-\end{thm}
-
-\begin{proof}
-  By division algorithm, we find $a = qn + r$ with $0 \leq r \leq n-1$. Notice $qn = a-r$ implies $n | (a-r)$ implies $a \equiv r \gmod n$ with $0 \leq r \leq n-1$, so the existence of such a $t$ is shown.
-
-  Say there exist $t_1,t_2$ in the set $\{0,\ldots,n-1\}$ such that $a \equiv t_1 \gmod n$ and $a \equiv t_2 \gmod n$. Then $t_1 \equiv t_2 \gmod n$ by \ref{1.11}. Then $n | (t_1 - t_2)$.
-  However, since $0 \leq t_1, t_2 \leq n-1$, we find $-n+1 \leq t_1 - t_2 \leq n-1$. The only number that $n$ divides in that range is $0$, so we conclude $t_1 - t_2 = 0$ or $t_1 = t_2$, proving that such a $t$ is unique.
-\end{proof}
-
-
-
-\begin{ex} \label{3.15}
-  Find three complete residue systems modulo $4$: the canoncial complete residue system, one containing negative numbers, and one containing no two consecutive numbers.
-\end{ex}
-
-CCRS (canonical complete residue system): $\{0, 1, 2, 3\}$.
-
-CRSCNN (complete residue system containing negative numbers): $\{-4, -3, -2, -1\}$.
-
-CRSCNTCN (complete residue system containing no two consecutive numbers): $\{0, 5, 2, 7\}$.
-
-
-
-\pagebreak
-
-
-
-\begin{thm} \label{3.16}
-  Let $n$ be natural number. Every complete residue system modulo $n$ contains $n$ elements.
-\end{thm}
-
-\begin{proof}
-  Well we know that the quotient group $\mathbb{Z} / n\mathbb{Z}$ has... no? Fine.
-
-  If a CRS has more than $n$ elements, by invoking \ref{3.14} repeatedly we find by pigeonhole principle there have to be two elements of the CRS (call them $a$ and $b$) that are equivalent to the same member of the set $\{0, \ldots, n-1\}$. By \ref{1.11}, we then find $a \equiv b \gmod n$. Then it's impossible for every integer to be congruent to exactly one member of the set, because we find $a \equiv a \gmod n$ and $a \equiv b \gmod n$, so our CRS is not a CRS at all. Thus, all CRS's will have $n$ or fewer elements.
-
-  If a CRS has fewer than $n$ elements, if we invoke \ref{3.14} on all of its elements it won't ``fully cover'' the set $\{0, \ldots, n-1\}$. Let $x$ be the uncovered element. It's impossible for $x$ to be congruent to any of the elements of the CRS, since by \ref{3.14} all of the elements of the CRS are congruent to \emph{exactly} one element of $\{0, \ldots, n-1\}$ and so they can't be congruent to both the element we ``covered'' earlier and to $x$. Thus, our CRS is not a CRS at all, and we conclude all CRS's will have $n$ or more elements.
-
-  Since the size of any CRS is greater than $n-1$ and less than $n+1$, we conclude that all CRS's are of size $n$.
-\end{proof}
-
-
-
-\begin{thm} \label{3.17}
-  Let $n$ be a natural number. Any set, $A = \{a_1, a_2, \ldots, a_n\}$ of $n$ integers for which no two are congruent modulo $n$ is a complete residue set.
-\end{thm}
-
-\begin{proof}
-  If we invoke \ref{3.14} on all of the members of $A$ we will get exactly the elements of $S = \{0, \ldots, n-1\}$ (we cannot hit any element twice because then we would have two members of $A$ that are congruent by \ref{1.11}, and we cannot hit any element outside of $S$ because of \ref{3.14}). Then by \ref{3.14} and \ref{1.11}, we notice that every integer is congruent to exactly one element in $S$, and thus it must be congruent to its corresponding element in $A$ and only that element of $A$ (or else it would be congruent to two elements of $S$, too).
-\end{proof}
-
+\subfile{Chapter_3/Powers_and_polynomials_modulo_n}
 
 
 \subsection*{Linear congruences}
 
+\subfile{Chapter_3/Linear_congruences}
 
 
-\begin{ex} \label{3.18}
-  Find all solutions in the appropriate canonical complete residue system modulo $n$ that satisfy the following linear congruences.
+\subsection*{Systems of linear congruences: \\ the Chinese Remainder Theorem}
+
+
+\begin{ex} \label{3.25}
+  A band of $17$ pirates stole a sack of gold coins. When they tried to divide the fortune into equal portions, $3$ coins remained. In the ensuing brawl over who should get the extra coins, one pirate was killed. The coins were redistributed, but this time an equal division left $10$ coins. Again they fought about who shuld get the remaining coins and another pirate was killed. Now, fortunately, the coins could be divided evenly among the surviving $15$ pirates. What was the fewest number of coinst taht could have been in the sack?
 \end{ex}
 
-1. $26x \equiv 14 \gmod 3$ solution is $1$
+This would never happen. In all likelihood, the coins would simply be put in the ship's treasury to pay for injured pirates' medical expenses and/or send money to family of pirates killed in battle.
 
-2. $2x \equiv 3 \gmod 5$ solution is $4$
+The number of coins must be a multiple of $15$. Call it $15k$.
 
-3. $4x \equiv 7 \gmod 8$ no solution
+Then, we know $15 \equiv 10 \gmod{16}$. From this, since $15 \equiv -1$ and $10 \equiv -6$, we find $(-1) k \equiv -6$. Multiplying both sides by $-1$, we get $k \equiv 6 \gmod{16}$.
 
-4. $24x \equiv 123 \gmod{213}$ Work deferred
+Similarly, $15k \equiv 3 \gmod{17}$, so $(-2)k \equiv -14$. Multiplying both sides by $8$, we get $k \equiv -112 \equiv 7 \gmod{17}$.
+
+Since $k \equiv 6 \gmod{16}$, we know $k$ is of the form $16x + 6$. Since $k \equiv 7 \gmod{17}$, we conclude $16x \equiv 7 \gmod{17}$, implying $16x \equiv 1$. Then, since $16 \equiv -1 \gmod{17}$, we conclud $-1x \equiv 1 \gmod{17}$, or $x \equiv -1 \equiv 16 \gmod{17}$.
+
+Since we're trying to minimize $15k$, we're trying to minimize $k$. Similarly, that means we're trying to minimize $16x + 6$, so we can obtain our answer by minimizing $x$. The smallest positive integer (since there are more than $0$ coins) that is equivalent to $16$ modulo $17$ is $16$, so plugging that in we obtain $k = 16 \cdot 16 + 6 = 262$ and then $15k = 15 \cdot 262 = 3930$.
 
 
 
-\begin{thm} \label{3.19}
-  Let $a$, $b$, and $n$ be integers with $n > 0$. Show that $ax \equiv b \gmod n$ has a solution if and only if there exist integers $x$ and $y$ such that $ax + ny = b$.
+\begin{ex} \label{3.26}
+  WHen eggs in a basket are removed two, three, four, five, or six at a time, there remain, respectively, one, two, three, four, or five eggs. When they are taken out seven at a time, none are left over. Find the smallest number of eggs that could have been contained in the basket.
+\end{ex}
+
+Notice that if we added one more egg, the number of eggs would be divisble by two, three, four, five, and six. Thus, its prime factorization would have to include $2^2 3^1 5$. In other words, it would have to be multiple of $60$. Thus, the number of eggs has to be one less than a multiple of $60$. Call it $60x - 1$.
+
+We know $7 | (60x-1)$. Thus, $60x \equiv 1 \gmod 7$. Noticing $60 \equiv 4 \gmod 7$, we conclude $4x \equiv 1 \gmod 7$. Multiplying both sides by $2$ we obtain $x \equiv 2 \gmod 7$. To minimze $60x - 1$, we minmiize $x$: in this case, the smallest possible value is $x = 2$. Plugging that in, we get $60 \cdot 2 - 1 = 119$.
+
+
+
+\begin{thm} \label{3.27}
+  Let $a$, $b$, $m$, and $n$ be integers with $m > 0$ and $n > 0$. Then the system
+  \begin{gather*}
+    x \equiv a \gmod n \\
+    x \equiv b \gmod m
+  \end{gather*}
+  has a solution if and only if $(n, m) | a-b$.
 \end{thm}
 
 \begin{proof}
-  $ax \equiv b \gmod n$ if and only if there exists some integer (call it $-y$) such that $n(-y) = ax - b$ (by definition). Rearranging this, we find this statement is equivalent to saying that $ax + ny = b$.
+  Every step in this proof will be bidirectional.
+
+  $x \equiv a \gmod n$ and $x \equiv b \gmod m$ can be rewritten as $ny = x - a$ and $mz = x - b$ for some integers $y$ and $z$. This implies $mz = ny + a - b$, rewritten as $n(-y) + mz = a - b$ for some integers $y$ and $z$. By \ref{1.48}, said integers $y$ and $z$ exist if and only if $(n, m)| a - b$.
 \end{proof}
 
 
 
-\begin{thm} \label{3.20}
-  Let $a$, $b$, and $n$ be integers with $n > 0$. The equation $ax \equiv b \gmod n$ has a solution if and only if $(a, n) | b$.
+\begin{thm} \label{3.28}
+  Let $a$, $b$, $m$, and $n$ be integers with $m . 0$, $n > 0$, and $(m, n) = 1$. Then the system
+  \begin{gather*}
+    x \equiv a \gmod n \\
+    x \equiv b \gmod m
+  \end{gather*}
+  has a unique solution modulo $mn$.
 \end{thm}
 
 \begin{proof}
-  The equation has a solution if and only if there exist integers such that $ax + ny = b$ (\ref{3.19}), which occurs if and only if $(a, n) | b$ (\ref{1.48}).
+  We will conjure two solutions to this system, $x_1$ and $x_2$, and show they are congruent modulo $nm$.
+
+  Notice $x_1 \equiv a \gmod n$ implies $ny_1 = x_1 - a$ for some integer $y_1$. Similarly, we find $mz_1 = x_1 - b$, $ny_2 = x_2 - a$, and $nz_2 = x_2 - b$.
+
+  Take $ny_1 = x_1 - a$ and subtract $ny_2 = x_2 - a$ to obtain $ny_1 - ny_2 = x_1 - a - (x_2 - a)$. With some rearrangement, we find $n(y_1 - y_2) = x_1 - x_2$, so we conclude $n | (x_1 - x_2)$.
+
+  Similarly, taking $mz_1 = x_1 - b$ and subtracting $mz_2 = x_2 - b$ gives us $m(z_1 - z_2) = x_1 - x_2$, implying $m | (x_1 - x_2)$.
+
+  By \ref{1.42}, since $(n, m) = 1$, we conclude $nm | (x_1 - x_2)$. By definition, this means $x_1 \equiv x_2 \gmod{nm}$, and we're done.
 \end{proof}
 
 
 
-\begin{ques} \label{3.21}
-  What does the preceding theorem tell us about the congruence $(4)$ in Exercise 3.18 above?
-\end{ques}
-
-Since $(24, 213) = 3$ and $3 | 123$, it tells us that such a congruence exists.
-
-
-
-\begin{ex} \label{3.22}
-  Use the Euclidean Algorithm to find a member $x$ of the canonical complete residue system modulo $213$ that satisifes $24x \equiv 123 \gmod 213$. Find all members $x$ of the canonical complete residue system modulo $213$ that satisfy $24x \equiv 123 \gmod{213}$.
-\end{ex}
-
-This problem is equivalent to finding integers $x, y$ such that $24x + 213y = 123$, with the limitation that $0 \leq x < 213$.
-
-$213 = 8 \cdot 24 + 21$, giving $21 = 213 + (-8) \cdot 24$
-
-$24 = 21 + 3$, giving $3 = 24 + (-1) \cdot 21$.
-
-Combinging these two, we get $3 = 9 \cdot 24 - 213$.
-
-Then, we multiply both sides by $41$ to get $123 = 369 \cdot 24 - 41 \cdot 213$.
-
-By \ref{1.53}, we've found that the number multiplying $24$ in the equation $24x + 213y = 123$ (and thus every solution to $24x \equiv 123 \gmod{213}$) is of the form $369 - 71k$ for some integer $k$. The possible values this gives us in the range from $0$ to $212$ are $14$, $85$, and $156$.
+\begin{thm} \label{3.29}
+  Suppose $n_1, n_2, \ldots, n_L$ are positive integers that are pairwise relatively prime, that is, $(n_1, n_j) = 1$ for $i \neq j$, $1 \leq i, j \leq L$. Then the system of $L$ congruences
+  \begin{gather*}
+    x \equiv a_1 \gmod{n_1} \\
+    x \equiv a_2 \gmod{n_2} \\
+    \vdots \\
+    x \equiv a_L \gmod{n_L}
+  \end{gather*}
+  has a unique solution modulo the product $n_1n_2n_3\cdots n_L$.
+\end{thm}
 
 
-
-\begin{ques} \label{3.23}
-  Let $a$, $b$, and $n$ be integers with $n > 0$. How many solutions are there to the linear congruence $ax \equiv b \gmod n$ in the canonical complete residue system modulo $n$? Can you describe a technique to find them?
-\end{ques}
 
 \end{document}
