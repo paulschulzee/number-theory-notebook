@@ -201,7 +201,77 @@ CRSCNTCN (complete residue system containing no two consecutive numbers): $\{0, 
 \end{thm}
 
 \begin{proof}
-  If we invoke \ref{3.14} on all of the members of $A$ we will get exactly the elements of $S = \{0, \ldots, n-1\}$ (we cannot hit any element twice because then we would have two members of $A$ that are congruent by \ref{1.11}, and we cannot hit any element outside of $S$ because of \ref{3.14}). Then by \ref{3.14} and \ref{1.11}, we notice that every integer is congruent to exactly one element in $S$, and thus it must be congruent to its corresponding element in $A$ and only that element of $A$ (or else it would be congruent to two elements of $S$, too). 
+  If we invoke \ref{3.14} on all of the members of $A$ we will get exactly the elements of $S = \{0, \ldots, n-1\}$ (we cannot hit any element twice because then we would have two members of $A$ that are congruent by \ref{1.11}, and we cannot hit any element outside of $S$ because of \ref{3.14}). Then by \ref{3.14} and \ref{1.11}, we notice that every integer is congruent to exactly one element in $S$, and thus it must be congruent to its corresponding element in $A$ and only that element of $A$ (or else it would be congruent to two elements of $S$, too).
 \end{proof}
+
+
+
+\subsection*{Linear congruences}
+
+
+
+\begin{ex} \label{3.18}
+  Find all solutions in the appropriate canonical complete residue system modulo $n$ that satisfy the following linear congruences.
+\end{ex}
+
+1. $26x \equiv 14 \gmod 3$ solution is $1$
+
+2. $2x \equiv 3 \gmod 5$ solution is $4$
+
+3. $4x \equiv 7 \gmod 8$ no solution
+
+4. $24x \equiv 123 \gmod{213}$ Work deferred
+
+
+
+\begin{thm} \label{3.19}
+  Let $a$, $b$, and $n$ be integers with $n > 0$. Show that $ax \equiv b \gmod n$ has a solution if and only if there exist integers $x$ and $y$ such that $ax + ny = b$.
+\end{thm}
+
+\begin{proof}
+  $ax \equiv b \gmod n$ if and only if there exists some integer (call it $-y$) such that $n(-y) = ax - b$ (by definition). Rearranging this, we find this statement is equivalent to saying that $ax + ny = b$.
+\end{proof}
+
+
+
+\begin{thm} \label{3.20}
+  Let $a$, $b$, and $n$ be integers with $n > 0$. The equation $ax \equiv b \gmod n$ has a solution if and only if $(a, n) | b$.
+\end{thm}
+
+\begin{proof}
+  The equation has a solution if and only if there exist integers such that $ax + ny = b$ (\ref{3.19}), which occurs if and only if $(a, n) | b$ (\ref{1.48}).
+\end{proof}
+
+
+
+\begin{ques} \label{3.21}
+  What does the preceding theorem tell us about the congruence $(4)$ in Exercise 3.18 above?
+\end{ques}
+
+Since $(24, 213) = 3$ and $3 | 123$, it tells us that such a congruence exists.
+
+
+
+\begin{ex} \label{3.22}
+  Use the Euclidean Algorithm to find a member $x$ of the canonical complete residue system modulo $213$ that satisifes $24x \equiv 123 \gmod 213$. Find all members $x$ of the canonical complete residue system modulo $213$ that satisfy $24x \equiv 123 \gmod{213}$.
+\end{ex}
+
+This problem is equivalent to finding integers $x, y$ such that $24x + 213y = 123$, with the limitation that $0 \leq x < 213$.
+
+$213 = 8 \cdot 24 + 21$, giving $21 = 213 + (-8) \cdot 24$
+
+$24 = 21 + 3$, giving $3 = 24 + (-1) \cdot 21$.
+
+Combinging these two, we get $3 = 9 \cdot 24 - 213$.
+
+Then, we multiply both sides by $41$ to get $123 = 369 \cdot 24 - 41 \cdot 213$.
+
+By \ref{1.53}, we've found that the number multiplying $24$ in the equation $24x + 213y = 123$ (and thus every solution to $24x \equiv 123 \gmod{213}$) is of the form $369 - 71k$ for some integer $k$. The possible values this gives us in the range from $0$ to $212$ are $14$, $85$, and $156$.
+
+
+
+\begin{ques} \label{3.23}
+  Let $a$, $b$, and $n$ be integers with $n > 0$. How many solutions are there to the linear congruence $ax \equiv b \gmod n$ in the canonical complete residue system modulo $n$? Can you describe a technique to find them?
+\end{ques}
 
 \end{document}
