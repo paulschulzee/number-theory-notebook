@@ -1,0 +1,111 @@
+% !TEX root = ../main.tex
+
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\begin{ex} \label{3.25}
+  A band of $17$ pirates stole a sack of gold coins. When they tried to divide the fortune into equal portions, $3$ coins remained. In the ensuing brawl over who should get the extra coins, one pirate was killed. The coins were redistributed, but this time an equal division left $10$ coins. Again they fought about who shuld get the remaining coins and another pirate was killed. Now, fortunately, the coins could be divided evenly among the surviving $15$ pirates. What was the fewest number of coinst taht could have been in the sack?
+\end{ex}
+
+This would never happen. In all likelihood, the coins would simply be put in the ship's treasury to pay for injured pirates' medical expenses and/or send money to family of pirates killed in battle.
+
+The number of coins must be a multiple of $15$. Call it $15k$.
+
+Then, we know $15 \equiv 10 \gmod{16}$. From this, since $15 \equiv -1$ and $10 \equiv -6$, we find $(-1) k \equiv -6$. Multiplying both sides by $-1$, we get $k \equiv 6 \gmod{16}$.
+
+Similarly, $15k \equiv 3 \gmod{17}$, so $(-2)k \equiv -14$. Multiplying both sides by $8$, we get $k \equiv -112 \equiv 7 \gmod{17}$.
+
+Since $k \equiv 6 \gmod{16}$, we know $k$ is of the form $16x + 6$. Since $k \equiv 7 \gmod{17}$, we conclude $16x \equiv 7 \gmod{17}$, implying $16x \equiv 1$. Then, since $16 \equiv -1 \gmod{17}$, we conclud $-1x \equiv 1 \gmod{17}$, or $x \equiv -1 \equiv 16 \gmod{17}$.
+
+Since we're trying to minimize $15k$, we're trying to minimize $k$. Similarly, that means we're trying to minimize $16x + 6$, so we can obtain our answer by minimizing $x$. The smallest positive integer (since there are more than $0$ coins) that is equivalent to $16$ modulo $17$ is $16$, so plugging that in we obtain $k = 16 \cdot 16 + 6 = 262$ and then $15k = 15 \cdot 262 = 3930$.
+
+
+
+\begin{ex} \label{3.26}
+  When eggs in a basket are removed two, three, four, five, or six at a time, there remain, respectively, one, two, three, four, or five eggs. When they are taken out seven at a time, none are left over. Find the smallest number of eggs that could have been contained in the basket.
+\end{ex}
+
+Notice that if we added one more egg, the number of eggs would be divisble by two, three, four, five, and six. Thus, its prime factorization would have to include $2^2 3^1 5$. In other words, it would have to be multiple of $60$. Thus, the number of eggs has to be one less than a multiple of $60$. Call it $60x - 1$.
+
+We know $7 | (60x-1)$. Thus, $60x \equiv 1 \gmod 7$. Noticing $60 \equiv 4 \gmod 7$, we conclude $4x \equiv 1 \gmod 7$. Multiplying both sides by $2$ we obtain $x \equiv 2 \gmod 7$. To minimze $60x - 1$, we minmiize $x$: in this case, the smallest possible value is $x = 2$. Plugging that in, we get $60 \cdot 2 - 1 = 119$.
+
+
+
+\begin{thm} \label{3.27}
+  Let $a$, $b$, $m$, and $n$ be integers with $m > 0$ and $n > 0$. Then the system
+  \begin{gather*}
+    x \equiv a \gmod n \\
+    x \equiv b \gmod m
+  \end{gather*}
+  has a solution if and only if $(n, m) | a-b$.
+\end{thm}
+
+\begin{proof}
+  Every step in this proof will be bidirectional.
+
+  $x \equiv a \gmod n$ and $x \equiv b \gmod m$ can be rewritten as $ny = x - a$ and $mz = x - b$ for some integers $y$ and $z$. This implies $mz = ny + a - b$, rewritten as $n(-y) + mz = a - b$ for some integers $y$ and $z$. By \ref{1.48}, said integers $y$ and $z$ exist if and only if $(n, m)| a - b$.
+\end{proof}
+
+
+
+\begin{thm} \label{3.28}
+  Let $a$, $b$, $m$, and $n$ be integers with $m . 0$, $n > 0$, and $(m, n) = 1$. Then the system
+  \begin{gather*}
+    x \equiv a \gmod n \\
+    x \equiv b \gmod m
+  \end{gather*}
+  has a unique solution modulo $mn$.
+\end{thm}
+
+\begin{proof}
+  We will conjure two solutions to this system, $x_1$ and $x_2$, and show they are congruent modulo $nm$.
+
+  Notice $x_1 \equiv a \gmod n$ implies $ny_1 = x_1 - a$ for some integer $y_1$. Similarly, we find $mz_1 = x_1 - b$, $ny_2 = x_2 - a$, and $nz_2 = x_2 - b$.
+
+  Take $ny_1 = x_1 - a$ and subtract $ny_2 = x_2 - a$ to obtain $ny_1 - ny_2 = x_1 - a - (x_2 - a)$. With some rearrangement, we find $n(y_1 - y_2) = x_1 - x_2$, so we conclude $n | (x_1 - x_2)$.
+
+  Similarly, taking $mz_1 = x_1 - b$ and subtracting $mz_2 = x_2 - b$ gives us $m(z_1 - z_2) = x_1 - x_2$, implying $m | (x_1 - x_2)$.
+
+  By \ref{1.42}, since $(n, m) = 1$, we conclude $nm | (x_1 - x_2)$. By definition, this means $x_1 \equiv x_2 \gmod{nm}$, and we're done.
+\end{proof}
+
+
+
+\begin{thm} \label{3.29}
+  Suppose $n_1, n_2, \ldots, n_L$ are positive integers that are pairwise relatively prime, that is, $(n_1, n_j) = 1$ for $i \neq j$, $1 \leq i, j \leq L$. Then the system of $L$ congruences
+  \begin{gather*}
+    x \equiv a_1 \gmod{n_1} \\
+    x \equiv a_2 \gmod{n_2} \\
+    \vdots \\
+    x \equiv a_L \gmod{n_L}
+  \end{gather*}
+  has a unique solution modulo the product $n_1n_2n_3\cdots n_L$.
+\end{thm}
+
+\begin{proof}
+  The proof is by induction. The base case is $L = 2$, which is \ref{3.28}.
+
+  Our induciton hypothesis is that for all natural numbers $b < L$, it is the case that yadda yadda yadda I'm not writing all that out again. We will then show that for a system of $L$ simultaneous equations, the theorem holds.
+
+  Take the first $L-1$ equations from our system. We have a grouping that looks like
+
+  \begin{gather*}
+    x \equiv a_1 \gmod{n_1} \\
+    \vdots \\
+    x \equiv a_{L-1} \gmod {n_{L-1}}
+  \end{gather*}
+
+  which, by our induction hyptohesis, has a unique solution modulo $N = n_1 n_2 \cdots n_{L-1}$. Call this solution $x_0$.
+
+  Now we examine the systemm
+
+  \begin{gather*}
+    x \equiv x_0 \gmod{N} \\
+    x \equiv a_{L} \gmod L
+  \end{gather*}
+
+  which, by our base case, has a unique solution modulo $NL = n_1 \cdots n_L$. Since the first equation is equivalent to the first $L-1$ equations in our original system, we notice that the solutions to this system are exactly the solutions to our original system. Thus, since this system has a unique solution modulo $n_1 \cdots n_L$, so does our original system.
+\end{proof}
+
+\end{document}
