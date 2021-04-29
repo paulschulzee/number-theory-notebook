@@ -6,6 +6,7 @@
 \usepackage[margin=0.75in]{geometry}
 
 \DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\ord}{ord}
 
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{ques}[thm]{Question}
@@ -137,7 +138,7 @@ $1, 2, 4, 1, 2, 4, 1$.
 \end{thm}
 
 \begin{proof}
-  Since $a \equiv b \gmod n$, we know $n | (b - a)$. If $(b, n) > 1$, then since $(b, n) | b$ but $(b, n) \not | \; a$ (as if it did, it would be a common factor of $a$ and $n$ greater than $1$), we know $(b, n) \not | \; (b-a)$. However, $(b, n) | n$ and $n | (b-a)$, implying $(b, n) | (b-a)$, a contradiciton. Thus, it cannot be that $(b, n) > 1$, implying $(b, n) = 1$.
+  Since $a \equiv b \gmod n$, we know $n | (b - a)$. Since $(b, n) | n$, we conclude $(b, n) | (b-a)$. This implies $(b, n) | (a-b)$, and since $(b, n) | b$ we conclude $(b, n) | a$. Then we know $(b, n)$ is a common factor of $a$ and $n$, and so we conclude $(b, n) \leq 1$. Thus, $(b, n) = 1$.
 \end{proof}
 
 
@@ -172,5 +173,149 @@ $1, 2, 4, 1, 2, 4, 1$.
   Since $(a, n) = 1$, we invoke \ref{4.2} and find $(a^i, n = 1)$. Then, we combine that with $n | (a^i \cdot (a^{j-i} - 1))$ and invoke \ref{1.41} to conclude $n | (a^{j-i} - 1)$, which definitionally implies $a^{j-i} \equiv 1 \gmod n$ for some natural number $j-i$.
 \end{proof}
 
+
+
+\begin{ques} \label{4.7}
+  Choose some relatively prime natural numbers $a$ and $n$ and compute the order of $a$ modulo $n$. Frame a conjecture concerning how large the order of $a$ modulo $n$ can be, depending on $n$.
+\end{ques}
+
+From Math Seminar I know $\ord_n (a) | n$.
+
+
+
+\begin{thm} \label{4.8}
+  Let $a$ and $n$ be natural numbers with $(a, n) = 1$ and let $k = \ord_n (a)$. Then the numbers $a^1, a^2, \ldots, a^k$ are pariwise incongruent modulo $n$.
+\end{thm}
+
+\begin{proof}
+  Say there exist $1 \leq i, j \leq k$ such that $a^i \equiv a^j \gmod n$. WLOG, assume $j > i$. Then, notice that $n | (a^j - a^i)$ implies $n | (a^i \cdot (a^{j-i} - 1))$, which since $(n, a^i) = 1$ (\ref{4.2}) implies $n | (a^{j-i} - 1)$, implying $a^{j-i} \equiv 1 \gmod n$ for some $j-1 < k$.
+
+  This is a contradiction, since $k$ is the \emph{smallest} integer such that $a^k \equiv 1$. Thus, our assumption that such $i$ and $j$ exist is flawed, and the numbers $a^1, a^2, \ldots, a^k$ are pariwise incongruent.
+\end{proof}
+
+
+
+\begin{thm} \label{4.9}
+  Let $a$ and $n$ be natural numbers with $(a, n) = 1$ and let $k = \ord_n (a)$. For any natural number $m$, $a^m$ is congruent modulo $n$ to one of the numbers $a^1, a^2, \ldots, a^k$.
+\end{thm}
+
+\begin{proof}
+  By division algorithm, $m = kq + r$ for some integers $q, r$ with $r < k$. Then, we find $a^m \equiv a^{kq + r} \equiv a^{kq} \cdot a^r \equiv (a^k)^q \cdot a^r \equiv 1^q \cdot a^r \equiv a^r \gmod n$ for some $0 \leq r \leq k-1$. Our one edge case is $a^m \equiv a^0 \equiv 1$, but we can clearly see this implies $a^m \equiv a^k$, and we're done.
+\end{proof}
+
+
+
+\pagebreak
+
+
+
+\begin{thm} \label{4.10}
+  Let $a$ and $n$ be natural numbers with $(a, n) = 1$, let $k = \ord_n (a)$, and let $m$ be a natural number. Then $a^m \equiv 1 \gmod n$ if and only if $k | m$.
+\end{thm}
+
+\begin{proof}
+  Seeing that $k | m$ implies $a^m \equiv 1 \gmod n$ is easy: $a^m \equiv a^{kx} \equiv (a^k)^x \equiv 1^x \equiv 1 \gmod n$, for some integer $x$.
+
+  To show $a^m \equiv 1 \gmod n$ implies $k | m$, we invoke the division algorithm and find $q, r$ such that $m = kq + r$ for some $0 \leq r < k$. Notice $1 \equiv a^m \equiv a^{kq + r} \equiv a^{kq} \cdot a^r \equiv (a^k)^q \cdot a^r \equiv 1^q \cdot a^r \equiv a^r \gmod n$.
+  Since $a^r \equiv 1 \gmod n$, we conclude $r$ isn't between $1$ and $k-1$ inclusive, as then $k$ wouldn't be the \emph{smallest} number such that $a^k \equiv 1 \gmod n$. Thus, since $0 \leq r < k$, the only remaining possibility is that $r = 0$. Thus, $m = kq + r$ becomes $m = kq + 0 = kq$, implying $k | m$.
+\end{proof}
+
+
+
+\begin{thm} \label{4.11}
+  Let $a$ and $n$ be natural numbers with $(a, n) = 1$. Then $\ord_n (a) < n$ (unless $n = 1$).
+\end{thm}
+
+\begin{proof}
+  Suppose $\ord_n (a) \geq n$. Then, by \ref{4.8}, we know $a^1, a^2, \ldots, a^n$ are pairwise incongruent modulo $n$. This implies that each of these numbers reduces to a different number in the CCRS modulo $n$ (if two numbers reduced to the same thing, they'd be congruent). Thus, since the CCRS has $n$ elements like the sequence, every member of the CCRS must be ``hit'' by the powers of $a$. This implies there exists an $i$ such that $a^i \equiv 0 \gmod n$, or in other words $n | a^i$.
+  Since $(a, n) = 1$, by \ref{4.2}we know $(a^i, n) = 1$ Since $n$ is a common factor of $n$ and $a^i$, we conclude $n = 1$. This is the one exception to the theorem: in any other case, we now know $\ord_n (a) < n$.
+\end{proof}
+
+
+
+\begin{ex} \label{4.12}
+  Compute $a^{p-1} \gmod p$ for various numbers $a$ and primes $p$, and make a conjecture.
+\end{ex}
+
+$a = 4$, $p = 5$, $4^{5-1} \equiv 1 \gmod 5$.
+
+$a = 3$, $p = 5$, $3^{5-1} \equiv 1 \gmod 5$.
+
+$a = 4$, $p = 7$, $4^{7-1} \equiv 1 \gmod 7$.
+
+$a = 3$, $p = 7$, $3^{7-1} \equiv 1 \gmod 7$.
+
+It seems like $a^{p-1} \equiv 1 \gmod p$.
+
+
+
+\begin{thm} \label{4.13}
+  Let $p$ be a prime and let $a$ be an integer not divisible by $p$; that is, $(a, p) = 1$. Then $A = \{a, 2a, 3a, \ldots, pa\}$ is a complete residue system modulo $p$.
+\end{thm}
+
+\begin{proof}
+  By \ref{3.17}, we only have to show that no two members of $A$ are congruent modulo $p$. To do this, take any two members $ia$ and $ja$, and assume WLOG that $j > i$. Since $j - i < p$, we know $p \not | \; (j-i)$, and we also know $p \not | \; a$. Thus, by \ref{2.27}, we know $p \not | \; (j-i)a$, or in other words $p \not | \; (aj - ai)$.
+  By definition, this implies $aj \not \equiv ai \gmod p$, so the members of $A$ are pairwise incongruent and this (along with the fact that $A$ has $p$ elements) implies $A$ is a compelte residue system.
+\end{proof}
+
+
+
+\begin{thm} \label{4.14}
+  Let $p$ be a prime and let $a$ be an integer not divisible by $p$. Then
+
+  $$a \cdot 2a \cdot 3a \cdot \cdots \cdot (p-1)a \equiv 1 \cdot 2 \cdot 3 \cdot \cdots \cdot (p-1) \gmod p$$
+\end{thm}
+
+\begin{proof}
+  By \ref{4.13}, we know the set $\{a, 2a, \ldots, pa\}$ is a CRS. Because of this, when we take the members of this set and ``reduce'' them to their CCRS members, we should exactly cover the CCRS. Now we kick out $pa$, since we know $pa \equiv 0 \gmod p$ (since $p | pa$). Goodbye, $pa$. What we're left with is a set that has one term equivalent to $1$ modulo $p$, one term equivalent to $2$ modulo $p$, etc., all the way up to a term equivalent to $p-1$ modulo $p$.
+
+  Now, we take the product $a \cdot \cdots \cdot (p-1)a$ and replace each term with its corresponding meber of the CCRS. This won't change what it's congruent to mod $p$, since we're replacing things that are equivalent mod $p$. What we'll be left with, then, is $1 \cdot 2 \cdot \cdots \cdot p-1$, albeit probably not in that order.
+\end{proof}
+
+
+
+\begin{thm} \label{4.15}
+  If $p$ is a prime and $a$ is an integer relatively prime to $p$, then $a^{p-1} \equiv 1 \gmod p$.
+\end{thm}
+
+
+
+\begin{thm} \label{4.16}
+  If $p$ is a prime and $a$ is any integer, then $a^p \equiv a \gmod p$.
+\end{thm}
+
+
+
+\begin{thm} \label{4.17}
+  The two versions of Fermat's Little Theorem above are equivalent.
+\end{thm}
+
+\begin{proof}
+  Showing \ref{4.16} implies \ref{4.15} is as simple as realizing $a^p \equiv a \gmod p$ implies $a \cdot a^{p-1} \equiv a \cdot 1 \gmod p$ and invoking \ref{4.5}.
+
+  Showing \ref{4.15} implies \ref{4.16} is as simples as multiply both sides of $a^{p-1} \equiv 1 \gmod p$ by $a$... for $a$ relatively prime to $p$. If $a$ is not relatively prime to $p$, that implies $p | a$, so $a^p \equiv 0 \equiv a \gmod p$, an easy edge case.
+\end{proof}
+
+
+
+\begin{thm} \label{4.18}
+  Let $p$ be a prime and $a$ be an integer. If $(a, p) = 1$, then $\ord_p (a)$ divides $p-1$, that is, $\ord_p(a) | p-1$.
+\end{thm}
+
+\begin{proof}
+  Since $a^{p-1} \equiv 1 \gmod p$ by \ref{4.15}, we cite \ref{4.10} and are done.
+\end{proof}
+
+
+
+\begin{ex} \label{4.19}
+  Compute each of the followin without the aid of a calculator or computer.
+\end{ex}
+
+1. $512^{372} \equiv (512^{12})^{31} \equiv 1^{31} \equiv 1 \gmod{13}$.
+
+2. $3444^{3233} \equiv (10^{16})^{202} \cdot 10^1 \equiv 1^{202} \cdot 10 \equiv 10 \gmod{17}$.
+
+3. $123^{456} \equiv (8^{22})^{20} \cdot 8^16 \equiv 1^{20} \cdot 18^8 \equiv 2^4 \equiv 4^2 \equiv 8 \gmod{23}$.
 
 \end{document}
