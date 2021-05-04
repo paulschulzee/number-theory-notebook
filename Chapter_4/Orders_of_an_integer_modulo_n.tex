@@ -1,0 +1,66 @@
+% !TEX root = ../main.tex
+
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\begin{ex} \label{4.1}
+  For $i = 0, 1, 2, 3, 4, 5$ and $6$, find the number in the CCRS to which $2^i$ is congruent modulo $7$.
+\end{ex}
+
+$1, 2, 4, 1, 2, 4, 1$.
+
+
+
+\begin{thm} \label{4.2}
+  Let $a$ and $n$ be natural numbers with $(a, n) = 1$. Then $(a^j, n) = 1$ for any natural number $j$.
+\end{thm}
+
+\begin{proof}
+  I could've sworn we've done this already. In any case, the proof is by induction, with the base case being $j=1$ given to us immediately. The hypothesis is $(a^{j-1},n) = 1$, and this in conjunciton with the fact that $(a, n) = 1$ adn \ref{2.29} is enough to show $(a^j, n) = 1$.
+\end{proof}
+
+
+
+\begin{thm} \label{4.3}
+  Let $a$, $b$, and $n$ be integers with $n > 0$ and $(a, n) = 1$. If $a \equiv b \gmod n$, then $(b, n) = 1$.
+\end{thm}
+
+\begin{proof}
+  Since $a \equiv b \gmod n$, we know $n | (b - a)$. Since $(b, n) | n$, we conclude $(b, n) | (b-a)$. This implies $(b, n) | (a-b)$, and since $(b, n) | b$ we conclude $(b, n) | a$. Then we know $(b, n)$ is a common factor of $a$ and $n$, and so we conclude $(b, n) \leq 1$. Thus, $(b, n) = 1$.
+\end{proof}
+
+
+
+\begin{thm} \label{4.4}
+  Let $a$ and $n$ be natural numbers. Then there exist natural numbers $i$ and $j$, with $i \neq j$, such that $a^i \equiv a^j \gmod n$.
+\end{thm}
+
+\begin{proof}
+  Consider the series $a^1, a^2, a^3, \ldots$. When we take this series and reduce each term to its corresponding member in the CCRS, there are only finitely many values each term can take, but infinitely many terms. Thus, by pigeonhole, two terms must take the same value, and thus two terms must be congruent modulo $n$.
+\end{proof}
+
+
+
+\begin{thm} \label{4.5}
+  Let $a$, $b$, $c$, and $n$ be integers with $n > 0$. If $ac \equiv bc \gmod n$ and $(c, n) = 1$, then $a \equiv b \gmod n$.
+\end{thm}
+
+\begin{proof}
+  $ac \equiv bc \gmod n$ implies $n | (bc - ac)$, implying $n | (c \cdot (b-a))$. Since $(c, n) = 1$, by \ref{1.41} we conclude $n | (b-a)$, implying $a \equiv b \gmod n$.
+\end{proof}
+
+
+
+\begin{thm} \label{4.6}
+  Let $a$ and $n$ be natural numbers with $(a, n) = 1$. Then there exists a natural number $k$ such that $a^k \equiv 1 \gmod n$.
+\end{thm}
+
+\begin{proof}
+  By \ref{4.4}, we know there exist distinct natural numbers $i$ and $j$ such that $a^i \equiv a^j \gmod n$. Assume WLOG $j > i$. By definition, this implies $n | (a^j - a^i)$, implying $n | (a^i \cdot (a^{j-i} - 1))$.
+
+  Since $(a, n) = 1$, we invoke \ref{4.2} and find $(a^i, n = 1)$. Then, we combine that with $n | (a^i \cdot (a^{j-i} - 1))$ and invoke \ref{1.41} to conclude $n | (a^{j-i} - 1)$, which definitionally implies $a^{j-i} \equiv 1 \gmod n$ for some natural number $j-i$.
+\end{proof}
+
+
+\end{document}
