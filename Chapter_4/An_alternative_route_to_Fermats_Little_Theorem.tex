@@ -1,0 +1,61 @@
+% !TEX root = ../main.tex
+
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\begin{thm} \label{4.24}
+  Let $a$ and $b$ be numbers and let $n$ be a natural number. Then
+
+  $$(a+b)^n = \sum_{i=0}^n \binom{n}{i}a^{n-i}b^i$$
+\end{thm}
+
+\begin{proof}
+  The proof is by induction.
+
+  Our base case is $n = 1$. Notice $(a+b)^1 = a^1 + b^1$. Yep. Neat.
+
+  Our induction hypothesis is that the formula holds for $n-1$. Our inductive step will show it for $n$.
+
+  Since $(a+b)^n = (a+b) \cdot (a+b)^{n-1}$, we cite our induction hypothesis to get $(a+b) \cdot \sum_{i=0}^{n-1} \binom{n-1}{i}a^{n-1-i}b^i$.
+
+  Distributing over the $a+b$ term and then distributing over the sigma, we get $\sum_{i=0}^{n-1} \binom{n-1}{i}a^{n-i}b^i + \sum_{i=0}^{n-1} \binom{n-1}{i}a^{n-1-i}b^{i+1}$.
+
+  Let's shift the index on that second term. Also, we'll use the fact $\binom{n-1}{0} = 1$ and $\binom{n-1}{n-1} = 1$ to pull out a couple of edge terms: $i = 0$ for the first sum, and $i = n$ for the second. We get $a^n + \sum_{i=1}^{n-1} \binom{n-1}{i}a^{n-i}b^i + \sum_{i=1}^{n-1} \binom{n-1}{i-1}a^{n-i}b^{i} + b^n$.
+
+  Now that the indices add up, we combine them into one giant sum. Now we have $a^n + \sum_{i=1}^{n-1} (\binom{n-1}{i} + \binom{n-1}{i-1})a^{n-i}b^i + b^n$.
+
+  Usin combinatorics knowledge, plus the fact that $\binom{n}{0}a^{n-0}b^0 = a^n$ and $\binom{n}{n}a^{n-n}b^n = b^n$, we combine those binomials and extend the range of the index to get our final result: $\sum_{i=0}^n \binom{n}{i}a^{n-i}b^i$.
+\end{proof}
+
+
+
+\begin{lem} \label{4.25}
+  If $p$ is prime and $i$ is a natural number less than $p$, then $p$ divides $\binom{p}{i}$.
+\end{lem}
+
+\begin{proof}
+  Binomial are integers, and $\binom{p}{i} = \frac{p!}{(p-i)!i!}$. This means $(p-i)!i! | p!$. Thus, $(p-i)!i! | (p \cdot (p-1)!)$. By \ref{2.12}, since $(p-i)!i!$ has no $p$'s in its prime factorization, we know $(p, (p-i)!i!) = 1$. Thus, by \ref{1.41}, we conclude $(p-i)!i! | (p-1)!$.
+
+  This means that $\frac{(p-1)!}{(p-i)!i!}$ is an integer. Since $p \cdot \frac{(p-1)!}{(p-i)!i!} = \binom{p}{i}$ by the formula above, we've found that $p$ times some integer is equal to $\binom{p}{i}$; in other words, $p | \binom{p}{i}$.
+\end{proof}
+
+
+
+\begin{thm} \label{4.26}
+  If $p$ is a prime and $a$ is an integer, then $a^p \equiv a \gmod p$.
+\end{thm}
+
+\begin{proof}
+  We do this by induction on $a$. Our base case is that $0^p \equiv 0 \gmod p$. Easy.
+
+  Our induction hypothesis is that $a^p \equiv a \gmod p$, and for our inductive step we want to show $(a+1)^p \equiv a+1 \gmod p$.
+
+  Notice by \ref{4.24} that $(a + 1)^p = \sum_{i=0}^p \binom{p}{i}a^{p-i}$. Let's see what we can simplify this down to modulo $p$.
+
+  For each of the terms with $0 < i < p$, we know by \ref{4.25} that $\binom{p}{i} \equiv 0 \gmod p$, so the whole term is congruent to $0$. Thus, we can ignore each of these terms, as we're basically just adding a bunch of $0$'s. With this we simplify down to just $i = 0$ and $i = p$, giving us $a^p + 1$ (since $\binom{p}{0} = \binom{p}{p} = 1$).
+
+  By our inductive hypothesis, $a^p \equiv a \gmod p$, so we conclude $(a+1)^p \equiv a^p + 1 \equiv a + 1 \gmod p$, completing our inductive step and the proof.
+\end{proof}
+
+\end{document}
