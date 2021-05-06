@@ -127,76 +127,7 @@
 
 \setcounter{thm}{26}
 
-\begin{ques} \label{4.27}
-  The numbers $1$, $5$, $7$, and $11$ are all natural numbers that are relatively prime prime to $12$, so $\phi (12) = 4$.
-\end{ques}
-
-What is $\phi (7)$? $6$.
-
-What is $\phi (15)$? $8$.
-
-What is $\phi (21)$? $12$.
-
-What is $\phi (35)$? $24$.
-
-
-
-\begin{thm} \label{4.28}
-  Let $a$, $b$, and $n$ be integers such that $(a, n) = 1$ and $(b, n) = 1$. Then $(ab, n) = 1$.
-\end{thm}
-
-\begin{proof}
-  Isn't this done with \ref{2.12}? Gross, don't make me type out all those subscripts again.
-\end{proof}
-
-
-
-\begin{thm} \label{4.29}
-  Let $a$, $b$, and $n$ be integers with $n > 0$. If $a \equiv b \gmod n$ and $(a, n) = 1$, then $(b, n) = 1$.
-\end{thm}
-
-\begin{proof}
-  $(b, n) | n$ and also since $n | (a - b)$ we conclude $(b, n) | (a - b)$. Since $(b, n) | b$, we know $(b, n) | ((a - b) + b)$, or in other words $(b, n) | a$.
-
-  Then, since $(b, n) | n$ and $(b, n) | a$, its maximum value is $1$. Thus, $(b, n) = 1$.
-\end{proof}
-
-
-
-\begin{thm} \label{4.30}
-  Let $a$, $b$, $c$, and $n$ be integers with $n > 0$. If $ab \equiv ac \gmod n$ and $(a, n) = 1$, then $b \equiv c \gmod n$.
-\end{thm}
-
-\begin{proof}
-  Since $ab \equiv ac \gmod n$ we know $n | (ab - ac)$, so $n | a(b-c)$. If $(a, n) = 1$, we know by \ref{1.41} that $n | (b-c)$, i.e. $b \equiv c \gmod n$.
-\end{proof}
-
-
-
-\begin{thm} \label{4.31}
-  Let $n$ be a natural number and let $x_1, x_2, \ldots, x_{\phi (n)}$ be the distinct natural numbers less than or equal to $n$ that are relatively prime to $n$. Let $a$ be a non-zero integer relatively prime to $n$ and let $i$ and $j$ be different natural numbers less than or equal to $\phi (n)$. Then $ax_i \not \equiv ax_j \gmod n$.
-\end{thm}
-
-\begin{proof}
-  Assume WLOG $x_i > x_j$.
-
-  Since $0 < x_i - x-j < n$, we know $n \not | \; (x_i - x_j)$. Since $(a, n) = 1$, we then know $n \not | \; a(x_i - x_j)$, i.e. $n \not | \; (ax_i - ax_j)$, i.e. $ax_i \not \equiv ax_j \gmod n$.
-\end{proof}
-
-
-
-\begin{thm} \label{4.32}
-  If $a$ and $n$ are integers with $n > 0$ and $(a, n) = 1$, then
-
-  $$a^{\phi (n)} \equiv 1 \gmod n .$$
-\end{thm}
-
-\begin{proof}
-  Let $\Phi = \{x_1, x_2, \ldots, x_{\phi (n)} \}$ be the distinct natural numbers $\leq n$ that are relatively prime to $n$.
-
-  To complete this proof, we will first show $ax_1 \cdot \cdots \cdot ax_{\phi (n)} \equiv x_1 \cdot \cdots \cdot x_{\phi (n)} \gmod n$.
-\end{proof}
-
+\subfile{Chapter_4/Eulers_Theorem_and_Wilsons_Theorem}
 
 
 

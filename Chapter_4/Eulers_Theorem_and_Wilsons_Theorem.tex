@@ -1,0 +1,201 @@
+% !TEX root = ../main.tex
+
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\begin{ques} \label{4.27}
+  The numbers $1$, $5$, $7$, and $11$ are all natural numbers that are relatively prime prime to $12$, so $\phi (12) = 4$.
+\end{ques}
+
+What is $\phi (7)$? $6$.
+
+What is $\phi (15)$? $8$.
+
+What is $\phi (21)$? $12$.
+
+What is $\phi (35)$? $24$.
+
+
+
+\begin{thm} \label{4.28}
+  Let $a$, $b$, and $n$ be integers such that $(a, n) = 1$ and $(b, n) = 1$. Then $(ab, n) = 1$.
+\end{thm}
+
+\begin{proof}
+  Isn't this done with \ref{2.12}? Gross, don't make me type out all those subscripts again.
+\end{proof}
+
+
+
+\begin{thm} \label{4.29}
+  Let $a$, $b$, and $n$ be integers with $n > 0$. If $a \equiv b \gmod n$ and $(a, n) = 1$, then $(b, n) = 1$.
+\end{thm}
+
+\begin{proof}
+  $(b, n) | n$ and also since $n | (a - b)$ we conclude $(b, n) | (a - b)$. Since $(b, n) | b$, we know $(b, n) | ((a - b) + b)$, or in other words $(b, n) | a$.
+
+  Then, since $(b, n) | n$ and $(b, n) | a$, its maximum value is $1$. Thus, $(b, n) = 1$.
+\end{proof}
+
+
+
+\begin{thm} \label{4.30}
+  Let $a$, $b$, $c$, and $n$ be integers with $n > 0$. If $ab \equiv ac \gmod n$ and $(a, n) = 1$, then $b \equiv c \gmod n$.
+\end{thm}
+
+\begin{proof}
+  Since $ab \equiv ac \gmod n$ we know $n | (ab - ac)$, so $n | a(b-c)$. If $(a, n) = 1$, we know by \ref{1.41} that $n | (b-c)$, i.e. $b \equiv c \gmod n$.
+\end{proof}
+
+
+
+\pagebreak
+
+
+
+\begin{thm} \label{4.31}
+  Let $n$ be a natural number and let $x_1, x_2, \ldots, x_{\phi (n)}$ be the distinct natural numbers less than or equal to $n$ that are relatively prime to $n$. Let $a$ be a non-zero integer relatively prime to $n$ and let $i$ and $j$ be different natural numbers less than or equal to $\phi (n)$. Then $ax_i \not \equiv ax_j \gmod n$.
+\end{thm}
+
+\begin{proof}
+  Assume WLOG $x_i > x_j$.
+
+  Since $0 < x_i - x-j < n$, we know $n \not | \; (x_i - x_j)$. Since $(a, n) = 1$, we then know $n \not | \; a(x_i - x_j)$, i.e. $n \not | \; (ax_i - ax_j)$, i.e. $ax_i \not \equiv ax_j \gmod n$.
+\end{proof}
+
+
+
+\begin{thm} \label{4.32}
+  If $a$ and $n$ are integers with $n > 0$ and $(a, n) = 1$, then
+
+  $$a^{\phi (n)} \equiv 1 \gmod n .$$
+\end{thm}
+
+\begin{proof}
+  Let $\Phi = \{x_1, x_2, \ldots, x_{\phi (n)} \}$ be the distinct natural numbers $\leq n$ that are relatively prime to $n$.
+
+  To complete this proof, we will first show $ax_1 \cdot \cdots \cdot ax_{\phi (n)} \equiv x_1 \cdot \cdots \cdot x_{\phi (n)} \gmod n$. To see this, take each term of the product on the left side and reduce it to its equivalent term in the CCRS modulo $n$. Each of these reduced terms will be distinct (\ref{4.31}). Since $(a, n) = 1$, \ref{2.29} tells us that each term $ax_i$ is relatively prime to $n$. Each term's reduction must then also be relatively prime to $n$.
+  To see this, say $ax_i \equiv \alpha \gmod n$. Then $n | (ax_i - \alpha)$, so $(n, \alpha) | (ax_i - \alpha)$. Since $(n, \alpha) | \alpha$, we conclude $(n, \alpha) | ax_i$. This, combined with $(n, \alpha) | n$, lets us conclude $(n, \alpha)$ is a common factor of $n$ and $ax_i$, and thus must be $1$.
+
+  Thus, when we reduce each of the terms of the product on the less side of our equivalence, we obtain $\phi (n)$ distinct terms that are all relatively prime to $n$. Since there are exactly $\phi (n)$ possible terms of the CCRS that are relatively prime to $n$, this means each possible term must be ``covered.'' In other words, in the product from $ax_1$ to $ax_{\phi (n)}$ we have one of each possible term, and by replacing each term on the left with its representation in the CCRS (which we can do when talking about modular congruence) we obtain $\prod_{i=1}^{\phi (n)} ax_i \equiv \prod_{i=1}^{\phi (n)} x_i \gmod n$.
+
+  Taking all of the $a$'s out of the left side nets us $a^{\phi (n)} \cdot (x_1 \cdot \cdots \cdot x_{\phi (n)}) \equiv 1 \cdot (x_1 \cdot \cdots \cdot x_{\phi (n)})$. Since $x_1 \cdot \cdots \cdot x_{\phi (n)}$ is a product of numbers relatively prime to $n$, we conclude by \ref{2.29} that the product is relatively prime to $n$,
+  and thus by \ref{4.5} that $a^{\phi (n)} \equiv 1 \gmod n$.
+\end{proof}
+
+
+
+\begin{thm} \label{4.33}
+  If $p$ is a prime and $a$ is an integer relatively prime to $p$, then $a^{p-1} \equiv 1 \gmod p$.
+\end{thm}
+
+\begin{proof}
+  $\phi (p) = p-1$ since there are $p-1$ natural numbers less than $p$, and $p$ is relatively prime to all of them because $p$ is prime (and obviously doesn't divide any numbers smaller than itself). Then we simply invoke \ref{4.32}.
+\end{proof}
+
+
+
+\begin{ex} \label{4.34}
+  Compute each of the following without the aid of a calculator or computer.
+\end{ex}
+
+$12^{49} \equiv 12 \cdot 9^{24} \equiv 12 \cdot 6^{12} \equiv 12  \cdot 6^{6} \equiv 12 \cdot 6 \equiv 12 \gmod{15}$.
+
+$139^{112} \equiv (4^{18})^4 \cdot 4^4 \equiv 16^2 \equiv 13 \gmod{27}$
+
+
+
+\begin{ex} \label{4.35}
+  Find te last digit in the base $10$ representation of the integer $13^{474}$
+\end{ex}
+
+Make it stop.
+
+$13^{474} \equiv 3^{474} \equiv (3^4)^118 \cdot 3^2 \equiv 9 \gmod{10}$.
+
+
+
+\begin{thm} \label{4.36}
+  Let $p$ be a prime and let $a$ be an integer such that $1 \leq a < p$. Then there exists a unique natural number $b$ less than $p$ such that $ab \equiv 1 \gmod p$.
+\end{thm}
+
+\begin{proof}
+  Let $S = \{1a, 2a, \ldots, pa\}$. By \ref{4.12}, this is a CRS. Thus, \emph{exactly} one element must be congruent to $1$ modulo $p$: call this element $ba$.
+
+  $b \not = p$ because $pa \equiv 0 \gmod p$, and $0 \not \equiv 1 \gmod p$.
+
+  And we're done.
+\end{proof}
+
+
+
+\begin{ex} \label{4.37}
+  Let $p$ be a prime. Show that the natural numbers $1$ and $p-1$ are their own inverse modulo $p$.
+\end{ex}
+
+$1 \cdot 1 = 1 \equiv 1 \gmod p$. Easy.
+
+$(p-1) \cdot (p-1) = p^2 - 2p + 1 \equiv 1 \gmod p$ (since $(p^2 - 2p + 1) - 1 = p^2 - 2p$ and $p | (p^2 - 2p)$).
+
+
+
+\begin{thm} \label{4.38}
+  Let $p$ be a prime and let $a$ and $b$ be integers such that $1 < a, b < p - 1$ and $ab \equiv 1 \gmod p$. Then $a \not = b$.
+\end{thm}
+
+\begin{proof}
+  To show this, we will show that $a \cdot a \equiv 1 \gmod p$ with $0 < a < p$ implies $a = 1$ or $a = p - 1$.
+
+  $a^2 \equiv 1 \gmod p$ implies $p | (a^2 - 1)$, implying $p | (a+1)(a-1)$. By \ref{2.27}, this means either $p | (a+1)$ or $p | (a-1)$. Since $0 < a < p$, the only possibilities for either of these is to set $a = 1$ so that $a - 1 = 0$ or $a = p - 1$ so that $a + 1 = p$, both of which are divisible by $p$.
+\end{proof}
+
+
+
+\begin{ex} \label{4.39}
+  Find all pairs of numbers $a$ and $b$ in $\{2, 3, \ldots, 11\}$ such that $ab \equiv 1 \gmod{13}$.
+\end{ex}
+
+$2 \cdot 7 \equiv 1 \gmod{13}$
+
+$3 \cdot 9 \equiv 1 \gmod{13}$
+
+$4 \cdot 10 \equiv 1 \gmod{13}$
+
+$5 \cdot 8 \equiv 1 \gmod{13}$
+
+$6 \cdot 11 \equiv 1 \gmod{13}$
+
+
+
+\begin{thm} \label{4.40}
+  If $p$ is a prime larger than $2$, then $2 \cdot 3 \cdot 4 \cdot \cdots \cdot (p-2) \equiv 1 \gmod p$.
+\end{thm}
+
+\begin{proof}
+  Each term pairs up with its unique inverse to turn the product into a series of $1$'s multiplied together. The uniqueness part of \ref{4.36} and the fact that none of these numbers are their own inverse (\ref{4.38}) show that each number will have \emph{exactly} one inverse in the rest of the product.
+\end{proof}
+
+
+
+\begin{thm} \label{4.41}
+  If $p$ is a prime, then $(p-1)! \equiv -1 \gmod p$.
+\end{thm}
+
+\begin{proof}
+  Using \ref{4.40}, we see $(p-1)! \equiv 1 \cdot (2 \cdot \cdots \cdot (p-2)) \cdot (p-1) \equiv 1 \cdot 1 \cdot (-1) \equiv -1 \gmod p$.
+\end{proof}
+
+
+
+\begin{thm} \label{4.42}
+  If $n$ is a natural number such that $(n-1)! \equiv -1 \gmod n$, then $n$ is prime.
+\end{thm}
+
+\begin{proof}
+  Say $a$ is a factor of $n$ with $0 < a < n$. Since $(n-1)! \equiv -1 \gmod n$, we know $n | ((n-1)! + 1)$. Given $a | n$, this means $a | ((n-1)! + 1$. However, $a | (n-1)!$ since $a \leq n-1$ and thus $a$ is ``included'' in the factorial. Thus, $a | 1$, implying $a = 1$.
+
+  We conclude the only factor of $n$ between $0$ and $n$ is $1$. In other words, $n$ is prime.
+\end{proof}
+
+\end{document}
