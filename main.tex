@@ -134,4 +134,72 @@
 
 
 
+\pagebreak
+
+
+
+\setcounter{section}{5}
+
+\section{Chapter 6}
+
+\subsection*{Lagrange's Theorem}
+
+\begin{thm} \label{6.1}
+  Let $f(x) = a_n x^n + a_{n-1} x^{n-1} + \cdots + a_0$ be a polynomial of degree $n > 0$ with integer coefficients and assume $a_n \neq 0$. Then an integer $r$ is a root of $f(x)$ if and only if htere exists a polynomial $g(x)$ of degree $n-1$ with integer coefficients such that $f(x) = (x-r)g(x)$.
+\end{thm}
+
+\begin{proof}
+  To see that the existence of $g(x)$ such that $f(x) = (x-r) g(x)$ implies $r$ is a root is easy: notice $f(r) = (r-r) g(r) = 0 \cdot g(r) = 0$.
+
+  The other direction requires some polynomial long division, which I won't Tex out because that would be a.) hell for me and b.) uninformative for the reader. Instead I will assert without evidence that $f(x) / (x-r)$ simplifies out to $a_n x^{n-1} + (a_n r + a_{n-1})x^{n-2} + \cdots + (a_n r^{n-1} + a_{n-1} r^{n-2} + \cdots + a_0) + a_n r^n + a_{n-1}r^{n-1} + \cdots + a_0$, with the part from $a_n r^n$ on being the remainder. Notice, then, that since $f(r) = 0$, the remainder is $0$. Looking at the coefficients on the rest of the terms, we notice they're all made up of integers added and multiplied together, and thus must all be integers. Thus, $f(x) / (x-r)$ is a satisfactory $g(x)$ such that $f(x) = (x-r) g(x)$.
+\end{proof}
+
+
+
+\begin{thm} \label{6.2}
+  Let $f(x) = a_n x^n + a_{n-1} x^{n-1} + \cdots + a_0$ be a polynomial of degree $n > 0$ with integer coefficients and $a_n \neq 0$. Let $p$ be a prime number and $r$ an integer. Then, if $f(r) \equiv 0 \gmod p$, there exists a polynomial $g(x)$ of degree $n-1$ such that
+
+  $$(x-r)g(x) = a_nx^n + a_{n-1}x^{n-1} + \cdots + a_1x + b_0$$
+
+  where $a_0 \equiv b_0 \gmod p$
+\end{thm}
+
+\begin{proof}
+  We divide $f(x) / (x-r)$ as above, but instead of noticing the remainder is $0$ we notice the remainder is congruent to $0$ modulo $p$. If we let the quotient (without the remainder) be $g(x)$, then we notice $f(x) = (x-r) g(x) + R$, where $R$ is the remainder. Rearranging, we obtain $(x-r) g(x) = f(x) - R = a_n x^n + \cdots + a_1 x + a_0 - R$.
+
+  From here, we combine $a_0 - R$ into one term $b_0$, noticing that since $p | R$ we know $a_0 \equiv b_0 \gmod p$, and obtain $(x-r) g(x) = a_n x^n + \cdots + a_1 x + b_0$, and we're done.
+\end{proof}
+
+
+
+\begin{thm} \label{6.3}
+  If $p$ is a prime and $f(x) = a_n x^n + a_{n-1} x^{n-1} + \cdots + a_0$ is a polynomail with integer coefficients and $a_n \neq 0 \gmod p$, then $f(x) \equiv 0 \gmod p$ has at most $n$ non-congruent solutions modulo $p$.
+\end{thm}
+
+\begin{proof}
+  No
+\end{proof}
+
+
+
+\begin{thm} \label{6.4}
+  Suppose $p$ is a prime and $\ord_p (a) = d$. Then for each natural number $i$ with $(i, d) = 1$, $\ord_p(a^i) = d$.
+\end{thm}
+
+\begin{proof}
+  To find $k = \ord_p (a^i)$, we're looking for the smallest number such that $(a^i)^k \equiv 0 \gmod p$, or in other words $a^{ik} \equiv 0 \gmod p$. By \ref{4.10}, this is only the case when $d | ik$. Since $(i, d) = 1$, we know $d | ik$ implies $d | k$ (easily shown by \ref{2.12}. I swear to God we proved this somewhere, but this is like the 5th time I've gone to cite this imaginary theorem and I never find it). The smallest (natural) $k$ such that $d | k$ is $d$, so $k = \ord_p (a^i) = d$.
+\end{proof}
+
+
+
+\begin{thm} \label{6.5}
+  For a prime $p$ and a natural number $d$, at most $\phi (d)$ incongruent integers modulo $p$ have order $d$ modulo $p$.
+\end{thm}
+
+\begin{proof}
+  
+\end{proof}
+
+
+
 \end{document}
