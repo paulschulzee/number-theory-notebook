@@ -197,8 +197,78 @@
 \end{thm}
 
 \begin{proof}
-  
+  Can't
 \end{proof}
+
+
+
+\begin{thm} \label{6.6}
+  Let $p$ be a prime and suppose $g$ is a primitive root modulo $p$. Then the set $\{0, g, g^2, g^3, \ldots, g^{p-1}\}$ forms a CRS modulo $p$.
+\end{thm}
+
+\begin{proof}
+  Since this set has $p$ elements, by \ref{3.17}, all we have to do to show this is a CRS is to show that the terms are pairwise incongruent modulo $p$.
+
+  None of the powers will ever be congruent to $0$, because that would imply $p | g^n$ which is impossible since no $p$ can appear in the prime factorization of $g^n$ (as if it did, $g \equiv 0 \gmod p$ and then $g$ has no order).
+
+  Say there are two integers $i, j$ such that $1 \leq i, j \leq p-1$ and $g^i \equiv g^j \gmod p$. Assume WLOG $i > j$. Then $g^i \equiv g^j \gmod p$ implies $g^{i-j} \cdot g^j \equiv 1 \cdot g^j \gmod p$, which by \ref{4.5} means $g^{i-j} \equiv 1 \gmod p$.
+  By \ref{5.10}, this means $(p-1) | (i - j)$, but since $0 \leq i - j \leq p-2$ the only multiple of $p-1$ that the difference could be is $0$, implying $i = j$. Thus, if two of the nonzero members of the set are congruent, they are the same element. In other words, they are pairwise incongruent modulo $p$.
+\end{proof}
+
+
+
+\begin{ex} \label{6.7}
+  For each of the primes $p$ less than $20$ find a primitive root and make a chart showing what powers of the primitive root give each of the natural numbers less than $p$.
+\end{ex}
+
+$2$: $1^1 \equiv 1$.
+
+$3$: $2^2 \equiv 1$, $2^1 \equiv 2$.
+
+$5$: $3^4 \equiv 1$, $3^3 \equiv 2$, $3^1 \equiv 3$, $3^2 \equiv 4$.
+
+$7$: $3^6 \equiv 1$, $3^2 \equiv 2$, $3^1 \equiv 3$, $3^4 \equiv 4$, $3^5 \equiv 5$, $3^3 \equiv 6$.
+
+$11$: $2^{10} \equiv 1$, $2^1 \equiv 2$, $2^8 \equiv 3$, $2^2 \equiv 4$, $2^4 \equiv 5$, $2^9 \equiv 6$, $2^7 \equiv 7$, $2^3 \equiv 8$,
+$2^6 \equiv 9$, $2^5 \equiv 10$.
+
+$13$: $2^{12} \equiv 1$, $2^1 \equiv 2$, $2^4 \equiv 3$, $2^2 \equiv 4$, $2^9 \equiv 5$, $2^5 \equiv 6$, $2^{11} \equiv 7$, $2^3 \equiv 8$,
+$2^8 \equiv 9$, $2^{10} \equiv 10$, $2^7 \equiv 11$, $2^6 \equiv 12$.
+
+$17$: $3^{16} \equiv 1$, $3^{11} \equiv 2$, $3^1 \equiv 3$, $3^{12} \equiv 4$, $3^5 \equiv 5$, $3^{15} \equiv 6$, $3^{11} \equiv 7$, $3^{10} \equiv 8$,
+$3^2 \equiv 9$, $3^3 \equiv 10$, $3^7 \equiv 11$, $3^{13} \equiv 12$, $3^4 \equiv 13$, $3^9 \equiv 14$, $3^6 \equiv 15$, $3^8 \equiv 16$.
+
+$19$: $2^{18} \equiv 1$, $2^1 \equiv 2$, $2^{13} \equiv 3$, $2^2 \equiv 4$, $2^{16} \equiv 5$, $2^{14} \equiv 6$, $2^6 \equiv 7$, $2^3 \equiv 8$,
+$2^8 \equiv 9$, $2^{17} \equiv 10$, $2^{12} \equiv 11$, $2^{15} \equiv 12$, $2^5 \equiv 13$, $2^7 \equiv 14$, $2^{11} \equiv 15$, $2^4 \equiv 16$,
+$2^{10} \equiv 17$, $2^9 \equiv 18$.
+
+
+
+\begin{thm} \label{6.8}
+  Every prime $p$ has a primitive root.
+\end{thm}
+
+\begin{proof}
+  It says we'll come back to this one.
+\end{proof}
+
+
+
+\begin{ex} \label{6.9}
+  Consider the prime $p = 13$. For each divisor $d = 1, 2, 3, 4, 6, 12$ of $12 = p-1$, mark which of the natural numbers in the set $\{1, 2, 3, \ldots, 12\}$ have order $d$.
+\end{ex}
+
+Order $1$: Just $1$.
+
+Order $2$: Just $12$.
+
+Order $3$: $3$, $9$.
+
+Order $4$: $5$, $8$.
+
+Order $6$: $4$, $10$.
+
+Order $12$: $2$, $6$, $7$, $11$.
 
 
 
