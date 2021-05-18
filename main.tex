@@ -272,4 +272,127 @@ Order $12$: $2$, $6$, $7$, $11$.
 
 
 
+\begin{ex} \label{6.10}
+  Compute each of the following sums
+\end{ex}
+
+1. $\sum_{d | 6} \phi(d) = 1 + 1 + 2 + 2 = 6$
+
+2. $\sum_{d|10} \phi(d) = 1 + 1 + 4 + 4 = 10$
+
+3. $\sum_{d|24} \phi(d) = 1 + 1 + 2 + 2 + 2 + 4 + 4 + 8 = 24$
+
+4. $\sum_{d|36} \phi(d) = 1 + 1 + 2 + 2 + 2 + 6 + 4 + 6 + 12 = 36$
+
+5. $\sum_{d|27} \phi(d) = 1 + 2 + 6 + 18 = 27$
+
+\emph{Make a sweeping conjecture about the sum of $\phi(d)$ taken over all natural divisors of any natural number n.}
+
+\begin{PC} \label{PC 6.18}
+  For any natural number $n$,
+
+  $$\sum_{d | n} \phi(d) = n$$
+\end{PC}
+
+
+
+\begin{thm} \label{6.11}
+  If $p$ is a prime, then
+
+  $$\sum_{d|p} \phi(d) = p$$
+\end{thm}
+
+\begin{proof}
+  $\sum_{d|p} \phi(d) = \phi(1) + \phi(p) = 1 + (p-1) = p$.
+\end{proof}
+
+
+
+\begin{thm} \label{6.12}
+  If $p$ is a prime, then
+
+  $$\sum_{d|p^k} \phi(d) = p^k$$
+\end{thm}
+
+\begin{proof}
+  First, notice $\phi(p^i) = p^i - p^{i-1}$ for any natural $i$. This is because there are $p^i$ natural numbers less than or equal to $p^i$, and 1 in every $p$ of them is a multiple of $p$ and thus not relatively prime (i.e. $p^{i} / p = p^{i-1}$ of them are multiple of $p$).
+
+  $\sum_{d|p^k} \phi(d) = \sum_{i=0}^k \phi(p^i) = 1 + \sum_{i=1}^k p^i - p^{i-1} = p^k$.
+\end{proof}
+
+
+
+\begin{thm} \label{6.13}
+  If $p$ and $q$ are two different primes, then
+
+  $$\sum_{d|pq} \phi(d) = pq$$
+\end{thm}
+
+\begin{proof}
+  There are $pq$ natural numbers less than or equal to $pq$. One in $p$ are a multiple of $p$, one in $q$ are a multiple of $q$, and the rest are relatively prime to $pq$. Thus $\phi(pq) = pq - q - p + 1$ (the $+1$ is because we subtracted out $pq$ twice, once as a multiple of $p$ and once as a multiple of $q$.
+
+  $\sum_{d|pq} \phi(d) = \phi(1) + \phi(p) + \phi(q) + \phi(pq) = 1 + (p-1) + (q-1) + (pq - q - p + 1) = pq$
+\end{proof}
+
+
+
+\begin{thm} \label{6.14}
+  If $n$ and $m$ are relatively prime natural numbers, then
+
+  $$\left( \sum_{d|m} \phi(d) \right) \cdot \left( \sum_{d|n} \phi(d) \right) = \sum_{d|mn} \phi(d)$$
+\end{thm}
+
+\begin{proof}
+  6.23 kills this problem, and I have a proof of it, but I'll come back here and do it once I have that.
+\end{proof}
+
+
+
+\begin{thm} \label{6.15}
+  If $n$ is a natural number, then
+
+  $$\sum_{d|n} \phi(d) = n$$
+\end{thm}
+
+\begin{proof}
+  By FTA, any $n = p_1^{r_1} \cdot p_2^{r_2} \cdot \cdots \cdot p_m^{r_m}$ for distinct primes $p_1$ through $p_m$ and natural numbers $r_1$ through $r_m$. We will induct on $m$.
+
+  Our base case is $m = 0$, which is \ref{6.12}.
+
+  Our inductive hypothesis is that for all $k < m$, if $n = p_1^{r_1} \cdot \cdots \cdot p_k^{r_k}$ then $\sum_{d|n} \phi(d) = n$. Our inductive step must show that this holds for $m$.
+
+  Say $n = p_1^{r_1} \cdot \cdots \cdot p_{m-1}^{r_{m-1}} \cdot p_m^{r_m}$. Let $\eta = p_1^{r_1} \cdot \cdots \cdot p_{m-1}^{r_{m-1}}$. Notice by our inductive hypothesis that $\sum_{d|\eta} \phi(d) = \eta$ and $\sum_{d|p_m^{r_m}} \phi(d) = p_m^{r_m}$.
+  Also notice by \ref{2.12} that $(\eta, p_m^{r_m}) = 1$. Then, by \ref{6.14} we see $n = \eta \cdot p_m^{r_m} = \left( \sum_{d|\eta} \phi(d) \right) \cdot \left( \sum_{d|p_m^{r_m}} \phi(d) \right) = \sum_{d|\eta \cdot p_m^{r_m}} \phi(d) = \sum_{d|n} \phi(d)$.
+
+  Removing the middle steps, we find $n = \sum_{d|n} \phi(d)$.
+\end{proof}
+
+
+
+\begin{ex} \label{6.16}
+  For a natrual number $n$ consider the fractions
+
+  $$\frac{1}{n}, \frac{2}{n}, \frac{3}{n}, \ldots, \frac{n}{n},$$
+
+  all written in reduce form. Try to find a natural one-tone correspondence between the reduced fractions and the number $\phi(d)$ for $d | n$. Show how that ovservation provides a very clever proof to the preceding theorem.
+\end{ex}
+
+\begin{proof}
+  For any $d | n$, there are $\phi(d)$ fractions that have $d$ as their denominator in simplest form.
+
+  Notice that for any $d | n$, the list of fractions above will contain all of $\frac{1}{d}, \frac{2}{d}, \ldots, \frac{d}{d}$. This is because for any $u \leq d$, we know $\frac{u}{d} \cdot (n/d) = \frac{u(n/d)}{n}$, and $u(n/d) = n(u/d) \leq n$ because $u/d \leq 1$.
+
+  Thus, there are $d$ ``candidates'' for fractions with $d$ as their denominator in simplest form. Notice that since simplest form is when the numerator and denominator are relatively prime, these fractions do have $d$ as their denominator in simplest form exactly when the numerator is relatively prime to $d$. Since the numerator can be any value from $1$ to $d$, this means the number of fractions with $d$ as the denominator in simplest form is equal to the number of natruals form $1$ to $d$ that are relatively prime to $d$, or $\phi(d)$.
+
+  Notice, then, that every fraction in the series $\frac{1}{n}, \ldots, \frac{n}{n}$ has to have a simplest form (with some divisor of $n$ as the denominator). Thus, if we add up the number of fractions with $d$ as their denominator in simplest form for all $d | n$, we'll get the number of fractions (which is $n$, since there are $n$ possibilities for the numerator). In other words, since $\phi(d)$ is the number of fractions with $d$ in their denominator in simplest form, we're saying $n = \sum_{d | n} \phi(d)$.
+\end{proof}
+
+
+
+\begin{thm} \label{6.17}
+  Every prime $p$ has $\phi(p-1)$ primitive roots.
+\end{thm}
+
+
+
 \end{document}
