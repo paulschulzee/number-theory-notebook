@@ -173,11 +173,18 @@
 
 
 \begin{thm} \label{6.3}
-  If $p$ is a prime and $f(x) = a_n x^n + a_{n-1} x^{n-1} + \cdots + a_0$ is a polynomail with integer coefficients and $a_n \neq 0 \gmod p$, then $f(x) \equiv 0 \gmod p$ has at most $n$ non-congruent solutions modulo $p$.
+  If $p$ is a prime and $f(x) = a_n x^n + a_{n-1} x^{n-1} + \cdots + a_0$ is a polynomial with integer coefficients and $a_n \neq 0 \gmod p$, then $f(x) \equiv 0 \gmod p$ has at most $n$ non-congruent solutions modulo $p$.
 \end{thm}
 
 \begin{proof}
-  No
+  We will induct on $n$. Our base case is $n = 0$, in which we are trying to find solutions to $a_0 \equiv 0 \gmod p$ where $a_0 \not \equiv 0 \gmod p$. Obviously there are $0$ solutions to this.
+
+  Our induction hypothesis is that for $m < n$, any polynomial $g(x) = a_m x^m + a_{m-1} x^{m-1} + \cdots + a_0$ has at most $m$ non-congruent modulo $p$ solutions to the equation $g(x) \equiv 0 \gmod p$. Our induction step hopes to show this property holds for $n$.
+
+  Say $f(x) = a_n x^n + a_{n-1} x^{n-1} + \cdots a_0$. If the equation $f(x) \equiv 0 \gmod p$ has no solutions, we're done, so we'll go ahead and assume it has one solution $x = r$. Then by \ref{6.2} we find $f(x) \equiv (x-r) g(x)$ for some $g(x)$ of order less than $n$.
+
+  Notice that any solution $k$ to $f(x) \equiv 0 \gmod p$ finds $f(k) \equiv (k-r) \cdot g(k) \equiv 0 \gmod p$. In other words, $p | (k-r)g(k)$. By \ref{2.27}, either $p | (k-r)$ (i.e. $k \equiv r \gmod p$) or $p | g(k)$ (i.e. $g(k) \equiv 0 \gmod p$).
+  Thus, \emph{any solution to $f(x) \equiv 0 \gmod p$ that is incongruent to $r$ modulo $p$ must also be a solution to $g(x) \equiv 0 \gmod p$}. By our induction hypothesis, we know there are strictly less than $n$ pairwise incongruent modulo $p$ solutions to $g(x) \equiv 0 \gmod p$, so adding in $r$ means we know there are \emph{no more than} $n$ pairwise incongruent modulo $p$ solutions to  $f(x) \equiv 0 \gmod p$.
 \end{proof}
 
 
@@ -192,12 +199,23 @@
 
 
 
+\pagebreak
+
+
+
 \begin{thm} \label{6.5}
   For a prime $p$ and a natural number $d$, at most $\phi (d)$ incongruent integers modulo $p$ have order $d$ modulo $p$.
 \end{thm}
 
 \begin{proof}
-  Can't
+  Either there is an integer with order $d$, or there isn't. If there isn't we're done, so let's assume there is one and call it $a$.
+
+  we will show that all numbers with order $d$ are congruent to an integer of the form $a^x$ where $(d, x) = 1$ and $x < d$. As there are only $\phi(d)$ possible values of $x$, this will mean that all integers with order $d$ will be congruent to one of $\phi(x)$ integers, and thus there can at most be $\phi(x)$ incongruent integers with order $d$.
+
+  Let $k$ be an integer with order $d$. Let $A = \{a, a^2, a^3, \ldots, a^d\}$ and $K = \{a, a^2, a^3, \ldots, a^d\}$. By \ref{4.8}, we know both of these sets are pairwise incongruent. We also know that every element of $A$ is a solution to the equation $x^d - 1 \equiv 0 \gmod p$, as $(a^i)^d - 1 \equiv (a^d)^i - 1 \equiv 1^i - 1 \equiv 0 \gmod p$. Similarly for $K$.
+  By \ref{6.3}, there can only be $d$ incongruent solutions to this equation. Thus, since $A$ is full of $d$ pairwise incongruent integers that are all solutions, it must contain one number congruent to each solution. Same with $K$. Thus, for any element of $A$, there must be a congruent element in $K$, and vice versa. Since $k \in K$, we know $k = a^i$ for some $i < d$.
+
+  To see that $(d, i) = 1$, we notice that $k^{d/(d,i)} \equiv a^{d \cdot \frac{i}{(d,i)}} \equiv 1 \gmod p$ (\ref{4.10}) Since the order of $k$ is $d$, we then know $d/(d,i) \geq d$, implying $1 \geq (d,i)$, which means $(d,i) = 1$.
 \end{proof}
 
 
@@ -374,7 +392,7 @@ Order $12$: $2$, $6$, $7$, $11$.
 
   $$\frac{1}{n}, \frac{2}{n}, \frac{3}{n}, \ldots, \frac{n}{n},$$
 
-  all written in reduce form. Try to find a natural one-tone correspondence between the reduced fractions and the number $\phi(d)$ for $d | n$. Show how that ovservation provides a very clever proof to the preceding theorem.
+  all written in reduced form. Try to find a natural one-tone correspondence between the reduced fractions and the number $\phi(d)$ for $d | n$. Show how that ovservation provides a very clever proof to the preceding theorem.
 \end{ex}
 
 \begin{proof}
