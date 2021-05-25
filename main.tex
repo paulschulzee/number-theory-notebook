@@ -210,7 +210,7 @@
 \begin{proof}
   Either there is an integer with order $d$, or there isn't. If there isn't we're done, so let's assume there is one and call it $a$.
 
-  we will show that all numbers with order $d$ are congruent to an integer of the form $a^x$ where $(d, x) = 1$ and $x < d$. As there are only $\phi(d)$ possible values of $x$, this will mean that all integers with order $d$ will be congruent to one of $\phi(x)$ integers, and thus there can at most be $\phi(x)$ incongruent integers with order $d$.
+  We will show that all numbers with order $d$ are congruent to an integer of the form $a^x$ where $(d, x) = 1$ and $x \leq d$. As there are only $\phi(d)$ possible values of $x$, this will mean that all integers with order $d$ will be congruent to one of $\phi(x)$ integers, and thus there can at most be $\phi(x)$ incongruent integers with order $d$.
 
   Let $k$ be an integer with order $d$. Let $A = \{a, a^2, a^3, \ldots, a^d\}$ and $K = \{a, a^2, a^3, \ldots, a^d\}$. By \ref{4.8}, we know both of these sets are pairwise incongruent. We also know that every element of $A$ is a solution to the equation $x^d - 1 \equiv 0 \gmod p$, as $(a^i)^d - 1 \equiv (a^d)^i - 1 \equiv 1^i - 1 \equiv 0 \gmod p$. Similarly for $K$.
   By \ref{6.3}, there can only be $d$ incongruent solutions to this equation. Thus, since $A$ is full of $d$ pairwise incongruent integers that are all solutions, it must contain one number congruent to each solution. Same with $K$. Thus, for any element of $A$, there must be a congruent element in $K$, and vice versa. Since $k \in K$, we know $k = a^i$ for some $i < d$.
@@ -410,6 +410,103 @@ Order $12$: $2$, $6$, $7$, $11$.
 \begin{thm} \label{6.17}
   Every prime $p$ has $\phi(p-1)$ primitive roots.
 \end{thm}
+
+\begin{proof}
+  It's the last week of high school, this is going to be pretty informal.
+
+  There are $p-1$ numbers less than $p$ that all have to have some order. Since we know for any $k$ that $k^{p-1} \equiv 1 \gmod p$ by \ref{4.15} (Fermat's Little), we know by \ref{4.10} that the order of every number needs to divide $p-1$. Thus, the possible orders are the divisors of $p-1$. For each divisor $d$, there are $\phi(d)$ ``slots'' (as only $\phi(d)$ incongruent numbers can have order $d$ by \ref{6.5}).
+  Thus, the total number of ``slots'' is $\sum_{d|p-1} \phi(d)$, which by \ref{6.15} means there are $p-1$ slots. Since there are $p-1$ numbers, this means every slot must be filled: there are $\phi(p-1)$ ``slots'' for numbers with order $p-1$, and so since all are filled there must be $\phi(p-1)$ numbers with order $p-1$, i.e. $\phi(p-1)$ primitive roots of $p$.
+\end{proof}
+
+
+
+\begin{ex} \label{6.18}
+  Make a conjecture about the value $\phi(p)$ for a prime $p$. Prove your conjecture.
+\end{ex}
+
+\begin{PC} \label{PC 6.18}
+  For any prime $p$, $\phi(p) = p-1$
+\end{PC}
+
+\begin{proof}
+  There are $p-1$ numbers less than $p$ and all of them are relatively prime to $p$ since $p$ is prime.
+\end{proof}
+
+
+
+\begin{ex} \label{6.19}
+  Make a conjecture about the value $\phi(p^k)$ for a priem $p$ and natural numbers $k$. Prove your conjecture.
+\end{ex}
+
+\begin{PC} \label{PC 6.19}
+  If $p$ is a prime and $k$ is a natural number, then $\phi(p^k) = p^k - p^{k-1}$.
+\end{PC}
+
+\begin{proof}
+  There are $p^k$ natural numbers less than or equal to $p^k$. Of those, $1$ in every $p$ have a $p$ in their prime factorization and thus are not relatively prime to $p^k$, so we need to subtract the $p^k / p = p^{k-1}$ non-relatively-prime numbers from that set, leaving us with $p^k - p^{k-1}$ remaining numbers.
+\end{proof}
+
+
+
+\begin{thm} \label{5.20}
+  If $n$ is a natural number and $A$ is a CRS modulo $n$, then the number of numbers in $A$ that are relatively prime to $n$ is equal to $\phi(n)$.
+\end{thm}
+
+\begin{proof}
+  Let $a \in A$ and $k$ be the unique member of the CCRS modulo $n$ such that $a \equiv k \gmod n$. We find $(a, n) | n$ and thus $(a, n) | (a - k)$, and thus $(a, n) | k$. Similarly, we find $(k, n) | a$. Thus, $(a, n) = (k, n)$, implying that $a$ is relatively prime if and only if $k$ is.
+
+  Since we can cast each member of $A$ uniquely to the CCRS this way, we find counting the number of numbers in $A$ that are relatively prime to $n$ is the same as counting the number of numbers in the CCRS that are relatively prime to $n$. Since the CCRS is just $\{0, 1, \ldots, n-1\}$, it's clear that the latter is $\phi(n)$, and thus so is the number of numbers in $A$ that are relativley prime to $n$.
+\end{proof}
+
+
+
+\begin{thm} \label{6.21}
+  If $n$ is a natural number, $k$ is an integer, and $m$ is an integer relatively prime to $n$, then the set of $n$ integers
+
+  $$\{k, k+m, k+2m, k+3m, \ldots, k + (n-1)m\}$$
+
+  is a complete residue system modulo $n$.
+\end{thm}
+
+\begin{proof}
+  By \ref{3.17}, we merely need to show the consituents of this set are incongruent modulo $n$, since there are clearly $n$ elements.
+
+  Say $k + im \equiv k + jm \gmod n$. This implies $n | (k+im - (k+jm))$, implying $n | (im - jm)$ or $n | m(i-j)$. Since $(n, m) = 1$, we cite \ref{1.41} to conclude $n | i-j$. Since $0 \leq i, j \leq n-1$, we know $-n+1 \leq i-j \leq n-1$, and the only number in that range divided by $n$ is $0$, so $i = j$.
+
+  Thus, two seperate elements (i.e. two elements such that $i \neq j$) cannot be congruent modulo $n$, showing the set is a CRS.
+\end{proof}
+
+
+
+\begin{ex} \label{6.22}
+  Consider the relatively prime natural numbers $9$ and $4$. Write down all the natural numbers less than or equal to $36 = 9 \cdot 4$ in a rectangular array that is $9$ wide and $4$ high. Then circle those numbers in that array that are relatively prime to $36$. Try some other examples using relatively prime natural numbers.
+\end{ex}
+
+I'm... gonna be honest, I did this and it was not enlightening. I have no idea what's going on.
+
+OH WAIT the columns all have the same number of circles! Cool!
+
+
+
+\begin{thm} \label{6.23}
+  If $n$ and $m$ are relatively prime natural numbers, then
+
+  $$\phi(mn) = \phi(m)\phi(n)$$
+\end{thm}
+
+\begin{proof}
+  Take any number $a \leq mn$. By division algorithm, $a = k + qm$ for some $0 \leq k < m$. We're going to make a slight tweak: If $a = 0 + qm$, instead write it as $a = m + (q-1)m$, so that $0 < k \leq m$.
+
+  By \ref{1.43}, if $(a, m) = 1$ and $(a, n) = 1$ then $(a, mn) = 1$. The opposite is also true since $(a, m) | (a, mn)$, so if $(a, mn) = 1$ then $(a, m) = 1$ (and $(a, n) = 1$).
+
+  Thus, the only way for $a = k + qm$ to be relatively prime to $mn$ is if $(a, m) = 1$ and $(a, n) = 1$.
+
+  We notice $(a, m) = 1$ if and only if $(k, m) = 1$ (as $(a, m) | k + qm$ implies $(a, m) | k$ so $(a, m) | (k, m)$ and $(k, m) | k$ implies $(k, m) | k + qm$ and thus $(k, m) | a$ so $(k, m) | (a, m)$).
+
+  There are thus $\phi(m)$ possibilities for $k$. For each of these, we examine the set $\{k, k + m, \ldots, k + (n-1)m$. By \ref{6.21}, this is a CRS modulo $n$, and by \ref{6.20} that means there are exactly $\phi(n)$ elements of this set that are relatively prime to $n$.
+
+  Thus, there are $\phi(m)$ sets that each have $\phi(n)$ numbers that are relatively prime to both $m$ and $n$ (and thus relatively prime to $mn$). Thus, the total number of numbers less than $mn$ that are relatively prime to $mn$ is $\phi(mn) = \phi(m) \cdot \phi(n)$.
+\end{proof}
 
 
 
