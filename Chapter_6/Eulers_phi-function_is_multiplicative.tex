@@ -1,0 +1,131 @@
+% !TEX root = ../main.tex
+
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+
+\begin{ex} \label{6.18}
+  Make a conjecture about the value $\phi(p)$ for a prime $p$. Prove your conjecture.
+\end{ex}
+
+\begin{PC} \label{PC 6.18}
+  For any prime $p$, $\phi(p) = p-1$
+\end{PC}
+
+\begin{proof}
+  There are $p-1$ numbers less than $p$ and all of them are relatively prime to $p$ since $p$ is prime.
+\end{proof}
+
+
+
+\begin{ex} \label{6.19}
+  Make a conjecture about the value $\phi(p^k)$ for a prime $p$ and natural numbers $k$. Prove your conjecture.
+\end{ex}
+
+\begin{PC} \label{PC 6.19}
+  If $p$ is a prime and $k$ is a natural number, then $\phi(p^k) = p^k - p^{k-1}$.
+\end{PC}
+
+\begin{proof}
+  There are $p^k$ natural numbers less than or equal to $p^k$. Of those, $1$ in every $p$ have a $p$ in their prime factorization and thus are not relatively prime to $p^k$, so we need to subtract the $p^k / p = p^{k-1}$ non-relatively-prime numbers from that set, leaving us with $p^k - p^{k-1}$ remaining numbers.
+\end{proof}
+
+
+
+\begin{thm} \label{6.20}
+  If $n$ is a natural number and $A$ is a CRS modulo $n$, then the number of numbers in $A$ that are relatively prime to $n$ is equal to $\phi(n)$.
+\end{thm}
+
+\begin{proof}
+  Let $a \in A$ and $k$ be the unique member of the CCRS modulo $n$ such that $a \equiv k \gmod n$. We find $(a, n) | n$ and thus $(a, n) | (a - k)$, and thus $(a, n) | k$. Similarly, we find $(k, n) | a$. Thus, $(a, n) = (k, n)$, implying that $a$ is relatively prime if and only if $k$ is.
+
+  Since we can cast each member of $A$ uniquely to the CCRS this way, we find counting the number of numbers in $A$ that are relatively prime to $n$ is the same as counting the number of numbers in the CCRS that are relatively prime to $n$. Since the CCRS is just $\{0, 1, \ldots, n-1\}$, it's clear that the latter is $\phi(n)$, and thus so is the number of numbers in $A$ that are relativley prime to $n$.
+\end{proof}
+
+
+
+\begin{thm} \label{6.21}
+  If $n$ is a natural number, $k$ is an integer, and $m$ is an integer relatively prime to $n$, then the set of $n$ integers
+
+  $$\{k, k+m, k+2m, k+3m, \ldots, k + (n-1)m\}$$
+
+  is a complete residue system modulo $n$.
+\end{thm}
+
+\begin{proof}
+  By \ref{3.17}, we merely need to show the consituents of this set are incongruent modulo $n$, since there are clearly $n$ elements.
+
+  Say $k + im \equiv k + jm \gmod n$. This implies $n | (k+im - (k+jm))$, implying $n | (im - jm)$ or $n | m(i-j)$. Since $(n, m) = 1$, we cite \ref{1.41} to conclude $n | i-j$. Since $0 \leq i, j \leq n-1$, we know $-n+1 \leq i-j \leq n-1$, and the only number in that range divided by $n$ is $0$, so $i = j$.
+
+  Thus, two seperate elements (i.e. two elements such that $i \neq j$) cannot be congruent modulo $n$, showing the set is a CRS.
+\end{proof}
+
+
+
+\begin{ex} \label{6.22}
+  Consider the relatively prime natural numbers $9$ and $4$. Write down all the natural numbers less than or equal to $36 = 9 \cdot 4$ in a rectangular array that is $9$ wide and $4$ high. Then circle those numbers in that array that are relatively prime to $36$. Try some other examples using relatively prime natural numbers.
+\end{ex}
+
+I'm... gonna be honest, I did this and it was not enlightening. I have no idea what's going on.
+
+OH WAIT the columns all have the same number of circles! Cool!
+
+
+
+\begin{thm} \label{6.23}
+  If $n$ and $m$ are relatively prime natural numbers, then
+
+  $$\phi(mn) = \phi(m)\phi(n)$$
+\end{thm}
+
+\begin{proof}
+  Take any number $a \leq mn$. By division algorithm, $a = k + qm$ for some $0 \leq k < m$. We're going to make a slight tweak: If $a = 0 + qm$, instead write it as $a = m + (q-1)m$, so that $0 < k \leq m$.
+
+  By \ref{1.43}, if $(a, m) = 1$ and $(a, n) = 1$ then $(a, mn) = 1$. The opposite is also true since $(a, m) | (a, mn)$, so if $(a, mn) = 1$ then $(a, m) = 1$ (and $(a, n) = 1$).
+
+  Thus, the only way for $a = k + qm$ to be relatively prime to $mn$ is if $(a, m) = 1$ and $(a, n) = 1$.
+
+  We notice $(a, m) = 1$ if and only if $(k, m) = 1$ (as $(a, m) | k + qm$ implies $(a, m) | k$ so $(a, m) | (k, m)$ and $(k, m) | k$ implies $(k, m) | k + qm$ and thus $(k, m) | a$ so $(k, m) | (a, m)$).
+
+  There are thus $\phi(m)$ possibilities for $k$. For each of these, we examine the set $\{k, k + m, \ldots, k + (n-1)m$. By \ref{6.21}, this is a CRS modulo $n$, and by \ref{6.20} that means there are exactly $\phi(n)$ elements of this set that are relatively prime to $n$.
+
+  Thus, there are $\phi(m)$ sets that each have $\phi(n)$ numbers that are relatively prime to both $m$ and $n$ (and thus relatively prime to $mn$). Thus, the total number of numbers less than $mn$ that are relatively prime to $mn$ is $\phi(mn) = \phi(m) \cdot \phi(n)$.
+\end{proof}
+
+
+
+\begin{ex} \label{6.24}
+  Compute each of the following.
+\end{ex}
+
+1. $\phi(3) = 2$
+
+2. $\phi(5) = 4$
+
+3. $\phi(15) = \phi(3) \cdot \phi(5) = 8$
+
+4. $\phi(45) = \phi(9) \cdot \phi(5) = 24$
+
+5. $\phi(98) = \phi(2) \cdot \phi(7^2) = 42$
+
+6. $\phi(5^6 11^4 17^{10}) = \phi(5^6) \cdot \phi(11^4) \cdot \phi(17^{10}) = 5^5 11^3 17^9 \cdot 4 \cdot 10 \cdot 16 = 2^7 5^6 11^3 17^9$
+
+
+
+\begin{ques} \label{6.25}
+  To what power would you raise 15 to be certain that you would get an answer that is congruent to $1$ modulo $98$? Why?
+\end{ques}
+
+By \ref{4.32} (Euler's theorem), 42.
+
+
+
+\begin{ques} \label{6.26}
+  How many primitive roots does the prime $251$ have?
+\end{ques}
+
+By \ref{6.17}, it has $\phi(250) = \phi(2) \cdot \phi(5^3) = 1 \cdot 5^3 - 5^2 = 100$ primitive roots.
+
+
+\end{document}
